@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泰文字母快速一覽表</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500;700&family=Sarabun:wght@400;500;700&family=DM+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #fdfaf5;
+    --surface: #ffffff;
+    --border: rgba(180,150,80,0.18);
+    --text: #1a1208;
+    --muted: #6b5c3e;
+    --hint: #b5a07a;
+    --green: #2d6a4f;
+    --green-dark: #1b4332;
+    --green-light: #e8f4ee;
+    --gold: #c8963c;
+    --gold-light: #f5e6c8;
+    /* Tone colors: keep distinct so consonants are still visually grouped */
+    --tone-mid: #2d6a4f;
+    --tone-mid-bg: #e8f4ee;
+    --tone-high: #c8963c;
+    --tone-high-bg: #f5e6c8;
+    --tone-low: #6b5c3e;
+    --tone-low-bg: #efe7d0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif TC', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-wrap: break-word;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+  }
+
+  /* === Hero === */
+  .hero {
+    text-align: center;
+    padding: 24px 16px 32px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #fdfaf5 0%, #e8f4ee 100%);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 140px; height: 140px;
+    background: var(--green);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -50px;
+    width: 160px; height: 160px;
+    background: var(--gold);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero h1::before, .hero h1::after {
+    content: '▌▌';
+    color: var(--green);
+    font-size: 0.7em;
+    margin: 0 0.4em;
+    vertical-align: middle;
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 2px;
+  }
+  .hero-tip {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--gold);
+    background: rgba(200,155,61,0.1);
+    border: 1px dashed rgba(200,155,61,0.3);
+    border-radius: 99px;
+    padding: 6px 14px;
+    display: inline-block;
+  }
+
+  /* === Section === */
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    scroll-margin-top: 16px;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(45,106,79,0.25);
+  }
+  .section-tag .thai {
+    font-family: 'Sarabun', serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .section-tag .label {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    font-size: 14px;
+    border-left: 1px solid rgba(255,255,255,0.3);
+    padding-left: 10px;
+  }
+
+  .section-meta {
+    color: var(--green);
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .section-meta .count {
+    font-family: 'DM Mono', monospace;
+    font-weight: 800;
+    margin: 0 2px;
+  }
+
+  /* === Letter grid === */
+  .grid {
+    display: grid;
+    gap: 8px;
+  }
+  .grid-vowels {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .grid-cons {
+    grid-template-columns: repeat(11, 1fr);
+  }
+
+  .letter-cell {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 4px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+    position: relative;
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .letter-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: var(--green);
+    background: var(--green-light);
+  }
+  .letter-cell.active {
+    background: var(--gold-light);
+    border-color: var(--gold);
+    border-width: 2px;
+  }
+  .letter-cell.special {
+    background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+  }
+
+  .letter-thai {
+    font-family: 'Sarabun', serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .letter-pinyin {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  /* Cons color coding by tone */
+  .letter-cell.tone-mid .letter-thai { color: var(--tone-mid); }
+  .letter-cell.tone-high .letter-thai { color: var(--tone-high); }
+  .letter-cell.tone-low .letter-thai { color: var(--tone-low); }
+
+  /* === Special vowels block === */
+  .special-block {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+
+  /* === Cons mode toggle === */
+  .cons-toggle {
+    display: inline-flex;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 3px;
+    margin-bottom: 16px;
+    gap: 2px;
+  }
+  .cons-toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 14px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    border-radius: 99px;
+    transition: all 0.15s;
+  }
+  .cons-toggle-btn:hover { color: var(--text); }
+  .cons-toggle-btn.active {
+    background: var(--text);
+    color: white;
+  }
+
+  /* === Tone groups === */
+  .tone-group {
+    margin-bottom: 18px;
+  }
+  .tone-group:last-child { margin-bottom: 0; }
+  .tone-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: 'Noto Serif TC', serif;
+  }
+  .tone-heading .dot {
+    width: 12px; height: 12px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .tone-heading .name {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .tone-heading .ct {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-left: auto;
+    opacity: 0.7;
+  }
+  .tone-heading.mid  { background: var(--tone-mid-bg); color: var(--tone-mid); }
+  .tone-heading.mid .dot  { background: var(--tone-mid); }
+  .tone-heading.high { background: var(--tone-high-bg); color: var(--tone-high); }
+  .tone-heading.high .dot { background: var(--tone-high); }
+  .tone-heading.low  { background: var(--tone-low-bg); color: var(--tone-low); }
+  .tone-heading.low .dot  { background: var(--tone-low); }
+  .special-label {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: inline-block;
+    background: var(--gold-light);
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+  .special-label .desc {
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 4px;
+    font-size: 11px;
+  }
+
+  /* === Tone legend === */
+  .tone-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  .tone-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .tone-tag .dot {
+    width: 12px; height: 12px;
+    border-radius: 4px;
+  }
+  .tone-tag .dot.mid  { background: var(--tone-mid); }
+  .tone-tag .dot.high { background: var(--tone-high); }
+  .tone-tag .dot.low  { background: var(--tone-low); }
+
+  /* === Detail panel (sticky bottom) === */
+  .detail-panel {
+    position: sticky;
+    bottom: 16px;
+    margin-top: 16px;
+    background: var(--text);
+    color: white;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transform: translateY(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s;
+    z-index: 50;
+  }
+  .detail-panel.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .detail-panel .row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .detail-panel .big-thai-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    min-width: 60px;
+  }
+  .detail-panel .big-thai {
+    font-family: 'Sarabun', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    flex-shrink: 0;
+  }
+  .detail-panel .rep-word {
+    font-family: 'Sarabun', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-top: 4px;
+    line-height: 1.2;
+    display: none;
+  }
+  .detail-panel .rep-word.show {
+    display: block;
+  }
+  .detail-panel .rep-word .zh {
+    color: rgba(255,255,255,0.75);
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .detail-panel .info {
+    flex: 1;
+    min-width: 0;
+  }
+  .detail-panel .pinyin {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .detail-panel .desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+  }
+  .detail-panel .desc .tone-pill {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 99px;
+    font-size: 11px;
+    margin-left: 6px;
+    font-weight: 600;
+    font-family: 'Noto Serif TC', sans-serif;
+  }
+  .detail-panel .desc .tone-pill.mid  { background: var(--tone-mid); color: white; }
+  .detail-panel .desc .tone-pill.high { background: var(--tone-high); color: white; }
+  .detail-panel .desc .tone-pill.low  { background: var(--tone-low); color: white; }
+
+  .detail-panel .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .speak-btn {
+    background: var(--gold);
+    color: white;
+    border: none;
+    border-radius: 99px;
+    padding: 8px 16px;
+    font-family: 'Noto Serif TC', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+  .speak-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(200,150,60,0.4); }
+  .speak-btn.playing { background: var(--green); animation: pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(45,106,79,0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(45,106,79,0); }
+  }
+  .close-btn {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 99px;
+    width: 32px; height: 32px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .close-btn:hover { background: rgba(255,255,255,0.2); }
+
+  /* === Tones section === */
+  .tones-intro {
+    background: var(--green-light);
+    border-left: 3px solid var(--green);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .tones-intro b { color: var(--green); }
+
+  /* 5 tone marks intro cards */
+  .tone-marks-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .tone-mark-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 6px;
+    text-align: center;
+  }
+  .tone-mark-card.flat   { border-color: var(--green); }
+  .tone-mark-card.t2     { border-color: #c89b3d; }
+  .tone-mark-card.t3     { border-color: #c73e3a; }
+  .tone-mark-card.t4     { border-color: #7c3aed; }
+  .tone-mark-card.t5     { border-color: #2563eb; }
+  .tone-mark-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .tone-mark-symbol {
+    font-family: 'Sarabun', serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 4px 0;
+  }
+  .tone-curve {
+    width: 100%;
+    height: 32px;
+    margin: 6px 0 4px;
+    display: block;
+  }
+  .tone-mark-card.flat .tone-curve { color: var(--green); }
+  .tone-mark-card.t2 .tone-curve { color: #c89b3d; }
+  .tone-mark-card.t3 .tone-curve { color: #c73e3a; }
+  .tone-mark-card.t4 .tone-curve { color: #7c3aed; }
+  .tone-mark-card.t5 .tone-curve { color: #2563eb; }
+  .tone-mark-card.flat .tone-mark-symbol { color: var(--green); }
+  .tone-mark-card.t2 .tone-mark-symbol { color: #c89b3d; }
+  .tone-mark-card.t3 .tone-mark-symbol { color: #c73e3a; }
+  .tone-mark-card.t4 .tone-mark-symbol { color: #7c3aed; }
+  .tone-mark-card.t5 .tone-mark-symbol { color: #2563eb; }
+  .tone-mark-name {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  .tone-mark-name strong { color: var(--text); display: block; margin-bottom: 1px; }
+
+  /* Tone subsection title */
+  .tone-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0 12px;
+    padding: 8px 14px;
+    background: var(--bg);
+    border-left: 3px solid var(--green);
+    border-radius: 6px;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--green);
+    flex-wrap: wrap;
+  }
+  .tone-subtitle .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+    font-weight: 400;
+  }
+
+  /* Tone rules table (1-9 and 10-18) */
+  .tone-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+  }
+  .tone-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    background: var(--surface);
+  }
+  .tone-table th {
+    background: var(--bg);
+    padding: 8px 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--muted);
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  .tone-table th .th-tone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    line-height: 1;
+  }
+  .tone-table th .th-num {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .tone-table th .th-curve {
+    width: 50px;
+    height: 20px;
+    display: block;
+  }
+  .tone-table th .th-tone.t1 { color: var(--green); }
+  .tone-table th .th-tone.t2 { color: #c89b3d; }
+  .tone-table th .th-tone.t3 { color: #c73e3a; }
+  .tone-table th .th-tone.t4 { color: #7c3aed; }
+  .tone-table th .th-tone.t5 { color: #2563eb; }
+  .tone-table th .th-tone.t1 .th-num { color: var(--green); }
+  .tone-table th .th-tone.t2 .th-num { color: #c89b3d; }
+  .tone-table th .th-tone.t3 .th-num { color: #c73e3a; }
+  .tone-table th .th-tone.t4 .th-num { color: #7c3aed; }
+  .tone-table th .th-tone.t5 .th-num { color: #2563eb; }
+  .tone-table th.struct-col {
+    text-align: left;
+    width: 40%;
+  }
+  .tone-table td {
+    padding: 8px 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .tone-table tr:last-child td { border-bottom: none; }
+  .tone-table .struct-cell {
+    text-align: left;
+    font-weight: 600;
+  }
+  .tone-table .struct-cell .num {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    line-height: 22px;
+    text-align: center;
+    margin-right: 8px;
+    font-weight: 700;
+  }
+  .tone-table .struct-cell .desc {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 400;
+    margin-left: 30px;
+    display: block;
+    margin-top: 2px;
+  }
+  .tone-table .ex-cell {
+    font-family: 'Sarabun', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .tone-table .ex-cell.empty {
+    color: var(--hint);
+    opacity: 0.4;
+  }
+  .tone-table .ex-cell.x {
+    color: var(--hint);
+  }
+
+  /* Tone color hints in cells */
+  .tone-table .t1 { color: var(--green); }
+  .tone-table .t2 { color: #c89b3d; }
+  .tone-table .t3 { color: #c73e3a; }
+  .tone-table .t4 { color: #7c3aed; }
+  .tone-table .t5 { color: #2563eb; }
+
+  /* Tone group dividers in struct-4 table */
+  .tone-table tr.divider td {
+    background: var(--bg);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 4px 12px;
+    text-align: left;
+    letter-spacing: 2px;
+  }
+
+  /* Interactive tone lookup */
+  .tone-lookup {
+    background: var(--text);
+    color: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-top: 20px;
+  }
+  .tone-lookup-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .tone-lookup-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 14px;
+  }
+  .tl-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .tl-field label {
+    display: block;
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+  }
+  .tl-field select {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .tl-field select option {
+    background: #2a2a2a;
+    color: white;
+  }
+  .tl-result {
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .tl-result .tone-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .tl-result .tone-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+  .tl-result .tone-desc strong { color: white; }
+  .tl-result.invalid .tone-name { color: #ff6b6b; }
+
+  @media (max-width: 600px) {
+    .tone-marks-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .tone-mark-symbol { font-size: 22px; }
+    .tone-table { font-size: 12px; }
+    .tl-controls { grid-template-columns: 1fr; }
+  }
+
+  /* === Endings section === */
+  .end-intro {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .end-intro b { color: var(--gold-deep, #8B6914); }
+
+  .end-group-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 18px 0 10px;
+    flex-wrap: wrap;
+  }
+  .end-group-title:first-of-type { margin-top: 0; }
+  .end-group-title .dot {
+    width: 12px; height: 12px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .end-group-title .name {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .end-group-title .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    margin-left: auto;
+    opacity: 0.7;
+  }
+  .end-group-title.mid { background: var(--tone-mid-bg); color: var(--tone-mid); }
+  .end-group-title.mid .dot { background: var(--tone-mid); }
+  .end-group-title.low { background: var(--tone-low-bg); color: var(--tone-low); }
+  .end-group-title.low .dot { background: var(--tone-low); }
+
+  .end-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .end-card {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .end-card-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+  .end-card.mid .end-card-main { border-color: var(--tone-mid); background: var(--tone-mid-bg); }
+  .end-card.low .end-card-main { border-color: var(--tone-low); background: var(--tone-low-bg); }
+  .end-card-thai {
+    font-family: 'Sarabun', serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .end-card.mid .end-card-thai { color: var(--tone-mid); }
+  .end-card.low .end-card-thai { color: var(--tone-low); }
+  .end-card-pinyin {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .end-card-info {
+    min-width: 0;
+  }
+  .end-card-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .end-card-row:last-child { margin-bottom: 0; }
+  .end-card-mouth {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .end-card-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 99px;
+    color: var(--muted);
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .end-card-letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .end-letter {
+    font-family: 'Sarabun', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 9px;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1;
+  }
+  .end-letter:hover {
+    transform: translateY(-1px);
+    border-color: var(--green);
+    background: var(--green-light);
+    color: var(--green);
+  }
+  .end-letter.primary {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+  }
+  .end-letter.primary:hover {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  @media (max-width: 600px) {
+    .end-card { grid-template-columns: 1fr; gap: 10px; }
+    .end-card-main { flex-direction: row; min-width: auto; padding: 8px 10px; gap: 8px; }
+    .end-card-thai { margin-bottom: 0; font-size: 24px; }
+    .end-card-count { margin-left: 0; }
+  }
+
+  /* === Quick navigation === */
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  .qn-link {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 99px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+  .qn-link:hover {
+    background: var(--green-light);
+    border-color: var(--green);
+    color: var(--green);
+    transform: translateY(-1px);
+  }
+
+  /* === Simplified vowels section === */
+  .simp-intro {
+    background: var(--green-light);
+    border-left: 3px solid var(--green);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .simp-intro b { color: var(--green); }
+
+  .simp-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .simp-rule {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: all 0.15s;
+  }
+  .simp-rule.notable {
+    border-color: var(--gold);
+    background: var(--gold-light);
+  }
+  .simp-rule-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .simp-rule-num {
+    background: var(--green);
+    color: white;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .simp-rule.notable .simp-rule-num {
+    background: var(--gold);
+  }
+  .simp-rule-formula {
+    font-family: 'Sarabun', serif;
+    font-size: 17px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .simp-rule-formula .arrow {
+    color: var(--muted);
+    margin: 0 6px;
+    font-weight: 400;
+  }
+  .simp-rule-formula .from {
+    color: var(--green);
+  }
+  .simp-rule-formula .to {
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .simp-rule-tag {
+    margin-left: auto;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+    letter-spacing: 1px;
+    background: var(--surface);
+    padding: 2px 8px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+  }
+  .simp-rule.notable .simp-rule-tag {
+    color: var(--gold);
+    background: white;
+    border-color: var(--gold);
+    font-weight: 700;
+  }
+  .simp-rule-example {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Sarabun', serif;
+    font-size: 18px;
+    color: var(--muted);
+    padding-left: 34px;
+    flex-wrap: wrap;
+  }
+  .simp-rule-example .ex-from {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .simp-rule-example .ex-eq {
+    color: var(--hint);
+    font-size: 14px;
+    margin: 0 2px;
+  }
+  .simp-rule-example .ex-result {
+    color: var(--green);
+    font-weight: 700;
+    background: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--green-light);
+  }
+
+  /* === Interactive practice === */
+  .practice-box {
+    background: var(--text);
+    color: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-top: 16px;
+  }
+  .practice-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 2px;
+  }
+  .practice-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 14px;
+  }
+  .practice-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .practice-field label {
+    display: block;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+  }
+  .practice-field select {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-family: 'Sarabun', serif;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .practice-field select option {
+    background: #2a2a2a;
+    color: white;
+  }
+  .practice-result {
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .practice-result .formula {
+    font-family: 'Sarabun', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 6px;
+    word-break: break-word;
+  }
+  .practice-result .formula .symbol {
+    color: rgba(255,255,255,0.5);
+    margin: 0 6px;
+  }
+  .practice-result .formula .arrow {
+    color: rgba(255,255,255,0.4);
+    margin: 0 8px;
+  }
+  .practice-result .formula .final {
+    color: white;
+    font-weight: 700;
+    font-size: 28px;
+    background: rgba(200,150,60,0.2);
+    padding: 2px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--gold);
+  }
+  .practice-result .rule-applied {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 6px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  /* === Mat purchase section === */
+  .mat-section {
+    background: linear-gradient(135deg, #fdfaf5 0%, #f5e6c8 100%);
+    border: 1.5px solid var(--gold);
+  }
+  .mat-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .mat-icon {
+    font-size: 48px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .mat-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .mat-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .mat-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .mat-desc b {
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .mat-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: white;
+    text-decoration: none;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 99px;
+    transition: all 0.15s;
+    box-shadow: 0 2px 8px rgba(200,150,60,0.3);
+  }
+  .mat-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(200,150,60,0.4);
+    background: var(--green);
+  }
+  .mat-btn .mat-arrow {
+    transition: transform 0.15s;
+  }
+  .mat-btn:hover .mat-arrow {
+    transform: translateX(3px);
+  }
+  .mat-disclaimer {
+    font-size: 11px;
+    color: var(--hint);
+    margin-top: 10px;
+    font-family: 'DM Mono', monospace;
+  }
+  @media (max-width: 540px) {
+    .mat-icon { font-size: 36px; }
+    .mat-title { font-size: 17px; }
+    .mat-desc { font-size: 13px; }
+  }
+
+  /* === Footer === */
+  .footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border);
+    font-size: 12px;
+    color: var(--hint);
+    line-height: 1.8;
+  }
+  .footer a { color: var(--green); text-decoration: none; font-weight: 600; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* === Mobile responsive === */
+  @media (max-width: 720px) {
+    .grid-vowels { grid-template-columns: repeat(4, 1fr); }
+    .grid-cons { grid-template-columns: repeat(7, 1fr); }
+    .letter-thai { font-size: 22px; }
+    .letter-pinyin { font-size: 10px; }
+    .letter-cell { padding: 8px 3px 6px; min-height: 62px; }
+    .hero h1 { font-size: 22px; }
+    .container { padding: 16px 10px 80px; }
+    .section { padding: 14px; }
+    .detail-panel .big-thai { font-size: 38px; }
+    .detail-panel { bottom: 8px; padding: 14px 16px; }
+  }
+  @media (max-width: 420px) {
+    .grid-vowels { grid-template-columns: repeat(4, 1fr); gap: 5px; }
+    .grid-cons { grid-template-columns: repeat(6, 1fr); gap: 5px; }
+    .letter-thai { font-size: 19px; }
+    .letter-cell { min-height: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>泰文字母與拼字快速一覽</h1>
+    <div class="hero-sub">THAI ALPHABET &amp; SPELLING REFERENCE</div>
+    <div class="hero-tip">💡 點字母聽發音 · 互動式拼字練習</div>
+  </div>
+
+  <!-- Quick navigation -->
+  <nav class="quick-nav">
+    <a href="#vowels" class="qn-link">📕 母音</a>
+    <a href="#consonants" class="qn-link">📗 子音</a>
+    <a href="#simplified" class="qn-link">📘 簡化母音</a>
+    <a href="#endings" class="qn-link">📙 尾音</a>
+    <a href="#tones" class="qn-link">🎵 聲調規則</a>
+    <a href="#mat" class="qn-link">🪧 墊板購買</a>
+  </nav>
+
+  <!-- 母音 32 個 -->
+  <div class="section" id="vowels">
+    <div class="section-tag">
+      <span class="thai">สระ</span>
+      <span class="label">母音</span>
+    </div>
+    <div class="section-meta">母音<span class="count">32</span>個</div>
+
+    <!-- Main vowels -->
+    <div class="grid grid-vowels" id="vowels-main">
+      <!-- Will be populated by JS -->
+    </div>
+
+    <!-- Special vowels -->
+    <div class="special-block">
+      <div class="special-label">特殊母音<span class="desc">（短促 + 獨立母音）</span></div>
+      <div class="grid grid-vowels" id="vowels-special"></div>
+    </div>
+  </div>
+
+  <!-- 子音 44 個 -->
+  <div class="section" id="consonants">
+    <div class="section-tag">
+      <span class="thai">พยัญชนะ</span>
+      <span class="label">子音</span>
+    </div>
+    <div class="section-meta">子音<span class="count">44</span>個</div>
+
+    <div class="cons-toggle">
+      <button class="cons-toggle-btn active" data-mode="by-tone">依中高低音</button>
+      <button class="cons-toggle-btn" data-mode="by-order">依字母順序</button>
+    </div>
+
+    <!-- BY TONE (default) -->
+    <div class="cons-view" id="view-by-tone">
+      <div class="tone-group">
+        <div class="tone-heading mid">
+          <span class="dot"></span>
+          <span class="name">中音子音</span>
+          <span class="ct">9 個</span>
+        </div>
+        <div class="grid grid-cons" id="cons-mid"></div>
+      </div>
+      <div class="tone-group">
+        <div class="tone-heading high">
+          <span class="dot"></span>
+          <span class="name">高音子音</span>
+          <span class="ct">11 個</span>
+        </div>
+        <div class="grid grid-cons" id="cons-high"></div>
+      </div>
+      <div class="tone-group">
+        <div class="tone-heading low">
+          <span class="dot"></span>
+          <span class="name">低音子音</span>
+          <span class="ct">24 個</span>
+        </div>
+        <div class="grid grid-cons" id="cons-low"></div>
+      </div>
+    </div>
+
+    <!-- BY ORDER -->
+    <div class="cons-view" id="view-by-order" style="display:none">
+      <div class="grid grid-cons" id="consonants-grid"></div>
+      <div class="tone-legend">
+        <span class="tone-tag"><span class="dot mid"></span>中音 9 個</span>
+        <span class="tone-tag"><span class="dot high"></span>高音 11 個</span>
+        <span class="tone-tag"><span class="dot low"></span>低音 24 個</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 簡化母音 -->
+  <div class="section" id="simplified">
+    <div class="section-tag">
+      <span class="thai">สระลดรูป</span>
+      <span class="label">簡化母音</span>
+    </div>
+    <div class="section-meta">7 條變化規則</div>
+
+    <div class="simp-intro">
+      <b>什麼是簡化母音？</b><br>
+      泰文母音遇到「尾音」（韻尾子音）時，原本的母音形狀會<b>縮減或變形</b>。
+      規則 ⑤（เ-าะ → -็อ-）特別容易忘記，要多注意 ⚠️
+    </div>
+
+    <div class="simp-rules" id="simp-rules-grid">
+      <!-- Will be populated by JS -->
+    </div>
+
+    <!-- Interactive practice -->
+    <div class="practice-box">
+      <div class="practice-title">🎯 互動拼字練習</div>
+      <div class="practice-sub">選一個母音規則 + 任一子音，看看變化後的拼字</div>
+      <div class="practice-controls">
+        <div class="practice-field">
+          <label>母音規則</label>
+          <select id="practiceVowel">
+            <!-- options injected by JS -->
+          </select>
+        </div>
+        <div class="practice-field">
+          <label>子音 + 尾音</label>
+          <select id="practiceCons">
+            <!-- options injected by JS -->
+          </select>
+        </div>
+      </div>
+      <div class="practice-result">
+        <div class="formula" id="practiceFormula">
+          <!-- e.g. กะ + บ → กับ -->
+        </div>
+        <div class="rule-applied" id="practiceRule"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 尾音 -->
+  <div class="section" id="endings">
+    <div class="section-tag">
+      <span class="thai">ตัวสะกด</span>
+      <span class="label">尾音</span>
+    </div>
+    <div class="section-meta">8 種發音 / 35 個尾音 <span style="color:var(--gold);font-weight:600;margin-left:6px">⭐ 發音道地的關鍵</span></div>
+
+    <div class="end-intro">
+      泰文尾音分為兩大類：<b>中音尾音（促音／硬音）</b>與<b>低音尾音（響亮音）</b>。
+      不同尾音對應不同嘴型，是泰語發音道地與否的關鍵。
+    </div>
+
+    <!-- 中音尾音 -->
+    <div class="end-group-title mid">
+      <span class="dot"></span>
+      <span class="name">中音尾音</span>
+      <span class="meta">Stop Finals · 3 種發音 / 25 個</span>
+    </div>
+    <div class="end-grid" id="end-mid"></div>
+
+    <!-- 低音尾音 -->
+    <div class="end-group-title low">
+      <span class="dot"></span>
+      <span class="name">低音尾音</span>
+      <span class="meta">Sonorant Finals · 5 種發音 / 10 個</span>
+    </div>
+    <div class="end-grid" id="end-low"></div>
+  </div>
+
+  <!-- 聲調規則 -->
+  <div class="section" id="tones">
+    <div class="section-tag">
+      <span class="thai">วรรณยุกต์</span>
+      <span class="label">聲調規則</span>
+    </div>
+    <div class="section-meta">4 大結構 · 18 種拼字組合</div>
+
+    <div class="tones-intro">
+      <b>泰文有 5 個聲調</b>，但只有 4 個聲調符號（第 1 聲不用標記）。
+      聲調由「<b>子音類別 + 母音長短 + 尾音類型</b>」共同決定，再加上聲調符號做最終調整。
+    </div>
+
+    <!-- 5 個聲調符號介紹 -->
+    <div class="tone-marks-grid">
+      <div class="tone-mark-card flat">
+        <div class="tone-mark-num">第 1 聲</div>
+        <svg class="tone-curve" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="10" x2="80" y2="10" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="20" x2="80" y2="20" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="30" x2="80" y2="30" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="6" y1="20" x2="68" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" marker-end="url(#arr-flat)"/>
+          <defs>
+            <marker id="arr-flat" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="tone-mark-symbol">–</div>
+        <div class="tone-mark-name"><strong>中平調</strong>sǎamǎn</div>
+      </div>
+      <div class="tone-mark-card t2">
+        <div class="tone-mark-num">第 2 聲</div>
+        <svg class="tone-curve" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="10" x2="80" y2="10" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="20" x2="80" y2="20" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="30" x2="80" y2="30" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <path d="M 6 14 Q 30 38, 50 32 T 70 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" marker-end="url(#arr-t2)"/>
+          <defs>
+            <marker id="arr-t2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="tone-mark-symbol">–่</div>
+        <div class="tone-mark-name"><strong>低降調</strong>èek</div>
+      </div>
+      <div class="tone-mark-card t3">
+        <div class="tone-mark-num">第 3 聲</div>
+        <svg class="tone-curve" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="10" x2="80" y2="10" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="20" x2="80" y2="20" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="30" x2="80" y2="30" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="6" y1="8" x2="68" y2="32" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" marker-end="url(#arr-t3)"/>
+          <defs>
+            <marker id="arr-t3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="tone-mark-symbol">–้</div>
+        <div class="tone-mark-name"><strong>高降調</strong>thoo</div>
+      </div>
+      <div class="tone-mark-card t4">
+        <div class="tone-mark-num">第 4 聲</div>
+        <svg class="tone-curve" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="10" x2="80" y2="10" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="20" x2="80" y2="20" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="30" x2="80" y2="30" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <path d="M 6 22 Q 18 6, 30 16 T 54 22 Q 64 14, 70 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" marker-end="url(#arr-t4)"/>
+          <defs>
+            <marker id="arr-t4" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="tone-mark-symbol">–๊</div>
+        <div class="tone-mark-name"><strong>高升調</strong>trii</div>
+      </div>
+      <div class="tone-mark-card t5">
+        <div class="tone-mark-num">第 5 聲</div>
+        <svg class="tone-curve" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="10" x2="80" y2="10" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="20" x2="80" y2="20" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="0" y1="30" x2="80" y2="30" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+          <line x1="6" y1="32" x2="68" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" marker-end="url(#arr-t5)"/>
+          <defs>
+            <marker id="arr-t5" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="tone-mark-symbol">–๋</div>
+        <div class="tone-mark-name"><strong>升調</strong>càttawaa</div>
+      </div>
+    </div>
+
+    <!-- 第 1-3 大結構（無聲調符號）-->
+    <div class="tone-subtitle">
+      第 1-3 大結構
+      <span class="meta">無聲調符號 · 規則 1-9</span>
+    </div>
+    <div class="tone-table-wrap">
+      <table class="tone-table">
+        <thead>
+          <tr>
+            <th class="struct-col">結構</th>
+            <th><span class="th-tone t1"><span class="th-num">第 1 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="4" y1="12" x2="50" y2="12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t1)"/>
+<defs><marker id="th-arr-t1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+            <th><span class="th-tone t2"><span class="th-num">第 2 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<path d="M 4 8 Q 22 22, 36 18 T 52 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t2)"/>
+<defs><marker id="th-arr-t2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+            <th><span class="th-tone t3"><span class="th-num">第 3 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="4" y1="4" x2="50" y2="20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t3)"/>
+<defs><marker id="th-arr-t3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+            <th><span class="th-tone t4"><span class="th-num">第 4 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<path d="M 4 14 Q 14 4, 22 10 T 38 14 Q 46 8, 52 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t4)"/>
+<defs><marker id="th-arr-t4" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+            <th><span class="th-tone t5"><span class="th-num">第 5 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="4" y1="20" x2="50" y2="4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t5)"/>
+<defs><marker id="th-arr-t5" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+          </tr>
+        </thead>
+        <tbody id="tone-table-1to9"></tbody>
+      </table>
+    </div>
+
+    <!-- 第 4 大結構（加聲調符號）-->
+    <div class="tone-subtitle">
+      第 4 大結構
+      <span class="meta">加聲調符號 · 規則 10-18</span>
+    </div>
+    <div class="tone-table-wrap">
+      <table class="tone-table">
+        <thead>
+          <tr>
+            <th class="struct-col">結構</th>
+            <th><span class="th-tone t1"><span class="th-num">第 1 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="4" y1="12" x2="50" y2="12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t1)"/>
+<defs><marker id="th-arr-t1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+            <th><span class="th-tone t2"><span class="th-num">第 2 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<path d="M 4 8 Q 22 22, 36 18 T 52 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t2)"/>
+<defs><marker id="th-arr-t2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+            <th><span class="th-tone t3"><span class="th-num">第 3 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="4" y1="4" x2="50" y2="20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t3)"/>
+<defs><marker id="th-arr-t3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+            <th><span class="th-tone t4"><span class="th-num">第 4 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<path d="M 4 14 Q 14 4, 22 10 T 38 14 Q 46 8, 52 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t4)"/>
+<defs><marker id="th-arr-t4" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+            <th><span class="th-tone t5"><span class="th-num">第 5 聲</span><svg class="th-curve" viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="6" x2="60" y2="6" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="12" x2="60" y2="12" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="0" y1="18" x2="60" y2="18" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+<line x1="4" y1="20" x2="50" y2="4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" marker-end="url(#th-arr-t5)"/>
+<defs><marker id="th-arr-t5" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/></marker></defs>
+</svg></span></th>
+          </tr>
+        </thead>
+        <tbody id="tone-table-10to18"></tbody>
+      </table>
+    </div>
+
+    <!-- Interactive lookup -->
+    <div class="tone-lookup">
+      <div class="tone-lookup-title">🎵 聲調查詢器</div>
+      <div class="tone-lookup-sub">選 子音類別 + 母音 + 尾音 + 聲調符號 → 看會發第幾聲</div>
+      <div class="tl-controls">
+        <div class="tl-field">
+          <label>子音類別</label>
+          <select id="tlConsClass">
+            <option value="mid">中音子音 (ก จ ด...)</option>
+            <option value="high">高音子音 (ข ฉ ถ...)</option>
+            <option value="low">低音子音 (ค ช ท...)</option>
+          </select>
+        </div>
+        <div class="tl-field">
+          <label>母音長短</label>
+          <select id="tlVowel">
+            <option value="long">長母音 (อา อี อู...)</option>
+            <option value="short">短母音 (อะ อิ อุ...)</option>
+          </select>
+        </div>
+        <div class="tl-field">
+          <label>尾音類型</label>
+          <select id="tlEnding">
+            <option value="none">無尾音</option>
+            <option value="stop">中尾音 (ก บ ด - 促音)</option>
+            <option value="sonorant">低尾音 (ง ม น ย ว - 響亮音)</option>
+          </select>
+        </div>
+        <div class="tl-field">
+          <label>聲調符號</label>
+          <select id="tlMark">
+            <option value="0">無</option>
+            <option value="1">–่ (第 2 聲符)</option>
+            <option value="2">–้ (第 3 聲符)</option>
+            <option value="3">–๊ (第 4 聲符)</option>
+            <option value="4">–๋ (第 5 聲符)</option>
+          </select>
+        </div>
+      </div>
+      <div class="tl-result" id="tlResult">
+        <div class="tone-name" id="tlToneName">第 1 聲（中平調）</div>
+        <div class="tone-desc" id="tlToneDesc">範例：<strong>กา</strong>（中音 + 長母音 + 無尾音 + 無聲調符號）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 字母墊板購買 -->
+  <div class="section mat-section" id="mat">
+    <div class="mat-card">
+      <div class="mat-icon">🪧</div>
+      <div class="mat-content">
+        <div class="mat-title">字母墊板購買</div>
+        <div class="mat-desc">
+          想要一張可以隨時複習的泰文字母墊板嗎？<br>
+          推薦譚老師泰語的字母墊板 — 貼在<b>廁所、書桌前</b>，每天隨時看、自然記。
+        </div>
+        <a href="https://s.shopee.tw/10zWD89WhA" 
+           target="_blank" rel="noopener" class="mat-btn">
+          🛒 蝦皮購買
+          <span class="mat-arrow">→</span>
+        </a>
+        <div class="mat-disclaimer">※ 純推薦，無分潤合作</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    📚 泰文字母學習參考
+    <a href="#" id="back-link">← 回到泰文學習資源</a>
+  </div>
+</div>
+
+<!-- Detail panel (sticky) -->
+<div class="detail-panel" id="detailPanel">
+  <div class="row">
+    <div class="big-thai-group">
+      <div class="big-thai" id="dpThai">ก</div>
+      <div class="rep-word" id="dpRepWord"></div>
+    </div>
+    <div class="info">
+      <div class="pinyin" id="dpPinyin">g (中音)</div>
+      <div class="desc" id="dpDesc">中音子音 · 第 1 個子音</div>
+    </div>
+    <div class="actions">
+      <button class="speak-btn" id="speakBtn">
+        <span>🔊</span><span>聽發音</span>
+      </button>
+      <button class="close-btn" id="closeBtn" aria-label="關閉">✕</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+// Vowels (32 total) - based on PDF page 1
+const vowelsMain = [
+  { thai: 'อะ', pinyin: 'a', desc: '短母音 a', file: 'vowel_01' },
+  { thai: 'อา', pinyin: 'aː', desc: '長母音 a', file: 'vowel_02' },
+  { thai: 'อิ', pinyin: 'i', desc: '短母音 i', file: 'vowel_03' },
+  { thai: 'อี', pinyin: 'iː', desc: '長母音 i', file: 'vowel_04' },
+  { thai: 'อึ', pinyin: 'ɯ', desc: '短母音 eu (撮口)', file: 'vowel_05' },
+  { thai: 'อือ', pinyin: 'ɯː', desc: '長母音 eu', file: 'vowel_06' },
+
+  { thai: 'อุ', pinyin: 'u', desc: '短母音 u', file: 'vowel_07' },
+  { thai: 'อู', pinyin: 'uː', desc: '長母音 u', file: 'vowel_08' },
+  { thai: 'เอะ', pinyin: 'e', desc: '短母音 e', file: 'vowel_09' },
+  { thai: 'เอ', pinyin: 'eː', desc: '長母音 e', file: 'vowel_10' },
+  { thai: 'แอะ', pinyin: 'ɛ', desc: '短母音 ae', file: 'vowel_11' },
+  { thai: 'แอ', pinyin: 'ɛː', desc: '長母音 ae', file: 'vowel_12' },
+
+  { thai: 'โอะ', pinyin: 'o', desc: '短母音 o', file: 'vowel_13' },
+  { thai: 'โอ', pinyin: 'oː', desc: '長母音 o', file: 'vowel_14' },
+  { thai: 'เอาะ', pinyin: 'ɔ', desc: '短母音 or', file: 'vowel_15' },
+  { thai: 'ออ', pinyin: 'ɔː', desc: '長母音 or', file: 'vowel_16' },
+  { thai: 'เออะ', pinyin: 'ɤ', desc: '短母音 er', file: 'vowel_17' },
+  { thai: 'เออ', pinyin: 'ɤː', desc: '長母音 er', file: 'vowel_18' },
+
+  { thai: 'เอียะ', pinyin: 'ia', desc: '雙母音 ia (短)', file: 'vowel_19' },
+  { thai: 'เอีย', pinyin: 'iaː', desc: '雙母音 ia (長)', file: 'vowel_20' },
+  { thai: 'เอือะ', pinyin: 'ɯa', desc: '雙母音 eua (短)', file: 'vowel_21' },
+  { thai: 'เอือ', pinyin: 'ɯaː', desc: '雙母音 eua (長)', file: 'vowel_22' },
+  { thai: 'อัวะ', pinyin: 'ua', desc: '雙母音 ua (短)', file: 'vowel_23' },
+  { thai: 'อัว', pinyin: 'uaː', desc: '雙母音 ua (長)', file: 'vowel_24' }
+];
+
+const vowelsSpecial = [
+  { thai: 'อำ', pinyin: 'am', desc: '特殊母音 am', file: 'vowel_sp_01' },
+  { thai: 'ไอ', pinyin: 'ai', desc: 'ไม้มลาย (mai-ma-lai)', file: 'vowel_sp_02' },
+  { thai: 'ใอ', pinyin: 'ai', desc: 'ไม้ม้วน (mai-muon)', file: 'vowel_sp_03' },
+  { thai: 'เอา', pinyin: 'ao', desc: '特殊母音 ao', file: 'vowel_sp_04' },
+  { thai: 'ฤ', pinyin: 'reu', desc: '獨立母音 รึ', file: 'vowel_sp_05' },
+  { thai: 'ฤๅ', pinyin: 'reu', desc: '獨立母音 รือ', file: 'vowel_sp_06' },
+  { thai: 'ฦ', pinyin: 'leu', desc: '獨立母音 ลึ', file: 'vowel_sp_07' },
+  { thai: 'ฦๅ', pinyin: 'leu', desc: '獨立母音 ลือ', file: 'vowel_sp_08' }
+];
+
+// Consonants (44 total) - in alphabetical order with tone class
+// tone: 'mid' (中音 9), 'high' (高音 11), 'low' (低音 24)
+const consonants = [
+  { thai: 'ก', pinyin: 'g',   tone: 'mid',  no: 1, file: 'cons_01', repWord: 'ไก่', repWordZh: '雞' },
+  { thai: 'ข', pinyin: 'kh',  tone: 'high', no: 2, file: 'cons_02', repWord: 'ไข่', repWordZh: '蛋' },
+  { thai: 'ฃ', pinyin: 'kh',  tone: 'high', no: 3, obsolete: true, file: 'cons_03', repWord: 'ขวด', repWordZh: '瓶（廢）' },
+  { thai: 'ค', pinyin: 'kh',  tone: 'low',  no: 4, file: 'cons_04', repWord: 'ควาย', repWordZh: '水牛' },
+  { thai: 'ฅ', pinyin: 'kh',  tone: 'low',  no: 5, obsolete: true, file: 'cons_05', repWord: 'คน', repWordZh: '人（廢）' },
+  { thai: 'ฆ', pinyin: 'kh',  tone: 'low',  no: 6, file: 'cons_06', repWord: 'ระฆัง', repWordZh: '鐘' },
+  { thai: 'ง', pinyin: 'ng',  tone: 'low',  no: 7, file: 'cons_07', repWord: 'งู', repWordZh: '蛇' },
+  { thai: 'จ', pinyin: 'j',   tone: 'mid',  no: 8, file: 'cons_08', repWord: 'จาน', repWordZh: '盤子' },
+  { thai: 'ฉ', pinyin: 'ch',  tone: 'high', no: 9, file: 'cons_09', repWord: 'ฉิ่ง', repWordZh: '鈸' },
+  { thai: 'ช', pinyin: 'ch',  tone: 'low',  no: 10, file: 'cons_10', repWord: 'ช้าง', repWordZh: '大象' },
+  { thai: 'ซ', pinyin: 's',   tone: 'low',  no: 11, file: 'cons_11', repWord: 'โซ่', repWordZh: '鏈條' },
+
+  { thai: 'ฌ', pinyin: 'ch',  tone: 'low',  no: 12, file: 'cons_12', repWord: 'เฌอ', repWordZh: '樹' },
+  { thai: 'ญ', pinyin: 'y',   tone: 'low',  no: 13, file: 'cons_13', repWord: 'หญิง', repWordZh: '女人' },
+  { thai: 'ฎ', pinyin: 'd',   tone: 'mid',  no: 14, file: 'cons_14', repWord: 'ชฎา', repWordZh: '頭飾' },
+  { thai: 'ฏ', pinyin: 'dt',  tone: 'mid',  no: 15, file: 'cons_15', repWord: 'ปฏัก', repWordZh: '矛' },
+  { thai: 'ฐ', pinyin: 'th',  tone: 'high', no: 16, file: 'cons_16', repWord: 'ฐาน', repWordZh: '基底' },
+  { thai: 'ฑ', pinyin: 'th',  tone: 'low',  no: 17, file: 'cons_17', repWord: 'มณโฑ', repWordZh: '蒙陀' },
+  { thai: 'ฒ', pinyin: 'th',  tone: 'low',  no: 18, file: 'cons_18', repWord: 'ผู้เฒ่า', repWordZh: '老人' },
+  { thai: 'ณ', pinyin: 'n',   tone: 'low',  no: 19, file: 'cons_19', repWord: 'เณร', repWordZh: '沙彌' },
+  { thai: 'ด', pinyin: 'd',   tone: 'mid',  no: 20, file: 'cons_20', repWord: 'เด็ก', repWordZh: '小孩' },
+  { thai: 'ต', pinyin: 'dt',  tone: 'mid',  no: 21, file: 'cons_21', repWord: 'เต่า', repWordZh: '烏龜' },
+  { thai: 'ถ', pinyin: 'th',  tone: 'high', no: 22, file: 'cons_22', repWord: 'ถุง', repWordZh: '袋子' },
+
+  { thai: 'ท', pinyin: 'th',  tone: 'low',  no: 23, file: 'cons_23', repWord: 'ทหาร', repWordZh: '士兵' },
+  { thai: 'ธ', pinyin: 'th',  tone: 'low',  no: 24, file: 'cons_24', repWord: 'ธง', repWordZh: '旗子' },
+  { thai: 'น', pinyin: 'n',   tone: 'low',  no: 25, file: 'cons_25', repWord: 'หนู', repWordZh: '老鼠' },
+  { thai: 'บ', pinyin: 'b',   tone: 'mid',  no: 26, file: 'cons_26', repWord: 'ใบไม้', repWordZh: '葉子' },
+  { thai: 'ป', pinyin: 'bp',  tone: 'mid',  no: 27, file: 'cons_27', repWord: 'ปลา', repWordZh: '魚' },
+  { thai: 'ผ', pinyin: 'ph',  tone: 'high', no: 28, file: 'cons_28', repWord: 'ผึ้ง', repWordZh: '蜜蜂' },
+  { thai: 'ฝ', pinyin: 'f',   tone: 'high', no: 29, file: 'cons_29', repWord: 'ฝา', repWordZh: '蓋子' },
+  { thai: 'พ', pinyin: 'ph',  tone: 'low',  no: 30, file: 'cons_30', repWord: 'พาน', repWordZh: '托盤' },
+  { thai: 'ฟ', pinyin: 'f',   tone: 'low',  no: 31, file: 'cons_31', repWord: 'ฟัน', repWordZh: '牙齒' },
+  { thai: 'ภ', pinyin: 'ph',  tone: 'low',  no: 32, file: 'cons_32', repWord: 'สำเภา', repWordZh: '帆船' },
+  { thai: 'ม', pinyin: 'm',   tone: 'low',  no: 33, file: 'cons_33', repWord: 'ม้า', repWordZh: '馬' },
+
+  { thai: 'ย', pinyin: 'y',   tone: 'low',  no: 34, file: 'cons_34', repWord: 'ยักษ์', repWordZh: '巨人' },
+  { thai: 'ร', pinyin: 'r',   tone: 'low',  no: 35, file: 'cons_35', repWord: 'เรือ', repWordZh: '船' },
+  { thai: 'ล', pinyin: 'l',   tone: 'low',  no: 36, file: 'cons_36', repWord: 'ลิง', repWordZh: '猴子' },
+  { thai: 'ว', pinyin: 'w',   tone: 'low',  no: 37, file: 'cons_37', repWord: 'แหวน', repWordZh: '戒指' },
+  { thai: 'ศ', pinyin: 's',   tone: 'high', no: 38, file: 'cons_38', repWord: 'ศาลา', repWordZh: '涼亭' },
+  { thai: 'ษ', pinyin: 's',   tone: 'high', no: 39, file: 'cons_39', repWord: 'ฤๅษี', repWordZh: '隱士' },
+  { thai: 'ส', pinyin: 's',   tone: 'high', no: 40, file: 'cons_40', repWord: 'เสือ', repWordZh: '老虎' },
+  { thai: 'ห', pinyin: 'h',   tone: 'high', no: 41, file: 'cons_41', repWord: 'หีบ', repWordZh: '箱子' },
+  { thai: 'ฬ', pinyin: 'l',   tone: 'low',  no: 42, file: 'cons_42', repWord: 'จุฬา', repWordZh: '風箏' },
+  { thai: 'อ', pinyin: 'aw',  tone: 'mid',  no: 43, file: 'cons_43', repWord: 'อ่าง', repWordZh: '盆' },
+  { thai: 'ฮ', pinyin: 'h',   tone: 'low',  no: 44, file: 'cons_44', repWord: 'นกฮูก', repWordZh: '貓頭鷹' }
+];
+
+// ===== POPULATE GRIDS =====
+const toneNameMap = { mid: '中音', high: '高音', low: '低音' };
+
+function makeCell(item, type) {
+  const cell = document.createElement('div');
+  cell.className = 'letter-cell';
+  if (item.tone) cell.classList.add(`tone-${item.tone}`);
+
+  const thai = document.createElement('div');
+  thai.className = 'letter-thai';
+  thai.textContent = item.thai;
+  cell.appendChild(thai);
+
+  const py = document.createElement('div');
+  py.className = 'letter-pinyin';
+  py.textContent = item.pinyin;
+  cell.appendChild(py);
+
+  cell.addEventListener('click', (e) => showDetail(item, type, e.currentTarget));
+  return cell;
+}
+
+document.getElementById('vowels-main').append(...vowelsMain.map(v => makeCell(v, 'vowel')));
+document.getElementById('vowels-special').append(...vowelsSpecial.map(v => makeCell(v, 'vowel-special')));
+
+// Populate by-order grid (single)
+document.getElementById('consonants-grid').append(...consonants.map(c => makeCell(c, 'consonant')));
+
+// Populate by-tone grids (grouped)
+const consMid  = consonants.filter(c => c.tone === 'mid');
+const consHigh = consonants.filter(c => c.tone === 'high');
+const consLow  = consonants.filter(c => c.tone === 'low');
+document.getElementById('cons-mid').append(...consMid.map(c => makeCell(c, 'consonant')));
+document.getElementById('cons-high').append(...consHigh.map(c => makeCell(c, 'consonant')));
+document.getElementById('cons-low').append(...consLow.map(c => makeCell(c, 'consonant')));
+
+// Toggle between by-tone and by-order views
+document.querySelectorAll('.cons-toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cons-toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const mode = btn.dataset.mode;
+    document.getElementById('view-by-tone').style.display = mode === 'by-tone' ? '' : 'none';
+    document.getElementById('view-by-order').style.display = mode === 'by-order' ? '' : 'none';
+  });
+});
+
+// ===== DETAIL PANEL =====
+const dpThai = document.getElementById('dpThai');
+const dpRepWord = document.getElementById('dpRepWord');
+const dpPinyin = document.getElementById('dpPinyin');
+const dpDesc = document.getElementById('dpDesc');
+const panel = document.getElementById('detailPanel');
+const speakBtn = document.getElementById('speakBtn');
+const closeBtn = document.getElementById('closeBtn');
+
+let currentItem = null;
+let activeCell = null;
+
+function showDetail(item, type, cellEl) {
+  currentItem = item;
+
+  // remove previous active
+  if (activeCell) activeCell.classList.remove('active');
+  activeCell = cellEl;
+  if (activeCell) activeCell.classList.add('active');
+
+  dpThai.textContent = item.thai;
+  dpPinyin.textContent = item.pinyin;
+
+  // Show representative word for consonants
+  if (item.repWord) {
+    dpRepWord.innerHTML = `${item.repWord}<span class="zh">${item.repWordZh}</span>`;
+    dpRepWord.classList.add('show');
+  } else {
+    dpRepWord.classList.remove('show');
+    dpRepWord.innerHTML = '';
+  }
+
+  let descHtml = item.desc;
+  if (item.tone) {
+    descHtml += ` <span class="tone-pill ${item.tone}">${toneNameMap[item.tone]}</span>`;
+  }
+  if (item.no) {
+    descHtml += ` · 第 ${item.no} 個子音`;
+    if (item.obsolete) descHtml += '（已少用）';
+  }
+  dpDesc.innerHTML = descHtml;
+
+  panel.classList.add('show');
+
+  // auto speak
+  speakThai(item.thai, item.file);
+}
+
+speakBtn.addEventListener('click', () => {
+  if (currentItem) speakThai(currentItem.thai, currentItem.file);
+});
+
+closeBtn.addEventListener('click', () => {
+  panel.classList.remove('show');
+  if (activeCell) activeCell.classList.remove('active');
+  activeCell = null;
+});
+
+// ===== AUDIO PLAYBACK =====
+// Plays mp3 from thai_audio_v3/ folder, falls back to Web Speech API if mp3 missing
+const AUDIO_BASE = "thai_audio_v4";
+let currentAudio = null;
+
+function speakThai(text, fileBase) {
+  // Stop any ongoing audio FIRST (both mp3 and TTS)
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+
+  speakBtn.classList.add('playing');
+
+  // Try to play mp3 first
+  if (fileBase) {
+    const audio = new Audio(`${AUDIO_BASE}/${fileBase}.mp3`);
+    currentAudio = audio;
+    let hasFallenBack = false;
+
+    audio.addEventListener('ended', () => {
+      if (currentAudio === audio) {
+        speakBtn.classList.remove('playing');
+        currentAudio = null;
+      }
+    });
+
+    // Only fallback when audio truly fails to load (not on user pause/cancel)
+    audio.addEventListener('error', () => {
+      if (hasFallenBack) return;
+      hasFallenBack = true;
+      currentAudio = null;
+      console.warn(`MP3 not found for ${fileBase}, falling back to Web Speech`);
+      fallbackTTS(text);
+    });
+
+    // canplay = audio loaded successfully → no fallback needed
+    audio.play().catch((e) => {
+      // Browser autoplay policy or load fail
+      if (hasFallenBack) return;
+      hasFallenBack = true;
+      currentAudio = null;
+      console.warn('Audio play failed:', e);
+      fallbackTTS(text);
+    });
+  } else {
+    // No file mapping → use Web Speech directly
+    fallbackTTS(text);
+  }
+}
+
+function fallbackTTS(text) {
+  if (!('speechSynthesis' in window)) {
+    speakBtn.classList.remove('playing');
+    return;
+  }
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'th-TH';
+  utt.rate = 0.8;
+  utt.pitch = 0.95;
+
+  const voices = speechSynthesis.getVoices();
+  const thaiVoice = voices.find(v => /^th(-TH)?$/i.test(v.lang));
+  if (thaiVoice) utt.voice = thaiVoice;
+
+  utt.onend = () => speakBtn.classList.remove('playing');
+  utt.onerror = () => speakBtn.classList.remove('playing');
+
+  speechSynthesis.speak(utt);
+}
+
+// preload voices for fallback
+if ('speechSynthesis' in window) {
+  speechSynthesis.getVoices();
+  speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+}
+
+// ===== SIMPLIFIED VOWELS =====
+// Each rule: original vowel form → reduced form when followed by ending consonant
+// Use [C] as placeholder for initial consonant, [E] for ending consonant
+const simpRules = [
+  { id: 1, from: '–ะ',    to: '–ั–',     ex_from: 'กะ',    ex_end: 'บ', ex_to: 'กับ',  type: '短母音',
+    pattern: c => `${c}ะ`,  apply: (c, e) => `${c}ั${e}` },
+  { id: 2, from: 'เ–ะ',   to: 'เ–็–',    ex_from: 'เกะ',   ex_end: 'บ', ex_to: 'เก็บ', type: '短母音',
+    pattern: c => `เ${c}ะ`,  apply: (c, e) => `เ${c}็${e}` },
+  { id: 3, from: 'แ–ะ',   to: 'แ–็–',    ex_from: 'แกะ',   ex_end: 'บ', ex_to: 'แก็บ', type: '短母音',
+    pattern: c => `แ${c}ะ`,  apply: (c, e) => `แ${c}็${e}` },
+  { id: 4, from: 'โ–ะ',   to: '–（無形）',  ex_from: 'โกะ',  ex_end: 'บ', ex_to: 'กบ',   type: '短母音',
+    pattern: c => `โ${c}ะ`,  apply: (c, e) => `${c}${e}` },
+  { id: 5, from: 'เ–าะ',  to: '–็อ–',    ex_from: 'เกาะ',  ex_end: 'บ', ex_to: 'ก็อบ', type: '短母音', notable: true,
+    pattern: c => `เ${c}าะ`, apply: (c, e) => `${c}็อ${e}` },
+  { id: 6, from: 'เ–อ',   to: 'เ–ิ–',    ex_from: 'เกอ',   ex_end: 'บ', ex_to: 'เกิบ', type: '長母音',
+    pattern: c => `เ${c}อ`,  apply: (c, e) => `เ${c}ิ${e}` },
+  { id: 7, from: '–ัว',   to: '–ว–',     ex_from: 'กัว',   ex_end: 'บ', ex_to: 'กวบ',  type: '長母音',
+    pattern: c => `${c}ัว`,  apply: (c, e) => `${c}ว${e}` },
+];
+
+// Render rules grid
+function renderSimpRules() {
+  const wrap = document.getElementById('simp-rules-grid');
+  wrap.innerHTML = simpRules.map(r => `
+    <div class="simp-rule${r.notable ? ' notable' : ''}">
+      <div class="simp-rule-header">
+        <span class="simp-rule-num">${r.id}</span>
+        <span class="simp-rule-formula">
+          <span class="from">${r.from}</span>
+          <span class="arrow">+ 尾音 →</span>
+          <span class="to">${r.to}</span>
+        </span>
+        <span class="simp-rule-tag">${r.type}${r.notable ? ' · 常忘' : ''}</span>
+      </div>
+      <div class="simp-rule-example">
+        <span>e.g.</span>
+        <span class="ex-from">${r.ex_from}</span>
+        <span class="ex-eq">+</span>
+        <span class="ex-from">${r.ex_end}</span>
+        <span class="ex-eq">=</span>
+        <span class="ex-result">${r.ex_to}</span>
+      </div>
+    </div>
+  `).join('');
+}
+renderSimpRules();
+
+// Interactive practice
+const practiceCommonCons = ['ก', 'ข', 'ค', 'จ', 'ด', 'ต', 'น', 'บ', 'ป', 'ผ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ส', 'ห'];
+const practiceEndings = ['ก', 'ด', 'บ', 'ง', 'น', 'ม', 'ย', 'ว'];
+
+function buildPracticeOptions() {
+  const vSel = document.getElementById('practiceVowel');
+  const cSel = document.getElementById('practiceCons');
+
+  // Vowel rule options
+  vSel.innerHTML = simpRules.map(r =>
+    `<option value="${r.id}">規則 ${r.id} · ${r.from} → ${r.to}${r.notable ? ' ⚠️' : ''}</option>`
+  ).join('');
+
+  // Consonant + ending combos: build pairs
+  const consOptions = [];
+  for (const c of practiceCommonCons) {
+    for (const e of practiceEndings) {
+      consOptions.push(`<option value="${c}|${e}">${c} + ${e}</option>`);
+    }
+  }
+  cSel.innerHTML = consOptions.join('');
+
+  // Default: rule 1, ก + บ
+  vSel.value = '1';
+  cSel.value = 'ก|บ';
+
+  vSel.addEventListener('change', updatePractice);
+  cSel.addEventListener('change', updatePractice);
+
+  updatePractice();
+}
+
+function updatePractice() {
+  const ruleId = parseInt(document.getElementById('practiceVowel').value);
+  const [c, e] = document.getElementById('practiceCons').value.split('|');
+  const rule = simpRules.find(r => r.id === ruleId);
+  if (!rule) return;
+
+  const before = rule.pattern(c);
+  const after = rule.apply(c, e);
+
+  document.getElementById('practiceFormula').innerHTML = `
+    <span>${before}</span>
+    <span class="symbol">+</span>
+    <span>${e}</span>
+    <span class="arrow">→</span>
+    <span class="final">${after}</span>
+  `;
+  document.getElementById('practiceRule').textContent =
+    `RULE ${rule.id} · ${rule.from} → ${rule.to}`;
+}
+
+buildPracticeOptions();
+
+// ===== ENDINGS (尾音) =====
+// Mid endings (Stop Finals): 3 sounds, 25 letters
+const endingsMid = [
+  {
+    primary: 'ก', pinyin: '-g',
+    mouth: '嘴巴張開定住，發 ㄍ (-g)',
+    count: 4,
+    letters: ['ก', 'ข', 'ค', 'ฆ']
+  },
+  {
+    primary: 'บ', pinyin: '-b',
+    mouth: '合嘴，發 (-b)',
+    count: 5,
+    letters: ['บ', 'ป', 'พ', 'ฟ', 'ภ']
+  },
+  {
+    primary: 'ด', pinyin: '-d',
+    mouth: '嘴形扁狀、輕咬舌頭，發 ㄉ (-d)',
+    count: 16,
+    letters: ['ด', 'ต', 'ถ', 'ฎ', 'ฏ', 'ฐ', 'ท', 'ฑ', 'ธ', 'ฒ', 'ส', 'ศ', 'ษ', 'จ', 'ช', 'ซ']
+  }
+];
+
+// Low endings (Sonorant Finals): 5 sounds, 10 letters
+const endingsLow = [
+  {
+    primary: 'ง', pinyin: '-ng',
+    mouth: '嘴巴張開定住，發 ㄥ (-ng)',
+    count: 1,
+    letters: ['ง']
+  },
+  {
+    primary: 'ม', pinyin: '-m',
+    mouth: '合嘴，發 (-m)',
+    count: 1,
+    letters: ['ม']
+  },
+  {
+    primary: 'น', pinyin: '-n',
+    mouth: '嘴形扁狀，發 ㄣ (-n)',
+    count: 6,
+    letters: ['น', 'ณ', 'ญ', 'ร', 'ล', 'ฬ']
+  },
+  {
+    primary: 'ย', pinyin: '-i',
+    mouth: '嘴形扁狀，發 ー (-i)',
+    count: 1,
+    letters: ['ย']
+  },
+  {
+    primary: 'ว', pinyin: '-o',
+    mouth: '嘴巴張開，發 ㄡ (-o)',
+    count: 1,
+    letters: ['ว']
+  }
+];
+
+function renderEndingsGroup(items, containerId, toneClass) {
+  const wrap = document.getElementById(containerId);
+  if (!wrap) return;
+  wrap.innerHTML = items.map(g => {
+    const letterChips = g.letters.map(L => {
+      const isPrimary = L === g.primary;
+      return `<span class="end-letter${isPrimary ? ' primary' : ''}" data-letter="${L}">${L}</span>`;
+    }).join('');
+    return `
+      <div class="end-card ${toneClass}">
+        <div class="end-card-main">
+          <div class="end-card-thai">${g.primary}</div>
+          <div class="end-card-pinyin">${g.pinyin}</div>
+        </div>
+        <div class="end-card-info">
+          <div class="end-card-row">
+            <span class="end-card-mouth">${g.mouth}</span>
+          </div>
+          <div class="end-card-row">
+            <div class="end-card-letters">${letterChips}</div>
+            <span class="end-card-count">${g.count} 個</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Wire click events on letters - find and trigger that letter's detail panel
+  wrap.querySelectorAll('.end-letter').forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      const letter = chip.dataset.letter;
+      // find the consonant in our data
+      const item = consonants.find(c => c.thai === letter);
+      if (item) {
+        showDetail(item, 'consonant', chip);
+        // smooth scroll to keep panel visible
+        chip.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
+}
+
+renderEndingsGroup(endingsMid, 'end-mid', 'mid');
+renderEndingsGroup(endingsLow, 'end-low', 'low');
+
+// ===== TONES (聲調規則) =====
+// Each cell: [tone_number, example_text] or null if not valid
+// tone numbers: 1=平, 2=低降, 3=高降, 4=高升, 5=升
+// Special: 'x' for impossible combinations
+
+const tonesRules1to9 = [
+  // Structure 1-3: open syllables (no ending)
+  { struct: '中音子音 + 母音', desc: '結構 1', cells: [['1','กา'], ['2','กะ'], null, null, null] },
+  { struct: '高音子音 + 母音', desc: '結構 1', cells: [null, ['2','ขะ'], null, null, ['5','ขา']] },
+  { struct: '低音子音 + 母音', desc: '結構 1', cells: [['1','คา'], null, null, ['4','คะ'], null] },
+  // Structure 2: with stop ending (中尾音)
+  { struct: '中音子音 + 母音 + 中尾音', desc: '結構 2', cells: [null, ['2','กัก/กาก'], null, null, null] },
+  { struct: '高音子音 + 母音 + 中尾音', desc: '結構 2', cells: [null, ['2','ขัก/ขาก'], null, null, null] },
+  { struct: '低音子音 + 母音 + 中尾音', desc: '結構 2', cells: [null, null, ['3','คาก'], ['4','คัก'], null] },
+  // Structure 3: with sonorant ending (低尾音)
+  { struct: '中音子音 + 母音 + 低尾音', desc: '結構 3', cells: [['1','กัง/กาง'], null, null, null, null] },
+  { struct: '高音子音 + 母音 + 低尾音', desc: '結構 3', cells: [null, null, null, null, ['5','ขัง/ขาง']] },
+  { struct: '低音子音 + 母音 + 低尾音', desc: '結構 3', cells: [['1','คัง/คาง'], null, null, null, null] },
+];
+
+const tonesRules10to18 = [
+  // Structure 4: with tone marks (規則 10-18)
+  { struct: '中音子音 + 母音 + 聲', desc: '結構 4', cells: [['1','กา'], ['2','ก่า'], ['3','ก้า'], ['4','ก๊า'], ['5','ก๋า']] },
+  { struct: '高音子音 + 母音 + 聲', desc: '結構 4', cells: [null, ['2','ข่า'], ['3','ข้า'], null, ['5','ขา']] },
+  { struct: '低音子音 + 母音 + 聲', desc: '結構 4', cells: [['1','คา'], null, ['3','ค่า'], ['4','ค้า'], null] },
+  { struct: '中音子音 + 母音 + 中尾音 + 聲', desc: '結構 4', cells: [['1','กาก'], ['2','ก่าก'], ['3','ก้าก'], ['4','ก๊าก'], ['5','ก๋าก']] },
+  { struct: '高音子音 + 母音 + 中尾音 + 聲', desc: '結構 4', cells: [null, ['x','✕'], ['x','✕'], null, null] },
+  { struct: '低音子音 + 母音 + 中尾音 + 聲', desc: '結構 4', cells: [null, ['2','คาก'], ['3','ค้าก'], null, null] },
+  { struct: '中音子音 + 母音 + 低尾音 + 聲', desc: '結構 4', cells: [['1','กาง'], ['2','ก่าง'], ['3','ก้าง'], ['4','ก๊าง'], ['5','ก๋าง']] },
+  { struct: '高音子音 + 母音 + 低尾音 + 聲', desc: '結構 4', cells: [null, ['2','ข่าง'], ['3','ข้าง'], null, ['5','ขาง']] },
+  { struct: '低音子音 + 母音 + 低尾音 + 聲', desc: '結構 4', cells: [['1','คาง'], null, ['3','ค่าง'], ['4','ค้าง'], null] },
+];
+
+function renderToneTable(rules, tbodyId, startNum) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  tbody.innerHTML = rules.map((r, idx) => {
+    const ruleNum = startNum + idx;
+    const cellsHtml = r.cells.map(cell => {
+      if (!cell) return `<td class="ex-cell empty">—</td>`;
+      const [tone, text] = cell;
+      if (tone === 'x') return `<td class="ex-cell x">${text}</td>`;
+      return `<td class="ex-cell t${tone}">${text}</td>`;
+    }).join('');
+    return `
+      <tr>
+        <td class="struct-cell">
+          <span class="num">${ruleNum}</span>${r.struct}
+        </td>
+        ${cellsHtml}
+      </tr>
+    `;
+  }).join('');
+}
+
+renderToneTable(tonesRules1to9, 'tone-table-1to9', 1);
+renderToneTable(tonesRules10to18, 'tone-table-10to18', 10);
+
+// ===== Interactive tone lookup =====
+const toneNamesFull = {
+  1: '第 1 聲（中平調 sǎamǎn）',
+  2: '第 2 聲（低降調 èek）',
+  3: '第 3 聲（高降調 thoo）',
+  4: '第 4 聲（高升調 trii）',
+  5: '第 5 聲（升調 càttawaa）'
+};
+
+// Logic: determine tone based on consonant class + vowel length + ending + tone mark
+// This is simplified Thai tone rules
+function lookupTone(consClass, vowelLen, ending, mark) {
+  // mark is index 0-4: 0=none, 1=่, 2=้, 3=๊, 4=๋
+
+  // === If tone mark present ===
+  if (mark !== '0') {
+    const m = parseInt(mark);
+    // Mid consonants: marks directly map (1→2, 2→3, 3→4, 4→5)
+    if (consClass === 'mid') {
+      return { tone: m + 1, valid: true };
+    }
+    // High consonants: only ◌̀ (→2) and ◌́ (→3) are valid
+    if (consClass === 'high') {
+      if (m === 1) return { tone: 2, valid: true };
+      if (m === 2) return { tone: 3, valid: true };
+      return { tone: null, valid: false, reason: '高音子音僅可加 –่ 或 –้ 聲調符號' };
+    }
+    // Low consonants: ◌̀ → 3, ◌́ → 4 (shifted up); ◌̃, ◌̂ rare
+    if (consClass === 'low') {
+      if (m === 1) return { tone: 3, valid: true };
+      if (m === 2) return { tone: 4, valid: true };
+      return { tone: null, valid: false, reason: '低音子音通常僅加 –่ 或 –้' };
+    }
+  }
+
+  // === No tone mark ===
+  // Open syllable (no ending) or sonorant ending = "live syllable"
+  // Stop ending = "dead syllable"
+  const isDead = (ending === 'stop');
+  const isLive = !isDead;
+
+  if (consClass === 'mid') {
+    if (isLive) return { tone: 1, valid: true };       // 中音 + 活 → 平
+    if (isDead) return { tone: 2, valid: true };       // 中音 + 死 → 低降
+  }
+
+  if (consClass === 'high') {
+    if (isLive) return { tone: 5, valid: true };       // 高音 + 活 → 升
+    if (isDead) return { tone: 2, valid: true };       // 高音 + 死 → 低降
+  }
+
+  if (consClass === 'low') {
+    if (isLive) return { tone: 1, valid: true };       // 低音 + 活 → 平
+    if (isDead) {
+      if (vowelLen === 'long') return { tone: 3, valid: true };  // 低音 + 死 + 長母音 → 高降
+      else                     return { tone: 4, valid: true };  // 低音 + 死 + 短母音 → 高升
+    }
+  }
+
+  return { tone: null, valid: false, reason: '此組合不存在' };
+}
+
+function buildToneLookupExample(consClass, vowelLen, ending, mark) {
+  // Build a representative example word
+  // Use ก (mid), ข (high), ค (low) as base consonants
+  const baseCons = { mid: 'ก', high: 'ข', low: 'ค' }[consClass];
+  const vowelChar = vowelLen === 'long' ? 'า' : 'ะ';   // อา / อะ
+  const endingChar = ending === 'stop' ? 'ก' : (ending === 'sonorant' ? 'ง' : '');
+
+  const markChars = ['', '่', '้', '๊', '๋'];
+  const markChar = markChars[parseInt(mark)] || '';
+
+  // Composition rules:
+  // - With short vowel + ending: vowel-ะ disappears, ending follows directly + mark on vowel position
+  // - Otherwise straightforward
+  let example;
+  if (vowelLen === 'short' && endingChar) {
+    // กะ + ก = กัก (ะ becomes –ั when there's an ending)
+    example = baseCons + 'ั' + markChar + endingChar;
+  } else if (endingChar) {
+    // กา + ก = กาก
+    example = baseCons + 'า' + markChar + endingChar;
+  } else {
+    // กา or กะ
+    example = baseCons + vowelChar + markChar;
+  }
+  return example;
+}
+
+function updateToneLookup() {
+  const consClass = document.getElementById('tlConsClass').value;
+  const vowelLen = document.getElementById('tlVowel').value;
+  const ending = document.getElementById('tlEnding').value;
+  const mark = document.getElementById('tlMark').value;
+
+  const result = lookupTone(consClass, vowelLen, ending, mark);
+  const example = buildToneLookupExample(consClass, vowelLen, ending, mark);
+  const resultEl = document.getElementById('tlResult');
+  const nameEl = document.getElementById('tlToneName');
+  const descEl = document.getElementById('tlToneDesc');
+
+  if (result.valid) {
+    resultEl.classList.remove('invalid');
+    nameEl.textContent = toneNamesFull[result.tone];
+    const consLabel = { mid: '中音', high: '高音', low: '低音' }[consClass];
+    const vowelLabel = vowelLen === 'long' ? '長母音' : '短母音';
+    const endingLabel = { none: '無尾音', stop: '中尾音', sonorant: '低尾音' }[ending];
+    const markLabel = mark === '0' ? '無聲調符號' : `加聲調符號 ${['', '–่', '–้', '–๊', '–๋'][parseInt(mark)]}`;
+    descEl.innerHTML = `範例：<strong style="font-family:'Sarabun',serif;font-size:18px">${example}</strong><br>${consLabel} + ${vowelLabel} + ${endingLabel} + ${markLabel}`;
+  } else {
+    resultEl.classList.add('invalid');
+    nameEl.textContent = '⚠️ 此組合不適用';
+    descEl.textContent = result.reason || '此組合在泰文中不存在或不常用';
+  }
+}
+
+document.getElementById('tlConsClass').addEventListener('change', updateToneLookup);
+document.getElementById('tlVowel').addEventListener('change', updateToneLookup);
+document.getElementById('tlEnding').addEventListener('change', updateToneLookup);
+document.getElementById('tlMark').addEventListener('change', updateToneLookup);
+
+updateToneLookup();
+</script>
+
+</body>
+</html>
