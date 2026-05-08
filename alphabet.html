@@ -742,8 +742,87 @@
   @media (max-width: 600px) {
     .tone-marks-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
     .tone-mark-symbol { font-size: 22px; }
-    .tone-table { font-size: 12px; }
     .tl-controls { grid-template-columns: 1fr; }
+
+    /* === Tone table: 手機版完全重排 === */
+    /* 不再用「結構欄 + 5 聲調欄」的橫式 table — 改為「結構卡 + 5 聲水平 chip」 */
+    .tone-table { font-size: 12px; }
+    .tone-table thead { display: none; }   /* 手機版藏掉 header（聲調符號用內聯標示）*/
+    .tone-table, .tone-table tbody, .tone-table tr, .tone-table td {
+      display: block;
+      width: 100%;
+    }
+    .tone-table tr {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      padding: 10px 12px;
+    }
+    .tone-table tr:last-child { margin-bottom: 0; }
+    .tone-table-wrap {
+      overflow: visible;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+    }
+    .tone-table td {
+      border: none;
+      padding: 0;
+      text-align: left;
+    }
+    /* 結構名稱：水平排列 + 編號 + 名稱 一行內 */
+    .tone-table .struct-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      border-bottom: 1px dashed var(--border);
+      flex-wrap: wrap;
+    }
+    .tone-table .struct-cell .num {
+      margin-right: 0;
+      flex-shrink: 0;
+    }
+    /* 聲調 cells：橫向排列成 5 個 chip */
+    .tone-table .ex-cell {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin: 3px 4px 3px 0;
+      font-size: 14px;
+      min-width: 0;
+    }
+    /* chip 前面加一個小聲調標籤（因為 header 隱藏了）*/
+    .tone-table .ex-cell::before {
+      content: attr(data-tone);
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+    .tone-table .ex-cell.empty {
+      display: none;   /* 空 cell 直接藏，不佔位 */
+    }
+    .tone-table .ex-cell.x {
+      opacity: 0.5;
+      background: transparent;
+    }
+    /* 聲調顏色用邊框強調 */
+    .tone-table .ex-cell.t1 { border-color: var(--green); border-width: 1.5px; }
+    .tone-table .ex-cell.t2 { border-color: #c89b3d; border-width: 1.5px; }
+    .tone-table .ex-cell.t3 { border-color: #c73e3a; border-width: 1.5px; }
+    .tone-table .ex-cell.t4 { border-color: #7c3aed; border-width: 1.5px; }
+    .tone-table .ex-cell.t5 { border-color: #2563eb; border-width: 1.5px; }
   }
 
   /* === Endings section === */
@@ -2221,13 +2300,15 @@ const tonesRules10to18 = [
 function renderToneTable(rules, tbodyId, startNum) {
   const tbody = document.getElementById(tbodyId);
   if (!tbody) return;
+  const toneLabels = ['第 1 聲', '第 2 聲', '第 3 聲', '第 4 聲', '第 5 聲'];
   tbody.innerHTML = rules.map((r, idx) => {
     const ruleNum = startNum + idx;
-    const cellsHtml = r.cells.map(cell => {
-      if (!cell) return `<td class="ex-cell empty">—</td>`;
+    const cellsHtml = r.cells.map((cell, ci) => {
+      const lbl = toneLabels[ci];
+      if (!cell) return `<td class="ex-cell empty" data-tone="${lbl}">—</td>`;
       const [tone, text] = cell;
-      if (tone === 'x') return `<td class="ex-cell x">${text}</td>`;
-      return `<td class="ex-cell t${tone}">${text}</td>`;
+      if (tone === 'x') return `<td class="ex-cell x" data-tone="${lbl}">${text}</td>`;
+      return `<td class="ex-cell t${tone}" data-tone="${lbl}">${text}</td>`;
     }).join('');
     return `
       <tr>
