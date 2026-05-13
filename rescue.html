@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泰文救急句｜Chacha 學泰文</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Noto+Serif+TC:wght@500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdfaf5;
+    --green: #2d6a4f;
+    --green-dark: #1e4a37;
+    --green-light: #e8f4ee;
+    --gold: #c8963c;
+    --gold-light: #f5e6c8;
+    --text: #1a1208;
+    --muted: #6b5c3e;
+    --border: rgba(180,150,80,0.18);
+    --card-bg: #fff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Serif TC", "Sarabun", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-bottom: 60px;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    color: #fff;
+    padding: 32px 20px 28px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  header h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+  }
+  header .subtitle {
+    font-size: 14px;
+    opacity: 0.85;
+    letter-spacing: 1px;
+  }
+  header .back-link {
+    display: inline-block;
+    margin-top: 14px;
+    color: var(--gold-light);
+    font-size: 13px;
+    text-decoration: none;
+    border: 1px solid var(--gold-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  header .back-link:hover {
+    background: var(--gold-light);
+    color: var(--green-dark);
+  }
+
+  /* Voice switcher */
+  .voice-switcher {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .voice-switcher .label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+  .voice-btn {
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--muted);
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .voice-btn:hover {
+    border-color: var(--gold);
+    color: var(--green);
+  }
+  .voice-btn.active {
+    background: var(--green);
+    color: #fff;
+    border-color: var(--green);
+  }
+
+  /* Tabs */
+  .tabs {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+  .tabs::-webkit-scrollbar { height: 4px; }
+  .tabs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .tab {
+    flex-shrink: 0;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border-radius: 22px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--muted);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab:hover { color: var(--green); border-color: var(--gold); }
+  .tab.active {
+    background: var(--green);
+    color: #fff;
+    border-color: var(--green);
+    font-weight: 600;
+  }
+
+  /* Episode content */
+  .episode {
+    max-width: 760px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: none;
+  }
+  .episode.active { display: block; }
+
+  .episode-header {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .episode-header h2 {
+    color: var(--green-dark);
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .episode-header p {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* Sentence cards */
+  .sentence {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  }
+  .sentence:hover {
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(200,150,60,0.12);
+  }
+  .sentence.playing {
+    border-color: var(--green);
+    background: var(--green-light);
+  }
+
+  .play-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+  .sentence:hover .play-icon { background: var(--gold); }
+  .sentence.playing .play-icon { background: var(--gold); }
+
+  .sentence-text { flex: 1; min-width: 0; }
+  .sentence .thai {
+    font-family: "Sarabun", sans-serif;
+    font-size: 20px;
+    color: var(--green-dark);
+    font-weight: 600;
+    margin-bottom: 4px;
+    word-wrap: break-word;
+  }
+  .sentence .pinyin {
+    font-family: "DM Mono", monospace;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .sentence .chinese {
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  /* Footer */
+  .footer-note {
+    max-width: 600px;
+    margin: 40px auto 0;
+    padding: 16px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .footer-note a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    header h1 { font-size: 22px; }
+    .sentence { padding: 14px 16px; gap: 12px; }
+    .sentence .thai { font-size: 17px; }
+    .play-icon { width: 38px; height: 38px; font-size: 14px; }
+    .episode-header h2 { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🆘 泰文救急句</h1>
+  <p class="subtitle">Thai Survival Phrases · 學泰文必備</p>
+  <a href="index.html" class="back-link">← 回主網站</a>
+</header>
+
+<!-- 男女聲切換 -->
+<div class="voice-switcher">
+  <span class="label">聲音：</span>
+  <button class="voice-btn active" data-voice="female">👩 女聲</button>
+  <button class="voice-btn" data-voice="male">👨 男聲</button>
+</div>
+
+<!-- Tab 列 -->
+<div class="tabs">
+  <button class="tab active" data-ep="01">EP.01 講太快</button>
+  <button class="tab" data-ep="02">EP.02 聽不懂</button>
+  <button class="tab" data-ep="03">EP.03 請寫下來</button>
+  <button class="tab" data-ep="04">EP.04 發音寫法</button>
+  <button class="tab" data-ep="05">EP.05 聊天卡住</button>
+  <button class="tab" data-ep="06">EP.06 我覺得</button>
+</div>
+
+<!-- EP.01 -->
+<section class="episode active" data-ep="01">
+  <div class="episode-header">
+    <h2>EP.01｜泰國人講太快？先學這幾句！</h2>
+    <p>聽不懂泰國人講話速度時的救急句</p>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep01_VOICE/p2_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">พูดอีกครั้งได้ไหมคะ</div>
+      <div class="pinyin">phûut ìik khráng dâi mái khá</div>
+      <div class="chinese">可以再說一遍嗎？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep01_VOICE/p3_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">พูดช้า ๆ หน่อยได้ไหมคะ</div>
+      <div class="pinyin">phûut cháa cháa nòi dâi mái khá</div>
+      <div class="chinese">可以慢慢說嗎?</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep01_VOICE/p4_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">พูดช้า ๆ หน่อยนะคะ</div>
+      <div class="pinyin">phûut cháa cháa nòi ná khá</div>
+      <div class="chinese">請說慢一點</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep01_VOICE/p5_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">พูดทีละคำช้า ๆ หน่อยนะคะ</div>
+      <div class="pinyin">phûut thii lá kham cháa cháa nòi ná khá</div>
+      <div class="chinese">請一個字一個字慢慢說</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep01_VOICE/p6_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">พูดดัง ๆ หน่อยนะคะ</div>
+      <div class="pinyin">phûut dang dang nòi ná khá</div>
+      <div class="chinese">請說大聲一點</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep01_VOICE/p6_02.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">พูดเบา ๆ หน่อยนะคะ</div>
+      <div class="pinyin">phûut bao bao nòi ná khá</div>
+      <div class="chinese">請說小聲一點</div>
+    </div>
+  </div>
+</section>
+
+<!-- EP.02 -->
+<section class="episode" data-ep="02">
+  <div class="episode-header">
+    <h2>EP.02｜聽不懂？不知道？這幾句一定要會！</h2>
+    <p>表達聽不懂、不知道的實用句</p>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep02_VOICE/p2_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันไม่เข้าใจค่ะ</div>
+      <div class="pinyin">chăn mâi khâo jai khâ</div>
+      <div class="chinese">我聽不懂</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep02_VOICE/p3_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันไม่รู้ค่ะ</div>
+      <div class="pinyin">chăn mâi rúu khâ</div>
+      <div class="chinese">我不知道</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep02_VOICE/p4_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">นี่แปลว่าอะไรคะ</div>
+      <div class="pinyin">nîi bplae wâa à-rai khá</div>
+      <div class="chinese">這是什麼意思？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep02_VOICE/p5_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">อันนี้ภาษาไทยพูดว่าอะไรคะ</div>
+      <div class="pinyin">an-níi phaa-sǎa thai phûut wâa à-rai khá</div>
+      <div class="chinese">這個泰文怎麼說？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep02_VOICE/p6_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันพูดถูกไหมคะ</div>
+      <div class="pinyin">chăn phûut thùuk mái khá</div>
+      <div class="chinese">我說得對嗎？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep02_VOICE/p7_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ออกเสียงถูกไหมคะ</div>
+      <div class="pinyin">ɔ̀ɔk sǐang thùuk mái khá</div>
+      <div class="chinese">我發音正確嗎？</div>
+    </div>
+  </div>
+</section>
+
+<!-- EP.03 -->
+<section class="episode" data-ep="03">
+  <div class="episode-header">
+    <h2>EP.03｜想請對方寫下來？先學這幾句！</h2>
+    <p>請對方寫下、拼字、打字的實用句</p>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep03_VOICE/p2_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">เขียนให้ดูได้ไหมคะ</div>
+      <div class="pinyin">khǐan hâi duu dâi mái khá</div>
+      <div class="chinese">可以寫給我看嗎？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep03_VOICE/p3_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ช่วยสะกดให้หน่อยค่ะ</div>
+      <div class="pinyin">chûai sà-gòt hâi nòi khâ</div>
+      <div class="chinese">請拼給我一下</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep03_VOICE/p4_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ช่วยพิมพ์ในแชตให้หน่อยค่ะ</div>
+      <div class="pinyin">chûai phim nai chát hâi nòi khâ</div>
+      <div class="chinese">請打在聊天室給我</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep03_VOICE/p5_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">มีประโยคตัวอย่างไหมคะ</div>
+      <div class="pinyin">mii bprà-yòok dtua-yàang mái khá</div>
+      <div class="chinese">有例句嗎？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep03_VOICE/p6_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ช่วยพูดภาษาจีนอีกครั้งได้ไหมคะ</div>
+      <div class="pinyin">chûai phûut phaa-sǎa jiin ìik khráng dâi mái khá</div>
+      <div class="chinese">請用中文再說一次</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep03_VOICE/p7_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ช่วยพูดภาษาอังกฤษอีกครั้งได้ไหมคะ</div>
+      <div class="pinyin">chûai phûut phaa-sǎa ang-grìt ìik khráng dâi mái khá</div>
+      <div class="chinese">請用英文再說一次</div>
+    </div>
+  </div>
+</section>
+
+<!-- EP.04 -->
+<section class="episode" data-ep="04">
+  <div class="episode-header">
+    <h2>EP.04｜發音、寫法、意思搞不清楚？</h2>
+    <p>比較單字、確認發音寫法的實用句</p>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep04_VOICE/p2_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">อันนี้ออกเสียงยังไงคะ</div>
+      <div class="pinyin">an-níi ɔ̀ɔk sǐang yang-ngai khá</div>
+      <div class="chinese">這個怎麼發音？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep04_VOICE/p3_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">A กับ B ออกเสียงเหมือนกันไหมคะ</div>
+      <div class="pinyin">A gàp B ɔ̀ɔk sǐang mǔan gan mái khá</div>
+      <div class="chinese">A 跟 B 發音一樣嗎？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep04_VOICE/p4_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">A กับ B เขียนเหมือนกันไหมคะ</div>
+      <div class="pinyin">A gàp B khǐan mǔan gan mái khá</div>
+      <div class="chinese">A 跟 B 寫法一樣嗎？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep04_VOICE/p5_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">A กับ B ความหมายเหมือนกันไหมคะ</div>
+      <div class="pinyin">A gàp B khwaam-mǎai mǔan gan mái khá</div>
+      <div class="chinese">A 跟 B 意思一樣嗎？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep04_VOICE/p6_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">คำนี้ใช้ยังไงคะ</div>
+      <div class="pinyin">kham níi chái yang-ngai khá</div>
+      <div class="chinese">這個字怎麼用？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep04_VOICE/p7_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ไม่เหมือนกันค่ะ</div>
+      <div class="pinyin">mâi mǔan gan khâ</div>
+      <div class="chinese">不一樣</div>
+    </div>
+  </div>
+</section>
+
+<!-- EP.05 -->
+<section class="episode" data-ep="05">
+  <div class="episode-header">
+    <h2>EP.05｜讓我想一下！聊天卡住時的救急句</h2>
+    <p>聊天時想一下、請對方等等的實用句</p>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep05_VOICE/p2_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">คนไทยพูดแบบนี้ไหมคะ</div>
+      <div class="pinyin">khon thai phûut bàep níi mái khá</div>
+      <div class="chinese">泰國人會這樣說嗎？</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep05_VOICE/p3_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ขอคิดก่อนนะคะ</div>
+      <div class="pinyin">khǎw khít gàwn ná khá</div>
+      <div class="chinese">讓我想一下</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep05_VOICE/p4_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">แป๊บนึงนะ</div>
+      <div class="pinyin">bpáep nùng ná</div>
+      <div class="chinese">請稍等一下</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep05_VOICE/p5_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">สักครู่นะคะ</div>
+      <div class="pinyin">sàk-khrûu ná khá</div>
+      <div class="chinese">請稍等片刻</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep05_VOICE/p6_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันคิดว่า...</div>
+      <div class="pinyin">chăn khít wâa...</div>
+      <div class="chinese">我覺得…</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep05_VOICE/p7_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันรู้สึกว่า...</div>
+      <div class="pinyin">chăn rúu-sùk wâa...</div>
+      <div class="chinese">我感覺…</div>
+    </div>
+  </div>
+</section>
+
+<!-- EP.06 -->
+<section class="episode" data-ep="06">
+  <div class="episode-header">
+    <h2>EP.06｜我覺得… 我忘記了 泰文怎麼說？</h2>
+    <p>表達想法、忘記、記不得的實用句</p>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep06_VOICE/p2_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันคิดว่า...</div>
+      <div class="pinyin">chăn khít wâa...</div>
+      <div class="chinese">我覺得…</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep06_VOICE/p3_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันรู้สึกว่า...</div>
+      <div class="pinyin">chăn rúu-sùk wâa...</div>
+      <div class="chinese">我感覺…</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep06_VOICE/p4_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันลืมแล้วค่ะ</div>
+      <div class="pinyin">chăn luum láew khâ</div>
+      <div class="chinese">我忘記了</div>
+    </div>
+  </div>
+  <div class="sentence" data-audio="reels_audio_rescue_ep06_VOICE/p5_01.mp3">
+    <div class="play-icon">▶</div>
+    <div class="sentence-text">
+      <div class="thai">ฉันจำไม่ได้ค่ะ</div>
+      <div class="pinyin">chăn jam mâi dâi khâ</div>
+      <div class="chinese">我記不得</div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-note">
+  ★ 完整貼文與更多泰文學習內容：<a href="https://www.instagram.com/hue_0224/" target="_blank">@hue_0224</a>
+</div>
+
+<script>
+  // === 全頁變數 ===
+  let currentVoice = 'female';  // 'female' or 'male'
+  let currentAudio = null;       // 目前播放的 Audio 物件
+  let currentSentence = null;    // 目前播放的 .sentence DOM
+
+  // === 男女聲切換 ===
+  document.querySelectorAll('.voice-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // 切換 active 樣式
+      document.querySelectorAll('.voice-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentVoice = btn.dataset.voice;
+
+      // 停止目前播放
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+      if (currentSentence) {
+        currentSentence.classList.remove('playing');
+        currentSentence.querySelector('.play-icon').textContent = '▶';
+        currentSentence = null;
+      }
+    });
+  });
+
+  // === Tab 切換 ===
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const ep = tab.dataset.ep;
+
+      // 切換 tab active
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // 切換 episode 顯示
+      document.querySelectorAll('.episode').forEach(s => s.classList.remove('active'));
+      document.querySelector(`.episode[data-ep="${ep}"]`).classList.add('active');
+
+      // 停止目前播放
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+      if (currentSentence) {
+        currentSentence.classList.remove('playing');
+        currentSentence.querySelector('.play-icon').textContent = '▶';
+        currentSentence = null;
+      }
+
+      // 捲到頂端
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // === 點擊句子播放 ===
+  document.querySelectorAll('.sentence').forEach(sentence => {
+    sentence.addEventListener('click', () => {
+      const audioPath = sentence.dataset.audio.replace('VOICE', currentVoice);
+
+      // 如果點同一個 → 暫停
+      if (currentSentence === sentence && currentAudio && !currentAudio.paused) {
+        currentAudio.pause();
+        sentence.classList.remove('playing');
+        sentence.querySelector('.play-icon').textContent = '▶';
+        return;
+      }
+
+      // 停止之前的
+      if (currentAudio) {
+        currentAudio.pause();
+      }
+      if (currentSentence && currentSentence !== sentence) {
+        currentSentence.classList.remove('playing');
+        currentSentence.querySelector('.play-icon').textContent = '▶';
+      }
+
+      // 播放新的
+      currentAudio = new Audio(audioPath);
+      currentSentence = sentence;
+      sentence.classList.add('playing');
+      sentence.querySelector('.play-icon').textContent = '⏸';
+
+      currentAudio.play().catch(err => {
+        console.error('播放失敗:', err);
+        sentence.classList.remove('playing');
+        sentence.querySelector('.play-icon').textContent = '▶';
+        alert('音檔載入失敗,請確認音檔已上傳');
+      });
+
+      // 播放結束後重置
+      currentAudio.addEventListener('ended', () => {
+        sentence.classList.remove('playing');
+        sentence.querySelector('.play-icon').textContent = '▶';
+        currentAudio = null;
+        currentSentence = null;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
