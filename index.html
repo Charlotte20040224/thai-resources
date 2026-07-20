@@ -7,7 +7,2127 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;900&family=DM+Mono:wght@400;500&family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root {
+  --bg: #fdfaf5;<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泰文學習資源整理 — Made by Chacha</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;900&family=DM+Mono:wght@400;500&family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
   --bg: #fdfaf5;
+  --surface: #fff;
+  --gold: #c8963c;
+  --gold-light: #f5e6c8;
+  --green: #2d6a4f;
+  --green-light: #e8f4ee;
+  --text: #1a1208;
+  --muted: #6b5c3e;
+  --hint: #b5a07a;
+  --border: rgba(180,150,80,0.18);
+  --radius: 14px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Serif TC', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 15px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #1a3a2a 0%, #2d6a4f 50%, #1a4a35 100%);
+  color: white;
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-thai {
+  font-family: 'Kanit', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 20px;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 99px;
+  padding: 5px 16px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  font-family: 'DM Mono', monospace;
+  margin: 4px;
+  white-space: nowrap;
+}
+.disclaimer {
+  margin-top: 20px;
+  background: rgba(200,150,60,0.2);
+  border: 1px solid rgba(200,150,60,0.3);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Nav */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253,250,245,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.sticky-nav::-webkit-scrollbar { display: none; }
+
+/* Right-edge fade hint to indicate scrollable on mobile */
+.sticky-nav::after {
+  content: '';
+  position: sticky;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  flex-shrink: 0;
+  background: linear-gradient(to right, transparent, rgba(253,250,245,0.98) 50%);
+  pointer-events: none;
+  display: block;
+}
+.nav-inner {
+  display: flex;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+.nav-link {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  font-family: 'DM Mono', monospace;
+  flex-shrink: 0;
+}
+.nav-link:hover { color: var(--green); border-bottom-color: var(--green); }
+
+/* Mobile: tighter spacing + clear scroll hint */
+@media (max-width: 600px) {
+  .nav-link {
+    padding: 12px 12px;
+    font-size: 12px;
+  }
+  .sticky-nav { padding: 0 0.5rem; }
+
+  /* Stronger fade hint on right edge */
+  .sticky-nav::after {
+    width: 60px;
+    background: linear-gradient(to right, transparent 0%, rgba(253,250,245,0.7) 30%, rgba(253,250,245,1) 100%);
+  }
+
+  /* Persistent floating "→ 滑" hint button on right edge */
+  .sticky-nav::before {
+    content: '滑 →';
+    position: sticky;
+    right: 0;
+    top: 0;
+    z-index: 11;
+    flex-shrink: 0;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    background: var(--green);
+    padding: 6px 10px;
+    border-radius: 99px;
+    margin-left: -55px;
+    align-self: center;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(45,106,79,0.3);
+    animation: hintNudge 1.4s ease-in-out infinite;
+  }
+  @keyframes hintNudge {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-4px); }
+  }
+}
+
+/* Page */
+.page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+@media (max-width: 600px) {
+  .page { padding: 1rem 1rem 3rem; }
+}
+
+/* Section */
+.section { margin-bottom: 3rem; scroll-margin-top: 90px; }
+.section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-bottom: 1.25rem;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--border);
+}
+.section-icon { font-size: 24px; flex-shrink: 0; }
+.section-title { font-size: 20px; font-weight: 900; }
+.section-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--hint);
+  background: var(--gold-light);
+  padding: 2px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Method cards */
+.method-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+
+.method-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.method-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.method-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.method-card.green::before { background: var(--green); }
+.method-card.gold::before { background: var(--gold); }
+.method-card.blue::before { background: #3b82f6; }
+.method-card.purple::before { background: #7c3aed; }
+.method-card.red::before { background: #dc2626; }
+.method-card.pink::before { background: linear-gradient(90deg, #ec4899, #f472b6); }
+
+.method-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.method-level {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.stars { color: var(--gold); font-size: 13px; margin-bottom: 6px; }
+.method-pros-cons { font-size: 12px; color: var(--muted); line-height: 1.7; }
+.pro { color: var(--green); }
+.con { color: #dc2626; }
+
+/* Star rating rows */
+.rating-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-top: 8px; }
+.rating-label { color: var(--muted); width: 60px; font-family: 'DM Mono', monospace; }
+.rating-bar { flex: 1; height: 4px; background: #e5e7eb; border-radius: 99px; overflow: hidden; }
+.rating-fill { height: 100%; border-radius: 99px; }
+.fill-green { background: var(--green); }
+.fill-gold { background: var(--gold); }
+.fill-blue { background: #3b82f6; }
+
+/* YouTube cards */
+.yt-section { margin-bottom: 1.5rem; }
+.yt-level-title {
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  background: var(--gold-light);
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.yt-list { display: flex; flex-direction: column; gap: 10px; }
+
+.yt-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.yt-icon {
+  width: 36px;
+  height: 36px;
+  background: #ff0000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.yt-icon svg { width: 16px; height: 16px; fill: white; }
+.yt-info { flex: 1; }
+.yt-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  line-height: 1.4;
+}
+.yt-name a { color: var(--text); text-decoration: none; }
+.yt-name a:hover { color: var(--green); }
+.yt-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.yt-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 0;
+}
+.badge-rec { background: #fef3c7; color: #92400e; }
+.badge-new { background: #d1fae5; color: #065f46; }
+
+/* School cards */
+.school-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.school-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+}
+.school-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.school-name a { color: var(--text); text-decoration: none; }
+.school-name a:hover { color: var(--green); }
+
+/* Inline anchor links inside the intro section */
+.intro-link {
+  color: var(--green);
+  text-decoration: none;
+  border-bottom: 1.5px dotted var(--green);
+  font-weight: 600;
+  padding: 0 2px;
+  transition: all 0.15s ease;
+}
+.intro-link:hover {
+  background: var(--green-light);
+  border-bottom-style: solid;
+}
+
+/* Vocab section */
+.vocab-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.vocab-tab {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 99px;
+  font-size: 13px;
+  font-family: 'Noto Serif TC', serif;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.vocab-tab:hover { border-color: var(--green); color: var(--green); }
+.vocab-tab.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+.vocab-panel { display: none; }
+.vocab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.vocab-table thead {
+  background: var(--green-light);
+}
+.vocab-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(45,106,79,0.2);
+  white-space: nowrap;
+}
+.vocab-table th:nth-child(1) { width: 25%; }
+.vocab-table th:nth-child(2) { width: 25%; }
+.vocab-table th:nth-child(3) { width: 18%; }
+.vocab-table th:nth-child(4) { width: 32%; }
+.vocab-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.vocab-table tbody tr:last-child td { border-bottom: none; }
+.vocab-table tbody tr:hover { background: var(--bg); }
+.vocab-thai { font-size: 16px; color: var(--text); font-weight: 500; }
+.vocab-pinyin { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); white-space: nowrap; }
+.vocab-pron { font-size: 12px; color: var(--muted); }
+.vocab-zh { font-size: 13px; color: var(--text); }
+.vocab-en { font-size: 11px; color: var(--hint); font-style: italic; }
+.vocab-subhead td {
+  background: var(--gold-light);
+  font-weight: 600;
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+@media (max-width: 600px) {
+  /* Convert 4-column table to stacked card per row on mobile */
+  .vocab-table thead { display: none !important; }
+  .vocab-table,
+  .vocab-table tbody,
+  .vocab-table tr,
+  .vocab-table td {
+    display: block !important;
+    width: 100% !important;
+  }
+  .vocab-table {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .vocab-table tr {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 16px !important;
+    background: var(--surface);
+  }
+  .vocab-table tbody tr:nth-child(even) {
+    background: var(--bg);
+  }
+  .vocab-table tbody tr:last-child { border-bottom: none; }
+  .vocab-table td {
+    padding: 0 !important;
+    border-bottom: none !important;
+    line-height: 1.5;
+  }
+  /* Thai stays large at top */
+  .vocab-thai {
+    font-size: 18px !important;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text);
+    word-break: break-word;
+  }
+  /* Pinyin in gold below thai */
+  .vocab-pinyin {
+    font-size: 12px !important;
+    margin-bottom: 6px;
+    white-space: normal !important;
+    color: var(--gold);
+  }
+  /* Pron + zh on a single line at bottom, comma-separated style */
+  .vocab-pron {
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 6px;
+    color: var(--muted);
+  }
+  .vocab-pron::before { content: '【'; }
+  .vocab-pron::after { content: '】'; }
+  .vocab-zh {
+    display: inline-block;
+    font-size: 14px;
+  }
+  .vocab-en { display: none; }
+  .vocab-subhead td {
+    padding: 8px 16px !important;
+    background: var(--gold-light) !important;
+  }
+}
+
+/* === Comprehensive mobile UX improvements === */
+@media (max-width: 600px) {
+  /* Section headers slightly smaller */
+  .section-title { font-size: 18px; }
+  .section-icon { font-size: 22px; }
+  .section-count { font-size: 10px; }
+
+  /* Hero block compact */
+  .hero { padding: 2rem 1rem 1.5rem !important; }
+  .hero-title { font-size: 24px !important; }
+  .hero-sub { font-size: 12px !important; }
+  .hero-badge { font-size: 11px !important; padding: 4px 10px !important; }
+
+  /* School cards: stack content nicely */
+  .school-card { padding: 14px 14px !important; }
+  .school-name { font-size: 14px !important; }
+
+  /* Resource link cards: full width on mobile */
+  .resource-link {
+    display: block !important;
+    margin-bottom: 6px !important;
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* YouTube cards: tighter */
+  .yt-card { padding: 12px !important; }
+  .yt-name { font-size: 13px !important; }
+  .yt-desc { font-size: 11px !important; }
+
+  /* Drama grid: 1 column */
+  .drama-grid { grid-template-columns: 1fr !important; }
+
+  /* Vocab tabs: scroll horizontally with hint */
+  .vocab-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .vocab-tabs::-webkit-scrollbar { display: none; }
+  .vocab-tab { font-size: 12px !important; padding: 7px 12px !important; flex-shrink: 0; }
+
+  /* Section header touch target */
+  .section { margin-bottom: 2rem; }
+
+  /* Buttons / CTA links tappable */
+  a[href^="http"],
+  a[href^="#"] { min-height: 32px; }
+
+  /* Tip-box compact */
+  .tip-box { padding: 14px 14px !important; font-size: 13px !important; }
+
+  /* Footer */
+  .footer { font-size: 11px !important; padding: 1.5rem 1rem !important; }
+}
+
+.school-loc { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--hint); margin-bottom: 6px; }
+.school-note { font-size: 12px; color: var(--muted); }
+
+/* Journey timeline */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 1.5px;
+  background: linear-gradient(to bottom, var(--green), var(--gold));
+}
+.timeline-item { position: relative; margin-bottom: 1.25rem; }
+.timeline-dot {
+  position: absolute;
+  left: -20px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px var(--green);
+}
+.timeline-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.timeline-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.timeline-desc { font-size: 13px; color: var(--muted); }
+
+/* Course review */
+.review-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  border-radius: 0 10px 10px 0;
+  padding: 1.25rem;
+  margin-bottom: 14px;
+}
+.review-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.review-meta { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--hint); margin-bottom: 10px; }
+.review-body { font-size: 13px; color: var(--muted); line-height: 1.8; }
+.review-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--green);
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  border-bottom: 1px solid transparent;
+}
+.review-link:hover { border-bottom-color: var(--green); }
+
+/* Social */
+.social-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.social-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.social-card:hover { background: var(--green-light); border-color: var(--green); }
+.social-icon { font-size: 18px; }
+
+/* Resource links */
+.resource-list { display: flex; flex-direction: column; gap: 8px; }
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.resource-link:hover { background: var(--green-light); border-color: var(--green); color: var(--green); }
+.resource-link::before { content: '↗'; font-family: 'DM Mono', monospace; color: var(--hint); }
+
+/* Tips box */
+.tip-box {
+  background: var(--gold-light);
+  border: 1px solid rgba(200,150,60,0.3);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 1rem 0;
+  font-size: 13px;
+}
+.tip-box strong { color: var(--gold); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 12px;
+  color: var(--hint);
+  font-family: 'DM Mono', monospace;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-thai">🇹🇭 ภาษาไทย · Thai Learning Resources</div>
+  <h1>泰文學習資源整理</h1>
+  <p class="hero-sub">Made by Chacha · 本人親自整理，無業配</p>
+  <div>
+    <span class="hero-badge">語言學習</span>
+    <span class="hero-badge">學習資源</span>
+    <span class="hero-badge">YouTube 推薦</span>
+    <span class="hero-badge">個人學習歷程</span>
+  </div>
+  <div class="disclaimer">
+    ‼️ 所有內容皆為本人親自整理（無業配）‼️<br>
+    請勿擅自搬運/重製；引用請務必註明出處
+  </div>
+</div>
+
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a class="nav-link" href="#intro">說明</a>
+    <a class="nav-link" href="#methods">學習管道</a>
+    <a class="nav-link" href="#youtube">YouTube</a>
+    <a class="nav-link" href="#dramas">泰劇</a>
+    <a class="nav-link" href="#schools">語言學校</a>
+    <a class="nav-link" href="#inperson">實體課程</a>
+    <a class="nav-link" href="#journey">我的歷程</a>
+    <a class="nav-link" href="#reviews">課程心得</a>
+    <a class="nav-link" href="#resources">其他資源</a>
+    <a class="nav-link" href="#social">我的社群</a>
+    <a class="nav-link" href="#vocab">常用泰文</a>
+    <a class="nav-link" href="#support">小額贊助</a>
+  </div>
+</nav>
+
+<div class="page">
+
+<!-- 說明 -->
+<div class="section" id="intro">
+  <div class="section-header">
+    <span class="section-icon">📖</span>
+    <div class="section-title">說明 (Instructions)</div>
+  </div>
+  <div class="tip-box" style="background:var(--green-light);border-color:rgba(45,106,79,0.3)">
+    <strong style="color:var(--green)">使用說明書</strong><br>
+    我已將各種不同學習管道的優缺點、資源、網路上的評論以及參考資料整理好，供想要學習泰文的人類參考。大家可依自己的泰文程度、願意投入的時間和金錢等，自行規劃出最適合自己的泰文學習計劃。<br><br>
+    <strong style="color:var(--green)">另外也會分享：</strong><br>
+    <a href="#journey" class="intro-link">我自己的泰文學習歷程</a>（學習約 1 年）、<a href="#learning-order" class="intro-link">建議的泰文學習順序</a>、推薦的 <a href="#youtube" class="intro-link">YouTube 頻道</a>、<a href="#dramas" class="intro-link">泰劇</a>、<a href="#dramas" class="intro-link">泰國綜藝</a>、<a href="#resources" class="intro-link">泰文歌</a>、<a href="#reviews" class="intro-link">課程心得分享</a>，還有<a href="#resources" class="intro-link">推薦用書</a>＆<a href="#resources" class="intro-link">額外的學習資源</a>可以參考 🌱
+  </div>
+</div>
+
+
+<!-- 學習管道 -->
+<div class="section" id="methods">
+  <div class="section-header">
+    <span class="section-icon">🗺️</span>
+    <div class="section-title">各種學習管道比較</div>
+    <span class="section-count">6 種管道</span>
+  </div>
+
+  <div class="method-grid">
+
+    <div class="method-card green">
+      <div class="method-name">語言交換</div>
+      <div class="method-level">適合程度：中級～高級</div>
+      <div class="stars">綜合評價 ⭐⭐⭐⭐</div>
+      <div class="rating-row"><span class="rating-label">學習效果</span><div class="rating-bar"><div class="rating-fill fill-green" style="width:80%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">彈性程度</span><div class="rating-bar"><div class="rating-fill fill-gold" style="width:80%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">金錢考量</span><div class="rating-bar"><div class="rating-fill fill-blue" style="width:100%"></div></div></div>
+      <div class="method-pros-cons" style="margin-top:10px">
+        <span class="pro">✓ 學道地表達和文化，成本低</span><br>
+        <span class="con">✗ 依賴對方能力，缺乏系統性</span>
+      </div>
+    </div>
+
+    <div class="method-card gold">
+      <div class="method-name">語言學校</div>
+      <div class="method-level">適合程度：初學者～高級</div>
+      <div class="stars">綜合評價 ⭐⭐⭐</div>
+      <div class="rating-row"><span class="rating-label">學習效果</span><div class="rating-bar"><div class="rating-fill fill-green" style="width:80%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">彈性程度</span><div class="rating-bar"><div class="rating-fill fill-gold" style="width:40%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">金錢考量</span><div class="rating-bar"><div class="rating-fill fill-blue" style="width:60%"></div></div></div>
+      <div class="method-pros-cons" style="margin-top:10px">
+        <span class="pro">✓ 結構化學習，提供文化環境</span><br>
+        <span class="con">✗ 需投入較多時間和金錢</span>
+      </div>
+    </div>
+
+    <div class="method-card blue">
+      <div class="method-name">線上課程</div>
+      <div class="method-level">適合程度：初學者～高級</div>
+      <div class="stars">綜合評價 ⭐⭐⭐</div>
+      <div class="rating-row"><span class="rating-label">學習效果</span><div class="rating-bar"><div class="rating-fill fill-green" style="width:60%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">彈性程度</span><div class="rating-bar"><div class="rating-fill fill-gold" style="width:80%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">金錢考量</span><div class="rating-bar"><div class="rating-fill fill-blue" style="width:40%"></div></div></div>
+      <div class="method-pros-cons" style="margin-top:10px">
+        <span class="pro">✓ 時間靈活，可依進度學習</span><br>
+        <span class="con">✗ 缺乏面對面互動，容易失去動力</span>
+      </div>
+    </div>
+
+    <div class="method-card purple">
+      <div class="method-name">實體課程</div>
+      <div class="method-level">適合程度：初學者～高級</div>
+      <div class="stars">綜合評價 ⭐⭐⭐⭐</div>
+      <div class="rating-row"><span class="rating-label">學習效果</span><div class="rating-bar"><div class="rating-fill fill-green" style="width:100%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">彈性程度</span><div class="rating-bar"><div class="rating-fill fill-gold" style="width:40%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">金錢考量</span><div class="rating-bar"><div class="rating-fill fill-blue" style="width:60%"></div></div></div>
+      <div class="method-pros-cons" style="margin-top:10px">
+        <span class="pro">✓ 直接互動，系統性學習</span><br>
+        <span class="con">✗ 地點時間固定，成本較高</span>
+      </div>
+    </div>
+
+    <div class="method-card red">
+      <div class="method-name">網路自學</div>
+      <div class="method-level">建議有一定基礎再嘗試</div>
+      <div class="stars">綜合評價 ⭐～⭐⭐⭐⭐⭐</div>
+      <div class="rating-row"><span class="rating-label">學習效果</span><div class="rating-bar"><div class="rating-fill fill-green" style="width:50%"></div></div><span style="font-size:11px;color:var(--hint)">看個人</span></div>
+      <div class="rating-row"><span class="rating-label">彈性程度</span><div class="rating-bar"><div class="rating-fill fill-gold" style="width:100%"></div></div></div>
+      <div class="rating-row"><span class="rating-label">金錢考量</span><div class="rating-bar"><div class="rating-fill fill-blue" style="width:100%"></div></div></div>
+      <div class="method-pros-cons" style="margin-top:10px">
+        <span class="pro">✓ 資源豐富，幾乎免費</span><br>
+        <span class="con">✗ 需高度自律，缺乏系統性</span>
+      </div>
+    </div>
+
+    <div class="method-card pink" style="background:linear-gradient(180deg,#fff 0%,#fdf2f8 100%)">
+      <div class="method-name">找泰國男/女朋友 💘 <span style="font-size:10px;font-family:'DM Mono',monospace;background:#fce7f3;color:#be185d;border-radius:99px;padding:2px 8px;margin-left:4px;vertical-align:middle">非正規</span></div>
+      <div class="method-level">適合程度：單身限定・心臟要強</div>
+      <div class="stars">綜合評價 ⭐⭐⭐⭐⭐（成功的話）</div>
+      <div class="rating-row"><span class="rating-label">學習效果</span><div class="rating-bar"><div class="rating-fill" style="width:100%;background:#ec4899"></div></div><span style="font-size:11px;color:var(--hint)">沉浸式</span></div>
+      <div class="rating-row"><span class="rating-label">彈性程度</span><div class="rating-bar"><div class="rating-fill fill-gold" style="width:20%"></div></div><span style="font-size:11px;color:var(--hint)">看對方</span></div>
+      <div class="rating-row"><span class="rating-label">金錢考量</span><div class="rating-bar"><div class="rating-fill fill-blue" style="width:10%"></div></div><span style="font-size:11px;color:var(--hint)">燒錢</span></div>
+      <div class="method-pros-cons" style="margin-top:10px">
+        <span class="pro">✓ 24/7 沉浸式環境，免費貼身家教</span><br>
+        <span class="pro">✓ 附贈泰國家人文化 + 在地導遊</span><br>
+        <span class="con">✗ 需要先找到一位願意交往的泰國人</span><br>
+        <span class="con">✗ 分手比退補習班還難</span><br>
+        <span class="con">✗ 可能先學會的都是罵人的話 😇</span>
+      </div>
+      <div style="margin-top:12px;padding:8px 12px;background:#fce7f3;border-radius:8px;font-size:11px;color:#831843;line-height:1.7;border:1px dashed #f9a8d4">
+        ⚠️ <strong>免責聲明：</strong>純屬 Chacha 觀察各路網友心得統整，請勿將學習語言作為談戀愛的主要動機 😂 真愛無法速成，泰文也是～
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tip-box" id="learning-order" style="margin-top:1rem;scroll-margin-top:90px">
+    <strong>💡 Chacha 建議的學習順序：</strong><br>
+    初期 → 先學習基礎泰文會話，建立說泰文的自信<br>
+    中期 → 回頭慢慢接觸字母，優化發音，學習泰文打字<br>
+    後期 → 實地演練，將泰文融入生活
+  </div>
+
+  <!-- 語言交換管道推薦 -->
+  <div style="margin-top:1.25rem;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:1.25rem">
+    <div style="font-size:15px;font-weight:600;margin-bottom:10px;color:var(--green)">🤝 語言交換管道推薦</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:12px">透過語言交換軟體或社群媒體找尋語伴</div>
+
+    <div style="font-size:12px;font-family:'DM Mono',monospace;color:var(--hint);margin-bottom:6px">APPS</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">Tandem</span>
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">HelloTalk</span>
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">Speaky</span>
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">InterPal</span>
+    </div>
+
+    <div style="font-size:12px;font-family:'DM Mono',monospace;color:var(--hint);margin-bottom:6px">社群媒體</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">Facebook 社團</span>
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">Reddit</span>
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">Instagram</span>
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">X＆TikTok（泰國人很常用！）</span>
+      <span class="hero-badge" style="background:var(--gold-light);border-color:rgba(200,150,60,0.3);color:var(--muted)">Dcard</span>
+    </div>
+
+    <div style="background:#fef9ed;border:1px solid rgba(200,150,60,0.3);border-radius:8px;padding:10px 14px;margin-bottom:10px">
+      <div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px">💡 如果還是學生</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7">很推薦去試看看加入學校的國際接待社團、交換生社團來認識泰國人或泰國學伴</div>
+    </div>
+    <div style="background:#fef9ed;border:1px solid rgba(200,150,60,0.3);border-radius:8px;padding:10px 14px">
+      <div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px">💡 如果是社會人士</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7">且透過以上平台都找不到，可至華語文中心（外國人學中文的地方）或是利用交友軟體找看看想學中文的泰國人</div>
+    </div>
+
+    <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+      <a class="review-link" href="https://www.roc-taiwan.org/uploads/sites/100/2017/01/A_list_of_Chinese_Language_Center.pdf" target="_blank">→ 台灣華語文中心一覽表</a>
+      <a class="review-link" href="https://www.dcard.tw/f/language/p/226029205" target="_blank">→ Dcard 尋找泰國語伴</a>
+      <a class="review-link" href="https://www.dcard.tw/f/language/p/226887290" target="_blank">→ Dcard 語言交換軟體推薦</a>
+      <a class="review-link" href="https://www.ptt.cc/bbs/Thai/M.1477186088.A.BD9.html" target="_blank">→ Ptt 學泰語4個月心得</a>
+    </div>
+  </div>
+
+  <!-- 語言交換心得分享 -->
+  <div style="margin-top:1.25rem;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1.25rem">
+    <div style="font-size:15px;font-weight:600;margin-bottom:10px;color:var(--gold)">🤝 語言交換心得分享</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:14px">Chacha 親身與泰國語伴 Nantan 的交流經驗 ✨</div>
+
+    <!-- 故事段落 -->
+    <div style="font-size:13px;color:var(--text);line-height:1.85;margin-bottom:1.25rem">
+      選修泰文課時，我有和在<strong>澳洲打工度假時認識的泰國朋友</strong>練習對話，後來藉由<strong>師大的語言交換系統</strong>配對，認識來台灣學中文的 <strong style="color:var(--gold)">Nantan</strong>。我們會固定一個禮拜約出來 1〜2 次做語言交換。<br><br>
+      基本上語言交換就是聊天 — <strong>她教我泰文＋我教她中文</strong>。包括基本的問候、日常用語、文化主題，都會在聊天的時候去練習到。我的語伴人超好，<strong style="color:var(--green)">還寫筆記來教我</strong> ☺️ 真的很幸運也很感謝能遇到她。
+    </div>
+
+    <!-- Nantan 寫的筆記照片 -->
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:12px;font-weight:600;color:var(--muted);margin-bottom:8px;letter-spacing:0.3px">📓 Nantan 親手寫的筆記</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center">
+          <img src="images/nantan-notes-page1.jpg" alt="Nantan 筆記 Page 1" style="width:100%;border-radius:6px;display:block">
+          <div style="font-size:11px;color:var(--hint);margin-top:6px;font-family:'DM Mono',monospace">PAGE 1</div>
+        </div>
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center">
+          <img src="images/nantan-notes-page2.jpg" alt="Nantan 筆記 Page 2" style="width:100%;border-radius:6px;display:block">
+          <div style="font-size:11px;color:var(--hint);margin-top:6px;font-family:'DM Mono',monospace">PAGE 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 後續發展 -->
+    <div style="background:linear-gradient(135deg,#fef9ed 0%,#f0fdf4 100%);border:1px dashed rgba(45,106,79,0.3);border-radius:10px;padding:1rem 1.25rem">
+      <div style="font-size:13px;color:var(--text);line-height:1.85;margin-bottom:12px">
+        💌 Nantan 學完中文回去泰國後，我們還有繼續保持聯絡。<br>
+        2026/1 月我到泰國旅居三週時，也特地到她的故鄉 — <strong style="color:var(--gold)">南邦（Lampang）</strong>去找她玩 🌿
+      </div>
+      <div style="text-align:center">
+        <img src="images/lampang-thailand-2026.jpg" alt="Chacha 與 Nantan 在南邦合照" style="max-width:100%;width:100%;max-height:420px;object-fit:contain;border-radius:10px;display:block;margin:0 auto">
+        <div style="font-size:11px;color:var(--hint);margin-top:8px;font-family:'DM Mono',monospace">📍 LAMPANG, THAILAND · 2026.01</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- YouTube -->
+<div class="section" id="youtube">
+  <div class="section-header">
+    <span class="section-icon">▶️</span>
+    <div class="section-title">YouTube 頻道推薦</div>
+    <span class="section-count">10 個頻道</span>
+  </div>
+
+  <div class="yt-section">
+    <div class="yt-level-title">中文教學（適合初學者）</div>
+    <div class="yt-list">
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@jesuisbenoit" target="_blank">Ben Lo 泰文</a> <span class="yt-badge badge-rec">大推👍</span></div>
+          <div class="yt-desc">老師是台灣人，最推薦「泰語句構練習」系列，涵蓋所有日常對話句型，一天1-3個影片，邊學句型邊學單字。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@poppyyang" target="_blank">Poppy Yang</a></div>
+          <div class="yt-desc">老師是泰國人，學泰文一定會搜到的頻道，有常用泰文、打招呼、生活泰文、字母教學等豐富內容。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@krucho_thailanguage" target="_blank">跟 Kru Cho 一起學泰文</a></div>
+          <div class="yt-desc">老師是台灣人，有看劇學泰文、聽歌學泰文、餐廳必學用語等主題式教學。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@learnthaiwithmei" target="_blank">跟梅老師學泰語</a></div>
+          <div class="yt-desc">生活泰文為主，影片都短短的，很好吸收！之前有在目的達教書。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@thaivoc" target="_blank">泰語小星球</a></div>
+          <div class="yt-desc">圖片和排版超可愛，有旅遊泰文、歌曲單字、日常生活50句等各式內容。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="yt-section">
+    <div class="yt-level-title">英文教學（適合初/中級）</div>
+    <div class="yt-list">
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@thaiwithgrace9231" target="_blank">Thai with Grace</a> <span class="yt-badge badge-rec">超級推👍👍</span></div>
+          <div class="yt-desc">影片有英/泰字幕，Small Talk 50 Questions 系列超棒，Slow Thai 系列也很推，老師是泰國人。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@bodothai" target="_blank">Bodo Thai</a></div>
+          <div class="yt-desc">很有個性的大叔，短影片教短語和單字，每天聽一個，日積月累效果好。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@letslearnthai" target="_blank">Let's Learn Thai</a></div>
+          <div class="yt-desc">對初學者超友善，解釋清晰，有常用動詞、基礎文法、人稱代名詞、怎麼叫車點飲料等實用系列。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="yt-section">
+    <div class="yt-level-title">泰文頻道（適合中高級）</div>
+    <div class="yt-list">
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@kuanjeen" target="_blank">波波真幸福</a> <span class="yt-badge badge-rec">推薦</span></div>
+          <div class="yt-desc">泰國人，之前來台大讀碩，影片有泰/中字幕，語速放慢有拼音注解，超適合練泰文聽力。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@pigkaploy" target="_blank">Pigkaploy</a></div>
+          <div class="yt-desc">旅遊頻道，喜歡她的獨旅系列，剪輯舒服唯美，來台灣不只一次，說話清楚有泰文字幕。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name"><a href="https://youtube.com/@peanutbutterpn" target="_blank">Peanut Butter</a></div>
+          <div class="yt-desc">全泰文頻道（cc字幕有英文），分享學習/工作/生活 tips，麥克風收音超好，很適合當 Podcast 聽。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 泰劇 -->
+<div class="section" id="dramas">
+  <div class="section-header">
+    <span class="section-icon">📺</span>
+    <div class="section-title">泰劇 & 泰國綜藝</div>
+    <span class="section-count">看劇學泰文</span>
+  </div>
+
+  <div class="tip-box" style="margin-bottom:1.25rem">
+    <strong>👀 聲明：</strong>以下是個人口袋＆常見推薦，後方有社群資源可延伸閱讀！
+  </div>
+
+  <!-- 泰百 -->
+  <div class="yt-section">
+    <div class="yt-level-title">泰百（GL）</div>
+    <div class="yt-list">
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#ec4899,#f472b6)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">我們的秘密（The Secret of Us）<span class="yt-badge badge-rec">Chacha 最愛</span></div>
+          <div class="yt-desc">最喜歡的泰百劇沒有之一，身為 LOS 一定推爆的！Lingorm 主演，醫生前女友重逢破鏡重圓的故事。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#ec4899,#f472b6)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">冥王星之戀（Pluto）<span class="yt-badge badge-rec">演技第一</span></div>
+          <div class="yt-desc">NamtanFilm 主演，雙胞胎姊妹題材，當姊姊假扮昏迷的妹妹替她分手，卻與前任 May 產生意外情愫 — 懸疑＋愛情，第一集就有接吻！</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#ec4899,#f472b6)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">粉紅理論（GAP）<span class="yt-badge badge-rec">泰百鼻祖</span></div>
+          <div class="yt-desc">FreenBecky 主演，2022 年開播，掀起泰百風潮的代表作，FreenBecky 也成為泰國最知名的 GL CP 之一。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#ec4899,#f472b6)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">23.5 度地球傾斜<span class="yt-badge badge-rec">GMMTV 首部 GL</span></div>
+          <div class="yt-desc">MilkLove 主演，GMMTV 首部 GL 正劇。內向的 Ongsa 化名 Earth 和暗戀對象 Sun 網聊，青澀的雙向暗戀校園劇。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#ec4899,#f472b6)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">愛填滿空白（Blank）<span class="yt-badge badge-rec">吻技第一</span></div>
+          <div class="yt-desc">FayeYoko 主演，跨越 16 歲年齡差的禁忌愛情，在祖母壓力下長大的 Nueng 遇到明亮開朗的 Anueng，甜又虐。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#ec4899,#f472b6)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">The Loyal Pin<span class="yt-badge badge-new">皇室歷史</span></div>
+          <div class="yt-desc">FreenBecky 二搭，改編自同名小說，泰國皇室歷史背景，公主 Anilaphat 與女爵 Lady Pin 的禁忌戀。</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#fdf2f8;border:1px solid #fbcfe8;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.8">
+      <strong style="color:#be185d">更多泰百推薦：</strong>簪定此生（床戲第一）、愛情詭計（性張力第一）、我們的愛、Only You（LingOrm 二搭）、Affair（高甜激情）、Reverse 4 You（ChristineMae・Netflix 時空題材）、Reverse With Me、學姐可以愛我嗎（年下攻）、風中的陽光、追夢建築師（2016 最早泰百）、簪上瘋狂
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:var(--hint);line-height:1.7">
+      🌐 推薦追蹤 <a href="https://glthai.com/" target="_blank" style="color:#be185d;font-weight:600">瘋泰百 glthai.com</a> — 泰國 GL 百合劇入口網站，有排行榜、追劇日曆、見面會資訊，更新超齊全！
+    </div>
+  </div>
+
+  <!-- BL 劇 -->
+  <div class="yt-section">
+    <div class="yt-level-title">BL 劇（代表作・入坑推薦）</div>
+    <div class="yt-list">
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">一年生（SOTUS）<span class="yt-badge badge-rec">元老級</span></div>
+          <div class="yt-desc">KristSingto 主演，掀起泰國 BL 劇風潮的經典，大學新生遇上嚴格學長的校園純愛。2025 年兩人回歸合作《The Ex-Morning》。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">天生一對（2gether）<span class="yt-badge badge-rec">全球爆紅</span></div>
+          <div class="yt-desc">BrightWin 主演，校園甜寵劇，假男友變真愛的經典題材，讓泰國 BL 在國際上掀起一波熱潮。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">Bad Buddy<span class="yt-badge badge-rec">高分神劇</span></div>
+          <div class="yt-desc">OhmNanon 主演，鄰居世仇變戀人的浪漫校園劇，細膩的家庭議題＋溫柔感情線，被公認是 GMMTV BL 的代表作之一。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">黑幫少爺愛上我（KinnPorsche）<span class="yt-badge badge-rec">泰劇天花板</span></div>
+          <div class="yt-desc">改編自同名網路小說，黑幫題材＋保鑣愛情，被粉絲譽為「泰劇天花板」，ApoMile 主演。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">以你的心詮釋我的愛（BKPP）<span class="yt-badge badge-rec">文藝神劇</span></div>
+          <div class="yt-desc">Billkin & PP Krit 主演，細膩的青春成長故事，是泰國最受歡迎的 CP 之一，文藝質感一流，分為兩季。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">Only Friends<span class="yt-badge badge-rec">高話題</span></div>
+          <div class="yt-desc">GMMTV 大 BL 製作，朋友圈之間的錯綜複雜關係＆禁忌戀，群像戲寫實度高，探討慾望與友情界線。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">極速戀人（Pit Babe）<span class="yt-badge badge-new">黑馬</span></div>
+          <div class="yt-desc">PoohPavel 主演，賽車題材＋Alpha/Omega 設定的黑馬爆款，續作《Pit Babe 2》與後續衍生劇陸續推出。</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.8">
+      <strong style="color:#6d28d9">更多熱門 BL：</strong>消失的初戀（Cherry Magic 泰版・GeminiFourth）、Last Twilight 不曾遺忘的暮色（JimmySea）、大叔的愛泰版（EarthMix）、Memoir of Rati（Great × Inn 古裝史劇）、My Golden Blood（吸血鬼題材）、Sweet Tooth Good Dentist（牙醫甜寵）、The Ex-Morning（KristSingto 世紀合體）、Me and Thee 清醒點泰爾先生（PondPhuwin 四搭）、四方極愛、Not Me 不是我、Cutie Pie、Enchanté（ForceBook）、Manner of Death（MaxTul）、王牌辯論員（Until We Meet Again）、因為我的男友、我讓最想被擁抱的男人給威脅了、Mandate、我就是暹羅最美麗的少爺（美少爺之戀）
+    </div>
+  </div>
+
+  <!-- 電視劇 / 懸疑驚悚 -->
+  <div class="yt-section">
+    <div class="yt-level-title">電視劇・電影（懸疑・校園・劇情）</div>
+    <div class="yt-list">
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#0f766e,#14b8a6)"><svg viewBox="0 0 24 24" fill="white"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm2 4v8l6-4-6-4z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">轉學來的女生（Girl from Nowhere）<span class="yt-badge badge-rec">Netflix 經典</span></div>
+          <div class="yt-desc">奇幻＋犯罪＋驚悚，神秘轉學生 Nanno 揭露校園人性陰暗面，黑色幽默經典。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#0f766e,#14b8a6)"><svg viewBox="0 0 24 24" fill="white"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm2 4v8l6-4-6-4z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">荷爾蒙（Hormones）<span class="yt-badge badge-rec">校園經典</span></div>
+          <div class="yt-desc">共三季的校園長篇劇，深入探討青少年「性」、校園暴力、同性戀、墮胎等議題。</div>
+        </div>
+      </div>
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#0f766e,#14b8a6)"><svg viewBox="0 0 24 24" fill="white"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm2 4v8l6-4-6-4z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">無主之屋（The Lost Lotteries）<span class="yt-badge badge-new">Netflix #1</span></div>
+          <div class="yt-desc">鑽石大亨去世後家族繼承鬥爭，狗血滿滿但超受歡迎，Netflix 首部收視稱冠的泰劇。</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--green-light);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.8">
+      <strong style="color:var(--green)">更多電視劇：</strong>特長生／天才槍手劇版（Bad Genius）、脫單大作戰（Ready, Set, Love）、飢餓遊戲（Hunger）、絕廟騙局（The Believers）、永久刪除（Delete）、安眠實驗、泰版流星花園 F4 Thailand、泰版《我的 ID 是江南美人》、花中尋凶：死亡與鮮花、泰國洞穴救援事件簿
+    </div>
+  </div>
+
+  <!-- 綜藝 -->
+  <div class="yt-section">
+    <div class="yt-level-title">泰國綜藝</div>
+    <div class="yt-list">
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg viewBox="0 0 24 24" fill="white"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">Running Man Thailand（รันนิ่งแมน）<span class="yt-badge badge-new">2026 新</span></div>
+          <div class="yt-desc">iQIYI 取得韓綜 Running Man 泰國版版權，固定班底：Jeff Satur、Tay Tawan、NuNew、Ink Waruntorn、Oat Pramote、Daou、DJ Phuak，每週日播出。</div>
+        </div>
+      </div>
+
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg viewBox="0 0 24 24" fill="white"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">School Rangers（รถโรงเรียน／校車）<span class="yt-badge badge-rec">GMMTV 招牌</span></div>
+          <div class="yt-desc">GMMTV 最長壽的綜藝節目（2018–2024 共 340 集），主持群是旗下演員的輪替制，包含 Tay、New、Off、Gun、Mark、Joong、Dunk、Khaotung 等。歷任拜訪全泰國學校做趣味挑戰，BL 演員日常互動超自然。GMMTV 官方 YouTube 免費看！</div>
+        </div>
+      </div>
+
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 3L2 12h3v8h14v-8h3L12 3zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">Safe House（บ้านลับ จับ LIVE）<span class="yt-badge badge-rec">GMMTV 實境</span></div>
+          <div class="yt-desc">GMMTV 版「老大哥 Big Brother」— 8 位演員在同一間屋子共同生活 7 天，做小遊戲競賽拿分數，沒有淘汰只有歡樂，疫情期間爆紅。非常適合想看 CP 自然互動的粉絲。</div>
+        </div>
+      </div>
+
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg viewBox="0 0 24 24" fill="white"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">The Mask Singer（泰版蒙面歌王）<span class="yt-badge badge-rec">Workpoint 招牌</span></div>
+          <div class="yt-desc">Workpoint TV 王牌音樂實境秀，明星戴面具比歌藝。泰版比韓版更浮誇誇張，是數位電視時代泰國綜藝收視冠軍，已播到第 12 季。The Mask Soulmate 季開始上 Netflix。</div>
+        </div>
+      </div>
+
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg viewBox="0 0 24 24" fill="white"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">Pepsi Mitrchuankin Guide（GeminiFourth）<span class="yt-badge badge-new">GMMTV</span></div>
+          <div class="yt-desc">GeminiFourth 主持的美食綜藝，兩人走遍泰國尋找好吃的路邊攤與餐廳，CP 互動＋下飯 double kill，每月最後一個週五播出第二季進行中。</div>
+        </div>
+      </div>
+
+      <div class="yt-card">
+        <div class="yt-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg viewBox="0 0 24 24" fill="white"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>
+        <div class="yt-info">
+          <div class="yt-name">男得有情郎（Club Friday Love Showcase）<span class="yt-badge badge-rec">LGBTQ+</span></div>
+          <div class="yt-desc">泰國首檔同志相親聯誼綜藝，被稱為「基版非誠勿擾」，Kalamare 與 Nanake 主持，嘉賓配對搶男人、訴情話，適合茶餘飯後輕鬆看。</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.8">
+      <strong style="color:#ea580c">💡 更多綜藝：</strong>誰能百里挑基（相親聯誼）、鮮肉成長計、The Voice Thailand（聲音好好聽）、Thailand's Got Talent、JaturaMeet（GMMTV 新綜藝 2025）、GARNIER Witty Academy with Leo Saussay、街頭美食鬥士、Bitterman（美食探店）
+    </div>
+
+    <div style="background:var(--green-light);border:1px solid rgba(45,106,79,0.2);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:12px;color:var(--muted);line-height:1.8">
+      <strong style="color:var(--green)">🎧 學泰文建議：</strong>綜藝節目語速自然、台詞生活化，很適合用來練聽力＆認識當代流行用語。推薦優先挑有泰／中／英字幕的節目，GMMTV 官方 YouTube 頻道有大量免費資源可看！
+    </div>
+  </div>
+
+  <!-- 延伸閱讀 -->
+  <div style="margin-top:1rem">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--muted)">📎 延伸閱讀與推薦清單</div>
+    <div class="resource-list">
+      <a class="resource-link" href="https://www.threads.net/@alien_.0200/post/DEh0DcVvQKK" target="_blank">Threads · 入坑泰百</a>
+      <a class="resource-link" href="https://www.threads.net/@linnn.ll/post/DFGU7zVzwz2" target="_blank">Threads · 推薦的泰國 GL 劇</a>
+      <a class="resource-link" href="https://www.threads.net/@angela._0731/post/C6tZOmsSx49" target="_blank">Threads · 推薦的泰國 BL 劇</a>
+      <a class="resource-link" href="https://www.threads.net/@mason___82/post/DD_NQ8iTo5O" target="_blank">Threads · 泰國歌曲推薦</a>
+      <a class="resource-link" href="https://open.spotify.com/playlist/7sryiNJrXD1rMr1ijo2eO8" target="_blank">Spotify · TSOU OST + Lingorm 歌單</a>
+      <a class="resource-link" href="https://visionthai.net/article/thai-tv-show-recommend/" target="_blank">泰國綜藝推薦整理</a>
+    </div>
+  </div>
+</div>
+
+<!-- 語言學校 -->
+<div class="section" id="schools">
+  <div class="section-header">
+    <span class="section-icon">🏫</span>
+    <div class="section-title">語言學校推薦（泰國）</div>
+    <span class="section-count">10 間</span>
+  </div>
+  <div class="school-grid">
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.facebook.com/CTFLChula" target="_blank">朱拉隆功大學 CTFL</a></div>
+      <div class="school-loc">📍 曼谷</div>
+      <div class="school-note">朱拉隆功大學開設的泰語課程，曼谷頂尖大學師資穩定，密集班＆一般班皆有，網路心得豐富。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.threads.net/@yuniedontworries/post/C6oVkYsSKKX" target="_blank">→ Threads · CTFL 介紹＆心得</a>
+        <a class="review-link" href="https://www.threads.net/@epyon2/post/C84z5VhSW7j" target="_blank">→ Threads · 朱拉語言中心上課心得</a>
+        <a class="review-link" href="https://www.threads.net/@epyon2/post/C_E3wUay5HK" target="_blank">→ Threads · 朱拉密集泰文課分享</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://dukelanguage.com/" target="_blank">Duke 語言學校</a></div>
+      <div class="school-loc">📍 曼谷</div>
+      <div class="school-note">曼谷知名私立語言學校，課程分級清楚，提供學生簽證，台灣學員心得分享最多的一間。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.threads.net/@evayaee/post/C4xfcKlvFfT" target="_blank">→ Threads · Duke 介紹＆心得</a>
+        <a class="review-link" href="https://www.threads.net/@4c.hen9/post/DE7rNOHPyeU" target="_blank">→ Threads · Duke 介紹</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.auathailand.org/en/" target="_blank">AUA 語言中心</a></div>
+      <div class="school-loc">📍 曼谷/清邁</div>
+      <div class="school-note">老牌語言中心，曼谷與清邁皆有分校，採 ALG 自然習得法，著重聽力沉浸式學習。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.threads.net/@evayaee/post/C4vBTAivXiR" target="_blank">→ Threads · AUA 介紹＆心得</a>
+        <a class="review-link" href="https://www.ptt.cc/bbs/Thai/M.1523777029.A.A16.html" target="_blank">→ Ptt · AUA 泰語體驗＆自學分享</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://rtl-school.com/" target="_blank">RTL 語言中心</a></div>
+      <div class="school-loc">📍 曼谷</div>
+      <div class="school-note">曼谷中型語言學校，主打小班制＆生活化教材，師資親切，Medium 與 Threads 心得多。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.threads.net/@evayaee/post/C4sg2KZvVNW" target="_blank">→ Threads · RTL 介紹＆心得</a>
+        <a class="review-link" href="https://medium.com/%E9%9B%96%E7%84%B6%E5%AA%BD%E5%AA%BD%E8%AA%AA%E9%82%A3%E8%A3%A1%E5%A4%AA%E5%8D%B1%E9%9A%AA/%E5%AD%B8%E6%B3%B0%E6%96%87-%E5%B0%B1%E6%89%BErtl-%E5%AF%A6%E9%AB%94-%E7%B7%9A%E4%B8%8A-ac2a36a725b8" target="_blank">→ Medium · RTL 介紹＆心得</a>
+        <a class="review-link" href="https://youtu.be/0e-jbvMlcvE" target="_blank">→ YouTube · 泰國語言學校經驗分享</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://tslchiangmai.com/" target="_blank">TSL Chiang Mai</a></div>
+      <div class="school-loc">📍 清邁</div>
+      <div class="school-note">清邁熱門選擇，團體課 2,500฿/月起，提供學生簽證（3/6/12 個月），一對一彈性高。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://clairedrink.com/thai-language-school" target="_blank">→ 微醺嗑萊兒 · TSL 一對一心得</a>
+        <a class="review-link" href="https://www.facebook.com/TSLChiangMai/" target="_blank">→ Facebook 粉絲專頁</a>
+        <a class="review-link" href="https://youtube.com/@tslchiangmaithailanguagesc9861" target="_blank">→ YouTube 頻道</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.li.cmu.ac.th/zh/home-cn/" target="_blank">清邁大學語言中心 CMU</a></div>
+      <div class="school-loc">📍 清邁 · 短期密集</div>
+      <div class="school-note">清邁大學開設的 15 天密集課（45 小時，9,000฿），專攻聽說，適合短期旅居者。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.threads.com/@bigpeieating/post/DGcY-5GT68J?xmt=AQF0io-zQ7WP90tK0j0ykymsENRll28eOlHIPa4t2kUJTQ" target="_blank">→ Threads · CMU 課程心得</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.chiangmailocator.com/chiang-mai-language-schools-158:ymca-language-school" target="_blank">YMCA Chiang Mai</a></div>
+      <div class="school-loc">📍 清邁 · 彈性課表</div>
+      <div class="school-note">古城近 Kad Suan Kaew 商圈，一三五上課（30 小時 3,500฿+ 會員費），輕鬆派。</div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.phuket-languageschool.com/" target="_blank">Patong Language School</a></div>
+      <div class="school-loc">📍 普吉島</div>
+      <div class="school-note">1983 年成立的老字號，普吉島最知名的泰語學校，也提供英、德、日語課程。</div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.facebook.com/SWUTFL/?locale=zh_TW" target="_blank">詩納卡琳威洛大學 SWU-TFL</a></div>
+      <div class="school-loc">📍 曼谷</div>
+      <div class="school-note">詩納卡琳威洛大學開設的對外泰語課程，公立大學師資穩定，網路心得較少可自行查詢。</div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.modulolearning.com/" target="_blank">Modulo 語言學校</a></div>
+      <div class="school-loc">📍 曼谷</div>
+      <div class="school-note">曼谷新興語言學校，提供線上＆實體課程，課程客製化程度高，網路心得較少可自行查詢。</div>
+    </div>
+  </div>
+
+  <!-- 語言學校延伸閱讀 -->
+  <div style="margin-top:1.25rem">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--muted)">📎 延伸閱讀（比較 & 總覽）</div>
+    <div class="resource-list">
+      <a class="resource-link" href="https://www.threads.net/@sayen_gogo/post/DFDlPiZTmK6" target="_blank">Threads · 朱拉 vs. RTL vs. Duke</a>
+      <a class="resource-link" href="https://cjfuntravel.com/2024/06/%E3%80%90%E6%B3%B0%E5%9C%8B%E6%9B%BC%E8%B0%B7%E3%80%91%E5%88%86%E4%BA%AB%E5%85%AD%E9%96%93%E6%B3%B0%E6%96%87%E8%AA%9E%E8%A8%80%E5%AD%B8%E6%A0%A1-%E8%A3%9C%E7%BF%92%E7%8F%AD%EF%BC%8C%E5%8C%85%E5%90%AB/" target="_blank">六間語言學校/補習班介紹＆心得分享</a>
+      <a class="resource-link" href="https://youtu.be/urjGGlqgjmI" target="_blank">YouTube · 泰國遊學在幹嘛＆語言學校 QA</a>
+    </div>
+  </div>
+</div>
+
+<!-- 台灣實體課程 -->
+<div class="section" id="inperson">
+  <div class="section-header">
+    <span class="section-icon">🇹🇼</span>
+    <div class="section-title">台灣實體課程推薦</div>
+    <span class="section-count">補習班 & 社區大學</span>
+  </div>
+
+  <div style="font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.8">透過泰文補習班或社區大學泰語推廣班學習泰文，選擇多樣，可依所在地區挑選。</div>
+
+  <div class="school-grid">
+    <div class="school-card">
+      <div class="school-name"><a href="https://cpbae.nccu.edu.tw/" target="_blank">譚老師泰語（政大公企中心）</a></div>
+      <div class="school-loc">📍 台北 · 字母課大推</div>
+      <div class="school-note">定居台灣的泰國老師，有清晰的系統脈絡，淺顯易懂。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.facebook.com/p/%E8%AD%9A%E8%80%81%E5%B8%AB%E6%B3%B0%E8%AA%9E-%E0%B8%A0%E0%B8%B2%E0%B8%A9%E0%B8%B2%E0%B9%84%E0%B8%97%E0%B8%A2-100057439930231/" target="_blank">→ 譚老師泰語臉書官網</a>
+        <a class="review-link" href="https://www.threads.net/@hue_0224/post/C_hmO7sSSWb" target="_blank">→ Threads · Chacha 課程心得</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.thai.idv.tw/" target="_blank">目的達泰語教室</a></div>
+      <div class="school-loc">📍 台北古亭 · 會話課大推</div>
+      <div class="school-note">中師講解＋外師複習發音會話，有試聽/字母/文化等多元課程。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.dcard.tw/f/language/p/239717219" target="_blank">→ Dcard · 泰文學習心得</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://hanumanthc.com/" target="_blank">哈努曼泰語教室</a></div>
+      <div class="school-loc">📍 台北</div>
+      <div class="school-note">另一間常見的台北泰語補習班，Dcard/Threads 上有心得可參考。</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.dcard.tw/f/language/p/239740469" target="_blank">→ Dcard · 哈努曼評價</a>
+        <a class="review-link" href="https://www.threads.net/@sun_emgifan/post/DEMjhFyzZRT" target="_blank">→ Threads · 哈努曼心得</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name">社區大學泰語課 🔍</div>
+      <div class="school-loc">📍 全台 · 自行查詢</div>
+      <div class="school-note">各縣市社區大學不定期開設泰語課程，可直接到以下查詢頁面搜尋「泰語／泰文」關鍵字：</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+        <a class="review-link" href="https://www.ccwt.tp.edu.tw/" target="_blank">→ 臺北市社區大學聯網</a>
+        <a class="review-link" href="https://cci.ntpc.edu.tw/" target="_blank">→ 新北市社區大學聯合資訊網</a>
+        <a class="review-link" href="https://www.rivegauche.org.tw/" target="_blank">→ 三重社區大學</a>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-name"><a href="https://www.sce.pccu.edu.tw/courses/1LTAB4020" target="_blank">文大推廣部（泰語入門 T1）</a></div>
+      <div class="school-loc">📍 全台分部</div>
+      <div class="school-note">蘇青婉老師等從零開始的入門課，平日／假日班皆有。</div>
+    </div>
+  </div>
+
+  <!-- 台灣實體課程延伸閱讀 -->
+  <div style="margin-top:1.25rem">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--muted)">📎 延伸閱讀（台灣補習班評比）</div>
+    <div class="resource-list">
+      <a class="resource-link" href="https://www.dcard.tw/f/language/p/228372283" target="_blank">Dcard · 泰語補習班推薦</a>
+    </div>
+  </div>
+</div>
+
+<!-- 我的歷程 -->
+<div class="section" id="journey">
+  <div class="section-header">
+    <span class="section-icon">🌱</span>
+    <div class="section-title">我的泰文學習歷程</div>
+  </div>
+
+  <div style="background:var(--green-light);border:1px solid rgba(45,106,79,0.25);border-radius:10px;padding:1.25rem;margin-bottom:1.25rem">
+    <div style="font-size:14px;font-weight:600;color:var(--green);margin-bottom:12px">🔥 5 個學習動機</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;background:var(--green);color:white;border-radius:99px;padding:2px 8px;flex-shrink:0;margin-top:2px">01</span>
+        <div style="font-size:13px;line-height:1.7">入坑 <strong>lingorm</strong> 以後，想直接聽懂她們說的話，不想等粉絲翻譯。</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;background:var(--green);color:white;border-radius:99px;padding:2px 8px;flex-shrink:0;margin-top:2px">02</span>
+        <div style="font-size:13px;line-height:1.7">16 歲時聽 Podcast 聽到 <strong>FIRE 計劃</strong>，泰國為其中一個退休的理想地點。</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;background:var(--green);color:white;border-radius:99px;padding:2px 8px;flex-shrink:0;margin-top:2px">03</span>
+        <div style="font-size:13px;line-height:1.7">18 歲去<strong>澳洲打工度假</strong>，遇到其中一個最好的朋友是泰國人，留下對泰國很好的印象。</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;background:var(--green);color:white;border-radius:99px;padding:2px 8px;flex-shrink:0;margin-top:2px">04</span>
+        <div style="font-size:13px;line-height:1.7">2025/6 月至泰國<strong>清邁旅居三週</strong>，遇到對我視如己出的泰國一家人，希望能與他們交流。</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;background:var(--green);color:white;border-radius:99px;padding:2px 8px;flex-shrink:0;margin-top:2px">05</span>
+        <div style="font-size:13px;line-height:1.7">學校剛好有開泰文選修課，聽說很甜涼，想說去混一個學分 😂</div>
+      </div>
+      <div style="margin-top:6px;padding-top:10px;border-top:1px dashed rgba(45,106,79,0.3);font-size:13px;color:var(--green);font-weight:600">➝ 綜上所述，因為有興趣＋有需求，於是開啟我的泰文學習之旅！</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">選修泰文字母課（3個月）</div>
+        <div class="timeline-desc">師大選修課，課程超硬超紮實，但課後沒有複習，結果全忘光了 😅</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">清邁旅居三週（2025/06/13～07/04）</div>
+        <div class="timeline-desc">至清邁旅居，遇見屋主一家人，這段經歷讓我有動力開始學泰文。</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">目的達泰文教室（3-4個月）</div>
+        <div class="timeline-desc">中師講解課程，外師帶複習發音與會話，課堂上有很多開口說泰文的機會。每堂開始複習上堂內容，課後提供音檔。8堂課4000元，每堂2小時，用拼音學泰文，適合想先把會話練起來的人。上到初級三後因個人偏好自學停止。</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">語言交換（3個月）→ 可應付日常會話</div>
+        <div class="timeline-desc">透過師大語言交換系統配對認識 Nantan，每週約1-2次做語言交換，她教我泰文，我教她中文，她還寫筆記來教我！</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">自學重拾字母 + 持續練習</div>
+        <div class="timeline-desc">和泰國家人&朋友保持聯絡，在 italki 找泰國老師線上練習口說。</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--gold);box-shadow:0 0 0 2px var(--gold)"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">🎯 目前目標</div>
+        <div class="timeline-desc">希望畢業後能至泰國旅居一年！</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem">
+    <div style="font-size:14px;font-weight:600;color:var(--gold);margin-bottom:12px">📚 關於泰文這門語言</div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px">
+      <div style="background:var(--gold-light);border-radius:8px;padding:10px 12px;text-align:center">
+        <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--gold)">44</div>
+        <div style="font-size:11px;color:var(--muted)">子音</div>
+      </div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:10px 12px;text-align:center">
+        <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--gold)">32</div>
+        <div style="font-size:11px;color:var(--muted)">母音</div>
+      </div>
+      <div style="background:var(--green-light);border-radius:8px;padding:10px 12px;text-align:center">
+        <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">76</div>
+        <div style="font-size:11px;color:var(--muted)">字母總數</div>
+      </div>
+      <div style="background:var(--green-light);border-radius:8px;padding:10px 12px;text-align:center">
+        <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">5</div>
+        <div style="font-size:11px;color:var(--muted)">聲調（比中文多「飄」）</div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;color:var(--muted);line-height:1.8">
+      <div style="margin-bottom:8px">• 母音 + 子音有 <strong>18 種組合方式</strong>，學完字母後還有簡化母音／尾音／特殊規則等需要學習。</div>
+      <div style="margin-bottom:8px">• 對中文母語者，泰文<strong>口說不會太難</strong>，因為沒有複雜的文法和陰陽性。</div>
+      <div>• 整體來說：<strong style="color:var(--green)">聽、說</strong> 比較和藹可親；<strong style="color:#dc2626">讀、寫</strong> 比較難。</div>
+    </div>
+
+    <div style="margin-top:14px;padding-top:12px;border-top:1px dashed var(--border)">
+      <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text)">💡 學習順序建議（個人觀點，沒有對錯）</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.8">
+        <div>▸ <strong>初期</strong>：先學習基礎泰文會話，建立說泰文的自信／培養學習興趣</div>
+        <div>▸ <strong>中期</strong>：回頭慢慢接觸字母，優化發音，學習泰文打字</div>
+        <div>▸ <strong>後期</strong>：實地演練並持續接觸該語言，將泰文融入生活</div>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--hint);line-height:1.7">
+        ➝ 如果從泰文字母開始學習並無不可（只是很容易卡關放棄）<br>
+        ➝ 聽說讀寫可同時進行，找到自己舒服的學習步調即可
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 課程心得 -->
+<div class="section" id="reviews">
+  <div class="section-header">
+    <span class="section-icon">📝</span>
+    <div class="section-title">課程心得分享</div>
+    <span class="section-count">3 個心得</span>
+  </div>
+
+  <div class="review-card">
+    <div class="review-title">譚華德老師（泰文字母課）— 政大公企中心</div>
+    <div class="review-meta">動機：師大選修課 · 結果：全忘光了 😭</div>
+    <div class="review-body">課程內容超硬超紮實，很有系統性，適合想把泰文地基打好的同學。建議：如果能把字母和發音規則背起來，後面會輕鬆很多，要持續複習！</div>
+    <a class="review-link" href="https://cpbae.nccu.edu.tw/" target="_blank">→ 官網傳送門</a>
+  </div>
+
+  <div class="review-card">
+    <div class="review-title">目的達泰文教室（泰文會話課）</div>
+    <div class="review-meta">動機：想看補習班怎麼教 · 上到初級三後停止</div>
+    <div class="review-body">中師講解課程，外師帶複習發音與會話，課堂上有很多開口說泰文的機會。每堂開始複習上堂內容，會教常用單字+基本文法。8堂課4000元，每堂2小時。用拼音學泰文，適合想先把會話練起來的人。</div>
+    <a class="review-link" href="https://www.thai.idv.tw/" target="_blank">→ 目的達官網</a>
+    <a class="review-link" href="https://mudita.tw/new-student-classes/" target="_blank">→ 新生課表</a>
+    <a class="review-link" href="https://www.threads.com/@hue_0224/post/DVnpqArCZkF?xmt=AQF0E6GFjxfI6dxSPSfWfhVoh5uoSiQr--mJ94VMHRHy-tO6t8TgVKhbFylySV5qua5GLQZU&slof=1" target="_blank">→ Threads 心得貼文</a>
+  </div>
+
+  <div class="review-card">
+    <div class="review-title">italki 線上語言學習平台</div>
+    <div class="review-meta">靈活的線上一對一練習平台</div>
+    <div class="review-body">可以在平台上找到泰國老師進行線上練習，彈性高，可依需求選老師。詳細介紹和推薦老師口袋名單可見 threads 貼文。</div>
+    <div style="margin-top:12px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:10px 14px">
+      <div style="font-size:12px;font-weight:600;color:#166534;margin-bottom:4px">🎁 專屬優惠</div>
+      <div style="font-size:12px;color:#15803d;margin-bottom:8px">透過 Chacha 的推薦連結註冊，購買 $20 美金後你可獲得 <strong>$5 美金</strong>折扣！</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span style="font-family:'DM Mono',monospace;font-size:13px;background:white;border:1px solid #86efac;border-radius:6px;padding:4px 10px;color:#166534;font-weight:500">推薦碼：AaeffAf</span>
+        <a href="https://www.italki.com/zh-tw/i/ref/AaeffAf?hl=zh-tw&utm_medium=user_referral&utm_source=copylink_share" target="_blank" style="display:inline-block;background:#166534;color:white;border-radius:6px;padding:5px 14px;font-size:12px;text-decoration:none;font-family:'Noto Serif TC',serif">👉 點我用優惠連結註冊</a>
+      </div>
+    </div>
+    <a class="review-link" href="https://www.italki.com/zh-tw/i/ref/AaeffAf" target="_blank">→ italki 官網</a>
+    <a class="review-link" href="https://www.threads.com/@hue_0224/post/DV3J1TXicIt?xmt=AQF0Du2kaEbjmhgPe7WgY0XAJXv711B2op_H4z9_MfYELv-F6XEb0WOPeJSHxXe-C5kP0vc&slof=1" target="_blank">→ Threads 平台介紹/優缺點</a>
+    <a class="review-link" href="https://www.threads.com/@hue_0224/post/DV5CraICSPW?xmt=AQF0md3WZTMGHAlZuWkuG0hjAoBd2F__ILsnm0XsS0BvvW6hfE8BqGhfvb6N6B1qfvacpKTz&slof=1" target="_blank">→ Threads 推薦老師口袋名單</a>
+  </div>
+</div>
+
+<!-- 其他資源 -->
+<div class="section" id="resources">
+  <div class="section-header">
+    <span class="section-icon">🔗</span>
+    <div class="section-title">其他推薦資源</div>
+  </div>
+
+  <div style="margin-bottom:1rem">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--muted)">📚 推薦用書</div>
+    <div class="resource-list">
+      <a class="resource-link" href="https://www.books.com.tw/products/0010955770" target="_blank">自學泰文會話推薦用書 ── 開始遊泰國說泰語</a>
+      <a class="resource-link" href="https://www.books.com.tw/products/0010914579" target="_blank">自學泰文字母推薦用書 ── 泰文字母聽．說．寫</a>
+      <a class="resource-link" href="https://docs.google.com/forms/d/e/1FAIpQLScnsZlZsiGFVKT_SMswNHQNfOa24EXtJBlvh4NWZcFjETPltQ/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank">Hanの泰文字母習字帖（訂購表單）</a>
+    </div>
+  </div>
+
+  <!-- 推薦學習工具＆APP -->
+  <div style="margin-bottom:1rem">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--muted)">🛠️ 推薦學習工具＆APP</div>
+
+    <!-- Chacha 自製 highlight 卡 -->
+    <a href="https://thai-vocab-app.vercel.app/" target="_blank" style="display:block;text-decoration:none;background:linear-gradient(135deg,#f0fdf4 0%,#fff 50%,#fef9ed 100%);border:1.5px solid var(--green);border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px;transition:all 0.2s">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <div style="font-size:32px;flex-shrink:0;line-height:1">📖</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px">
+            <span style="font-size:14px;font-weight:600;color:var(--text)">泰文單字學習（Chacha 自製）</span>
+            <span style="font-size:10px;font-weight:600;background:var(--green);color:white;border-radius:99px;padding:2px 8px">★ Chacha 力推</span>
+          </div>
+          <div style="font-size:11px;color:var(--green);font-family:'DM Mono',monospace;margin-bottom:8px">thai-vocab-app.vercel.app</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7">採用 <strong>SRS 間隔重複系統</strong>讓記憶更高效，可用 Google 帳號登入並雲端同步進度。我自己每天都在用，並會持續補充新單字 🌱</div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(45,106,79,0.2);font-size:11px;color:var(--hint);line-height:1.6">
+            💡 小提示：請固定使用 Chrome 或 Safari 開啟，避免從 IG／Threads 的內建瀏覽器進入，這樣不用一直重新登入！
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Chacha 自製 字母學習頁 -->
+    <a href="alphabet.html" style="display:block;text-decoration:none;background:linear-gradient(135deg,#fef9ed 0%,#fff 50%,#f0fdf4 100%);border:1.5px solid var(--gold);border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px;transition:all 0.2s">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <div style="font-size:32px;flex-shrink:0;line-height:1">🔤</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px">
+            <span style="font-size:14px;font-weight:600;color:var(--text)">泰文字母與拼字一覽（Chacha 自製）</span>
+            <span style="font-size:10px;font-weight:600;background:var(--gold);color:white;border-radius:99px;padding:2px 8px">★ Chacha 力推</span>
+          </div>
+          <div style="font-size:11px;color:var(--gold);font-family:'DM Mono',monospace;margin-bottom:8px">點擊任一字母聽發音 · 互動式學習</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7">完整收錄 <strong>32 個母音 + 44 個子音</strong>，含真人發音、簡化母音規則、尾音分類、聲調規則 18 種拼字組合與互動查詢器。整理自譚老師字母墊板，配合互動設計適合手機隨時複習 🌱</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- 其他工具 / APP -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px">
+      <a href="https://www.thai2english.com/" target="_blank" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:12px;line-height:1.6;transition:all 0.2s">
+        <div style="font-weight:600;margin-bottom:2px">🔍 thai2English</div>
+        <div style="color:var(--muted);font-size:11px">查詞神器，提供拼音、聲調、字根分析</div>
+      </a>
+      <a href="http://www.thai-language.com/dict/" target="_blank" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:12px;line-height:1.6;transition:all 0.2s">
+        <div style="font-weight:600;margin-bottom:2px">📔 thai-language.com</div>
+        <div style="color:var(--muted);font-size:11px">老牌泰英字典，例句豐富、文法說明詳細，適合進階查詢</div>
+      </a>
+      <a href="https://youglish.com/thai" target="_blank" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:12px;line-height:1.6;transition:all 0.2s">
+        <div style="font-weight:600;margin-bottom:2px">📺 YouGlish for Thai</div>
+        <div style="color:var(--muted);font-size:11px">聽真人影片學習單字、短語或句子發音，觀摩泰文是如何使用在真實的生活情境中</div>
+      </a>
+      <a href="https://translate.google.com/" target="_blank" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:12px;line-height:1.6;transition:all 0.2s">
+        <div style="font-weight:600;margin-bottom:2px">🌐 Google 翻譯</div>
+        <div style="color:var(--muted);font-size:11px">即時翻譯／拍照翻譯／語音辨識，旅遊基本盤</div>
+      </a>
+      <a href="https://apps.ankiweb.net/" target="_blank" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:12px;line-height:1.6;transition:all 0.2s">
+        <div style="font-weight:600;margin-bottom:2px">🃏 Anki</div>
+        <div style="color:var(--muted);font-size:11px">知名單字記憶 APP，可自製或下載泰文單字來複習</div>
+      </a>
+      <a href="https://ling-app.com/cht/" target="_blank" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:12px;line-height:1.6;transition:all 0.2s">
+        <div style="font-weight:600;margin-bottom:2px">🐵 Ling App</div>
+        <div style="color:var(--muted);font-size:11px">遊戲化學習，課程系統化，AI 聊天機器人練口說</div>
+      </a>
+      <a href="https://www.thaipod101.com/" target="_blank" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:12px;line-height:1.6;transition:all 0.2s">
+        <div style="font-weight:600;margin-bottom:2px">🎙️ ThaiPod101</div>
+        <div style="color:var(--muted);font-size:11px">從零基礎到進階的 Podcast 教學系列，免費＋付費皆有</div>
+      </a>
+    </div>
+  </div>
+
+  <div style="margin-bottom:1rem">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--muted)">🎵 推薦泰文歌</div>
+    <div class="resource-list">
+      <a class="resource-link" href="https://youtu.be/awLLFMcj_m8" target="_blank">ฝนตกไหม（下雨了嗎）— Three Man Down</a>
+      <a class="resource-link" href="https://youtu.be/x9LkcUk1-EU" target="_blank">Saturday Night — Bright Vachirawit</a>
+      <a class="resource-link" href="https://youtu.be/Hn8mjENgSVw" target="_blank">First Love — Nont Tanont</a>
+      <a class="resource-link" href="https://youtu.be/xvk-tMP6Ydk" target="_blank">Melt — Nont Tanont</a>
+      <a class="resource-link" href="https://youtu.be/vdYqVe0E3Yg" target="_blank">Lover Boy — Phum Viphurit</a>
+      <a class="resource-link" href="https://youtu.be/7FVuDuM66iU" target="_blank">สุดท้ายฉันก็เจ็บ — Ost. ใจซ่อนรัก The Secret of Us</a>
+      <a class="resource-link" href="https://youtu.be/AMzlTbjBLDo" target="_blank">เรื่องเล่าของเจ้าหญิง — Ost. Pluto</a>
+      <a class="resource-link" href="https://youtu.be/LAZpP0_w23k" target="_blank">โลกเอียง (Tilt) — Ost. 23.5 องศาที่โลกเอียง</a>
+      <a class="resource-link" href="https://youtu.be/WtcKJtwMD2E" target="_blank">ดาวหางฮัลเลย์ — fellow fellow</a>
+      <a class="resource-link" href="https://youtu.be/6f5sozKp0R0" target="_blank">ลืมไปแล้วว่าลืมยังไง (Fade) — Jeff Satur</a>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--muted)">🌐 推薦網站</div>
+    <div class="resource-list">
+      <a class="resource-link" href="https://vocus.cc/article/67021e77fd897800017508b1" target="_blank">自學泰語的資源整理 - 網站篇</a>
+      <a class="resource-link" href="https://vocus.cc/article/65d6f524fd89780001aabf91" target="_blank">泰語學習 YouTube 頻道推薦</a>
+      <a class="resource-link" href="https://www.thaipod101.com/" target="_blank">ThaiPod101 免費學習網站</a>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--muted)">📋 Chacha 製作的模板</div>
+    <div class="resource-list">
+      <a class="resource-link" href="https://www.notion.so/by-Charlotte-218fd45e103a8043b6a6f30d0d03463f" target="_blank" style="background:var(--green-light);border-color:rgba(45,106,79,0.3)"><strong>🌟 常用泰文整理（Notion）</strong></a>
+      <a class="resource-link" href="https://www.notion.so/by-Charlotte-insta-hue_0224-2d6fd45e103a80038bb2c3ae789531f8" target="_blank">旅遊札記模板（Notion）</a>
+      <a class="resource-link" href="https://www.notion.so/Charlotte-s-Notion-cea0c5eadd494ac0966a2262551432fd" target="_blank">個人檔案資料庫模板（Notion）</a>
+      <a class="resource-link" href="https://www.notion.so/Charlotte-s-2024-16cfd45e103a80b98016e452ee704133" target="_blank">年度回顧模板（Notion）</a>
+      <a class="resource-link" href="https://www.notion.so/50-50-Day-Reset-Plan-191fd45e103a80f9916bedbd2a0b95c1" target="_blank">50天自律模板（Notion）</a>
+      <a class="resource-link" href="https://www.notion.so/Daily-Template-394f0e20aab34f4f935aa3009e53422d" target="_blank">待辦清單＆感恩日記模板（Notion）</a>
+      <a class="resource-link" href="https://www.notion.so/Working-Holiday-1e4fd45e103a80509f08edb4813afba6" target="_blank">澳洲打工度假資訊（Notion）</a>
+      <a class="resource-link" href="https://www.notion.so/6-13-7-4-Made-by-Charlotte-Instagram-hue_0224-205fd45e103a8082b3bbea93da261587" target="_blank">清邁三週遊旅遊紀錄（Notion）</a>
+      <a class="resource-link" href="https://www.canva.com/design/DAHAWiESUtc/VH3X4hRh_r09xMiJUOJkjg/edit" target="_blank">清邁旅遊手冊／旅遊常用泰文整理（Canva）</a>
+      <a class="resource-link" href="https://www.canva.com/design/DAHAW8RX7xg/Ez3-hzrd80rPZKYEzYV9xQ/edit" target="_blank">清邁公寓三折頁（Canva）</a>
+    </div>
+  </div>
+</div>
+
+<!-- 社群 -->
+<div class="section" id="social">
+  <div class="section-header">
+    <span class="section-icon">✨</span>
+    <div class="section-title">Chacha 的社群</div>
+  </div>
+  <div class="social-grid">
+    <a class="social-card" href="https://instagram.com/hue_0224" target="_blank">
+      <span class="social-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#E1306C" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="#E1306C" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="#E1306C"/></svg></span>
+      <div>
+        <div style="font-weight:600;font-size:13px">Instagram</div>
+        <div style="font-size:11px;color:var(--muted)">@hue_0224（最活躍）</div>
+      </div>
+    </a>
+    <a class="social-card" href="https://www.threads.com/@hue_0224?igshid=NTc4MTIwNjQ2YQ==" target="_blank">
+      <span class="social-icon"><svg width="22" height="22" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M141.537 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.23c8.249.053 14.474 2.452 18.502 7.129 2.932 3.405 4.893 8.11 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.35-22.809-.169-40.06-7.484-51.275-21.742C34.177 127.1 28.95 108.07 28.775 84c.175-24.07 5.403-43.1 15.525-56.542C55.521 13.2 72.77 5.886 95.58 5.717c22.976.17 40.86 7.52 53.16 21.85 6.037 7.04 10.529 15.88 13.43 26.21l16.146-4.308c-3.51-12.9-9.188-24.004-16.98-33.102C147.042 6.8 125.19-1.067 96.04-.998c-29.307.07-51.66 8.997-66.451 26.537C16.969 40.5 10.355 61.588 10.148 87.979l-.003.02.003.021c.207 26.392 6.821 47.48 19.44 62.44 14.79 17.54 37.144 26.468 66.451 26.537 26.35.064 44.535-7.06 59.655-22.36 20.257-20.432 19.642-45.644 12.954-61.233-4.724-11.007-13.58-19.905-27.111-25.416z" fill="#000"/><path d="M96.828 120.035c-10.518.577-21.199-4.132-21.72-14.333-.382-7.179 5.028-15.147 22.317-16.148 1.955-.113 3.874-.168 5.76-.168 6.353 0 12.3.619 17.675 1.813-2.015 25.161-13.007 28.252-24.032 28.836z" fill="#000"/></svg></span>
+      <div>
+        <div style="font-weight:600;font-size:13px">Threads</div>
+        <div style="font-size:11px;color:var(--muted)">@hue_0224</div>
+      </div>
+    </a>
+    <a class="social-card" href="https://youtube.com/@charlottehsuyololife" target="_blank">
+      <span class="social-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="5" width="20" height="14" rx="4" fill="#FF0000"/><path d="M10 9.5l5 2.5-5 2.5V9.5z" fill="white"/></svg></span>
+      <div>
+        <div style="font-weight:600;font-size:13px">YouTube</div>
+        <div style="font-size:11px;color:var(--muted)">Charlotte Hsu</div>
+      </div>
+    </a>
+    <a class="social-card" href="https://charlottes-corner2.webnode.page/" target="_blank">
+      <span class="social-icon">🌐</span>
+      <div>
+        <div style="font-weight:600;font-size:13px">個人網站</div>
+        <div style="font-size:11px;color:var(--muted)">Charlotte's Corner</div>
+      </div>
+    </a>
+    <a class="social-card" href="https://medium.com/@CharlotteH" target="_blank">
+      <span class="social-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6.5" cy="12" r="5.5" fill="#000"/><ellipse cx="17" cy="12" rx="2.5" ry="5.5" fill="#000"/><ellipse cx="22" cy="12" rx="1" ry="5" fill="#000"/></svg></span>
+      <div>
+        <div style="font-weight:600;font-size:13px">Medium</div>
+        <div style="font-size:11px;color:var(--muted)">CharlotteH</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- 常用泰文整理 -->
+<div class="section" id="vocab">
+  <div class="section-header">
+    <span class="section-icon">🇹🇭</span>
+    <div class="section-title">常用泰文整理</div>
+    <span class="section-count">獨旅必備</span>
+  </div>
+
+  <div class="tip-box" style="margin-bottom:1.25rem">
+    <strong>‼️ 聲明：</strong>本人沒有學過拼音，拼音參考<a href="https://www.thai2english.com/" target="_blank" style="color:var(--green);font-weight:600">thai2English</a>。中文空耳以個人感受紀錄，如有錯誤還請大家多多指教 🙏<br><br>
+    <strong>📖 怎麼用：</strong>這是我到泰國獨旅有用到的泰文，都非常實用！只要你嘗試說一點點泰文，泰國人都會超級開心，情緒價值給好給滿 💯<br><br>
+    <strong>💡 小提醒：</strong>泰國是很重視禮儀的國家，建議說話時結尾都加 <strong style="color:var(--green)">ka（女）</strong>／<strong style="color:var(--green)">krab（男）</strong> 表示禮貌 🙏
+  </div>
+
+  <!-- 我來自台灣（特別說明） -->
+  <div style="background:linear-gradient(135deg,#fef9ed 0%,#fff 60%);border:1px solid rgba(200,150,60,0.3);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem">
+    <div style="font-size:14px;font-weight:600;color:var(--gold);margin-bottom:10px">😺 補充：我來自台灣</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:12px">泰國人其實認不出我們跟中國人有什麼差別 😆 學一下怎麼說「我來自台灣」，店家態度會馬上變不一樣～</div>
+    <table class="vocab-table" style="margin-bottom:8px">
+      <tbody>
+        <tr>
+          <td class="vocab-thai">ผม/ฉันมาจากไต้หวัน</td>
+          <td class="vocab-pinyin">phǒm/chǎn maa jàak taiwan</td>
+          <td class="vocab-pron">朋／纏 媽假 戴丸</td>
+          <td class="vocab-zh">我來自台灣<br><span class="vocab-en">I'm from Taiwan</span></td>
+        </tr>
+        <tr>
+          <td class="vocab-thai">คนไต้หวัน</td>
+          <td class="vocab-pinyin">khun taiwan</td>
+          <td class="vocab-pron">坤戴丸</td>
+          <td class="vocab-zh">台灣人<br><span class="vocab-en">Taiwanese</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:12px;color:var(--hint);line-height:1.6">男生用 <strong>phǒm（朋）</strong>；女生用 <strong>chǎn（纏）</strong>代表「我」的意思。通常知道是台灣人以後，泰國人的臉就會從 😾 變成 😻 這樣～</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="vocab-tabs" id="vocab-tabs">
+    <button class="vocab-tab active" data-tab="greet">👋 基本問候短語</button>
+    <button class="vocab-tab" data-tab="intro2">🤝 自我介紹</button>
+    <button class="vocab-tab" data-tab="eat">🍽️ 吃飯常用語</button>
+    <button class="vocab-tab" data-tab="taste">🌶️ 辣甜冰調整</button>
+    <button class="vocab-tab" data-tab="food">🥘 食物名稱</button>
+    <button class="vocab-tab" data-tab="dish">🍜 常見美食</button>
+    <button class="vocab-tab" data-tab="phrase">💬 吃飯實用句</button>
+  </div>
+
+  <!-- Panel: 基本問候 -->
+  <div class="vocab-panel active" data-panel="greet">
+    <table class="vocab-table">
+      <thead>
+        <tr>
+          <th>泰文 Thai</th>
+          <th>拼音 Pinyin</th>
+          <th>唸法 Pron.</th>
+          <th>中文 / English</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="vocab-thai">สวัสดี</td><td class="vocab-pinyin">sà-wàt-dee</td><td class="vocab-pron">沙瓦滴</td><td class="vocab-zh">你好／嗨／哈囉<br><span class="vocab-en">Hello / Hi</span></td></tr>
+        <tr><td class="vocab-thai">ขอบคุณ</td><td class="vocab-pinyin">kòp kun</td><td class="vocab-pron">口坤卡</td><td class="vocab-zh">謝謝<br><span class="vocab-en">Thank you</span></td></tr>
+        <tr><td class="vocab-thai">ใช่</td><td class="vocab-pinyin">châi</td><td class="vocab-pron">菜</td><td class="vocab-zh">是的<br><span class="vocab-en">Yes</span></td></tr>
+        <tr><td class="vocab-thai">ไม่ใช่</td><td class="vocab-pinyin">mâi châi</td><td class="vocab-pron">賣菜</td><td class="vocab-zh">不是<br><span class="vocab-en">No</span></td></tr>
+        <tr><td class="vocab-thai">ขอโทษ</td><td class="vocab-pinyin">kŏr tôht</td><td class="vocab-pron">ㄎㄡˊ透</td><td class="vocab-zh">對不起<br><span class="vocab-en">Sorry</span></td></tr>
+        <tr><td class="vocab-thai">ไม่เป็นไร</td><td class="vocab-pinyin">mâi bpen rai</td><td class="vocab-pron">賣扁來</td><td class="vocab-zh">不客氣／沒關係／沒事<br><span class="vocab-en">No worries / It's okay</span></td></tr>
+        <tr><td class="vocab-thai">ได้</td><td class="vocab-pinyin">dâai</td><td class="vocab-pron">戴</td><td class="vocab-zh">可以／好的<br><span class="vocab-en">Okay / Can do</span></td></tr>
+        <tr><td class="vocab-thai">อรุณสวัสดิ์</td><td class="vocab-pinyin">à-run sà-wàt</td><td class="vocab-pron">阿潤沙瓦</td><td class="vocab-zh">早安（正式）<br><span class="vocab-en">Good morning (formal)</span></td></tr>
+        <tr><td class="vocab-thai">มอร์นิ่ง</td><td class="vocab-pinyin">mo-ning</td><td class="vocab-pron">摸佞卡</td><td class="vocab-zh">早安（英譯）泰式發音<br><span class="vocab-en">Good morning (Thai-accented)</span></td></tr>
+        <tr><td class="vocab-thai">สวัสดีตอนเช้า</td><td class="vocab-pinyin">sà-wàt-dee dton-cháo</td><td class="vocab-pron">沙瓦滴抖潮</td><td class="vocab-zh">早安（口語）<br><span class="vocab-en">Good morning (informal)</span></td></tr>
+        <tr><td class="vocab-thai">ฝันดี</td><td class="vocab-pinyin">făn dee</td><td class="vocab-pron">煩低</td><td class="vocab-zh">晚安／祝你好夢<br><span class="vocab-en">Sweet dreams / Good night</span></td></tr>
+        <tr><td class="vocab-thai">กู๊ดไนท์</td><td class="vocab-pinyin">goo-nigh</td><td class="vocab-pron">姑奶</td><td class="vocab-zh">晚安（英譯）泰式發音<br><span class="vocab-en">Good night (Thai-accented)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Panel: 自我介紹 -->
+  <div class="vocab-panel" data-panel="intro2">
+    <table class="vocab-table">
+      <thead>
+        <tr><th>泰文 Thai</th><th>拼音 Pinyin</th><th>唸法 Pron.</th><th>中文 / English</th></tr>
+      </thead>
+      <tbody>
+        <tr class="vocab-subhead"><td colspan="4">📍 提問</td></tr>
+        <tr><td class="vocab-thai">สบายดีไหม</td><td class="vocab-pinyin">sà-baai dee măi</td><td class="vocab-pron">撒掰滴埋</td><td class="vocab-zh">你好嗎？<br><span class="vocab-en">How are you?</span></td></tr>
+        <tr><td class="vocab-thai">เป็นยังไงบ้าง</td><td class="vocab-pinyin">bpen yang ngai bâang</td><td class="vocab-pron">邊飲矮棒</td><td class="vocab-zh">最近怎麼樣？<br><span class="vocab-en">How have you been?</span></td></tr>
+        <tr><td class="vocab-thai">วันนี้</td><td class="vocab-pinyin">wan née</td><td class="vocab-pron">晚尼</td><td class="vocab-zh">今天<br><span class="vocab-en">Today</span></td></tr>
+        <tr><td class="vocab-thai">เมื่อวานนี้／พรุ่งนี้</td><td class="vocab-pinyin">mêuua waan née / prûng-née</td><td class="vocab-pron">ㄇㄜ晚尼／ㄆㄨㄣˋ尼</td><td class="vocab-zh">昨天／明天<br><span class="vocab-en">Yesterday / Tomorrow</span></td></tr>
+        <tr><td class="vocab-thai">คุณชื่ออะไร</td><td class="vocab-pinyin">kun chêu à-rai</td><td class="vocab-pron">坤撤阿來</td><td class="vocab-zh">你叫什麼名字？<br><span class="vocab-en">What's your name?</span></td></tr>
+        <tr><td class="vocab-thai">คุณมาจากประเทศอะไร</td><td class="vocab-pinyin">kun maa jàak bprà-têt à-rai</td><td class="vocab-pron">坤媽假 不拉貼 阿來</td><td class="vocab-zh">你來自哪個國家？<br><span class="vocab-en">Where are you from?</span></td></tr>
+        <tr><td class="vocab-thai">ทำไมมาประเทศไทย</td><td class="vocab-pinyin">tam-mai maa bprà-têt tai</td><td class="vocab-pron">湯麥媽不拉貼泰</td><td class="vocab-zh">為什麼來泰國呢？<br><span class="vocab-en">Why did you come to Thailand?</span></td></tr>
+        <tr><td class="vocab-thai">ยินดีที่ได้รู้จัก</td><td class="vocab-pinyin">yin dee têe dâai róo jàk</td><td class="vocab-pron">飲低踢帶如假</td><td class="vocab-zh">很高興認識你<br><span class="vocab-en">Nice to meet you</span></td></tr>
+        <tr><td class="vocab-thai">โชคดี</td><td class="vocab-pinyin">chôhk dee</td><td class="vocab-pron">湊低</td><td class="vocab-zh">祝你好運<br><span class="vocab-en">Good luck</span></td></tr>
+        <tr><td class="vocab-thai">ขอให้มีความสุข</td><td class="vocab-pinyin">kŏr hâi mee kwaam sùk</td><td class="vocab-pron">摳嗨米匡素</td><td class="vocab-zh">祝你開心<br><span class="vocab-en">Wish you happy</span></td></tr>
+        <tr><td class="vocab-thai">เจอกัน</td><td class="vocab-pinyin">jer gan</td><td class="vocab-pron">遮乾</td><td class="vocab-zh">下次見／之後見<br><span class="vocab-en">See you</span></td></tr>
+        <tr class="vocab-subhead"><td colspan="4">💬 回答</td></tr>
+        <tr><td class="vocab-thai">สบายดี ขอบคุณ</td><td class="vocab-pinyin">sà-baai dee kòp kun</td><td class="vocab-pron">撒掰滴口坤卡</td><td class="vocab-zh">我很好，謝謝<br><span class="vocab-en">I'm fine, thank you</span></td></tr>
+        <tr><td class="vocab-thai">ผม/ฉันชื่อ…</td><td class="vocab-pinyin">phǒm/chǎn chêu…</td><td class="vocab-pron">纏撤…</td><td class="vocab-zh">我叫作＿＿（名字）<br><span class="vocab-en">My name is…</span></td></tr>
+        <tr><td class="vocab-thai">ผม/ฉันมาจาก…</td><td class="vocab-pinyin">phǒm/chǎn maa jàak…</td><td class="vocab-pron">纏媽假…</td><td class="vocab-zh">我來自＿＿（國家）<br><span class="vocab-en">I'm from…</span></td></tr>
+        <tr><td class="vocab-thai">ผม/ฉันมาไทยเพราะ…</td><td class="vocab-pinyin">phǒm/chǎn maa tai prór…</td><td class="vocab-pron">纏媽泰婆…</td><td class="vocab-zh">我來泰國是因為＿＿<br><span class="vocab-en">I came to Thailand because…</span></td></tr>
+        <tr><td class="vocab-thai">มาทำงาน</td><td class="vocab-pinyin">maa tam ngaan</td><td class="vocab-pron">馬湯安</td><td class="vocab-zh">來工作<br><span class="vocab-en">For work</span></td></tr>
+        <tr><td class="vocab-thai">มาเรียน</td><td class="vocab-pinyin">maa riian</td><td class="vocab-pron">馬ㄌㄧㄢ</td><td class="vocab-zh">來唸書／讀書<br><span class="vocab-en">For studying</span></td></tr>
+        <tr><td class="vocab-thai">มาเที่ยว</td><td class="vocab-pinyin">maa tîieow</td><td class="vocab-pron">馬踢奧</td><td class="vocab-zh">來旅遊<br><span class="vocab-en">For traveling</span></td></tr>
+        <tr><td class="vocab-thai">เช่นกัน</td><td class="vocab-pinyin">chên gan</td><td class="vocab-pron">秤甘</td><td class="vocab-zh">你也是<br><span class="vocab-en">You too</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Panel: 吃飯常用語 -->
+  <div class="vocab-panel" data-panel="eat">
+    <table class="vocab-table">
+      <thead>
+        <tr><th>泰文 Thai</th><th>拼音 Pinyin</th><th>唸法 Pron.</th><th>中文 / English</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="vocab-thai">อร่อย</td><td class="vocab-pinyin">à-ròi</td><td class="vocab-pron">阿ㄌㄨㄞˇ</td><td class="vocab-zh">好吃<br><span class="vocab-en">Delicious / Tasty</span></td></tr>
+        <tr><td class="vocab-thai">เอาอันนี้</td><td class="vocab-pinyin">ao an née</td><td class="vocab-pron">凹安尼</td><td class="vocab-zh">我要這個<br><span class="vocab-en">I'd like this one</span></td></tr>
+        <tr><td class="vocab-thai">ราคาเท่าไหร่</td><td class="vocab-pinyin">raa-kaa tâo rài</td><td class="vocab-pron">(拉咖)套來</td><td class="vocab-zh">（價格）多少錢？<br><span class="vocab-en">How much?</span></td></tr>
+        <tr><td class="vocab-thai">กินที่นี่</td><td class="vocab-pinyin">gin têe nêe</td><td class="vocab-pron">ㄍㄧㄣ踢膩</td><td class="vocab-zh">內用（這裡吃）<br><span class="vocab-en">Dine in / For here</span></td></tr>
+        <tr><td class="vocab-thai">เอากลับบ้าน</td><td class="vocab-pinyin">ao glàp bâan</td><td class="vocab-pron">凹ㄍㄚˇ伴</td><td class="vocab-zh">外帶<br><span class="vocab-en">Takeaway / To go</span></td></tr>
+        <tr><td class="vocab-thai">ขอเมนูหน่อย</td><td class="vocab-pinyin">kŏr may-noo nòi</td><td class="vocab-pron">ㄎㄡˊmenuㄋㄡ一</td><td class="vocab-zh">請給我菜單<br><span class="vocab-en">Menu, please</span></td></tr>
+        <tr><td class="vocab-thai">เช็คบิล</td><td class="vocab-pinyin">chék bin</td><td class="vocab-pron">切克賓</td><td class="vocab-zh">我要結帳<br><span class="vocab-en">Check, please</span></td></tr>
+        <tr><td class="vocab-thai">ไม่ใส่ถุง</td><td class="vocab-pinyin">mâi sài tŭng</td><td class="vocab-pron">賣賽圖恩</td><td class="vocab-zh">不要袋子<br><span class="vocab-en">No bag</span></td></tr>
+        <tr><td class="vocab-thai">ไม่ใส่ผักชี</td><td class="vocab-pinyin">mâi sài pàk-chee</td><td class="vocab-pron">賣ㄙㄞˇㄆㄚ˙七</td><td class="vocab-zh">不要香菜<br><span class="vocab-en">No coriander</span></td></tr>
+        <tr><td class="vocab-thai">แพง</td><td class="vocab-pinyin">paeng</td><td class="vocab-pron">pen（一聲）</td><td class="vocab-zh">貴<br><span class="vocab-en">Expensive</span></td></tr>
+        <tr><td class="vocab-thai">ถูก</td><td class="vocab-pinyin">tòok</td><td class="vocab-pron">土</td><td class="vocab-zh">便宜<br><span class="vocab-en">Cheap</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Panel: 辣甜冰調整 -->
+  <div class="vocab-panel" data-panel="taste">
+    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:12px;color:var(--muted);line-height:1.7">
+      <strong style="color:#ea580c">💡 個人經驗：</strong>泰國人的「小辣」就已經是中辣或大辣等級，不太吃辣的人請自行斟酌 👀 甜度也是！
+    </div>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>泰文 Thai</th><th>拼音 Pinyin</th><th>唸法 Pron.</th><th>中文 / English</th></tr>
+      </thead>
+      <tbody>
+        <tr class="vocab-subhead"><td colspan="4">🌶️ 辣度（Spiciness）</td></tr>
+        <tr><td class="vocab-thai">ไม่เผ็ด</td><td class="vocab-pinyin">mâi pèt</td><td class="vocab-pron">賣ㄆㄟ˙</td><td class="vocab-zh">不要辣<br><span class="vocab-en">Not spicy</span></td></tr>
+        <tr><td class="vocab-thai">เผ็ดนิดหน่อย</td><td class="vocab-pinyin">pèt nít nòi</td><td class="vocab-pron">ㄆㄟ˙膩noy</td><td class="vocab-zh">微辣<br><span class="vocab-en">A little spicy</span></td></tr>
+        <tr><td class="vocab-thai">เผ็ดกลาง</td><td class="vocab-pinyin">pèt glaang</td><td class="vocab-pron">ㄆㄟ˙剛</td><td class="vocab-zh">中辣<br><span class="vocab-en">Medium spicy</span></td></tr>
+        <tr><td class="vocab-thai">เผ็ดมาก</td><td class="vocab-pinyin">pèt mâak</td><td class="vocab-pron">ㄆㄟ˙罵</td><td class="vocab-zh">大辣（非常辣）<br><span class="vocab-en">Very spicy</span></td></tr>
+        <tr class="vocab-subhead"><td colspan="4">🍯 甜度（Sweetness）</td></tr>
+        <tr><td class="vocab-thai">ไม่เอาน้ำตาล</td><td class="vocab-pinyin">mâi ao nám dtaan</td><td class="vocab-pron">賣凹南單</td><td class="vocab-zh">不要加糖<br><span class="vocab-en">No sugar</span></td></tr>
+        <tr><td class="vocab-thai">ปกติ</td><td class="vocab-pinyin">bpòk-gà-dtì</td><td class="vocab-pron">ㄅㄡˇㄍㄚˇ底</td><td class="vocab-zh">正常甜度<br><span class="vocab-en">Normal sweetness</span></td></tr>
+        <tr><td class="vocab-thai">ไม่หวาน</td><td class="vocab-pinyin">mâi wăan</td><td class="vocab-pron">賣碗</td><td class="vocab-zh">無糖<br><span class="vocab-en">No sweet</span></td></tr>
+        <tr><td class="vocab-thai">หวานน้อย</td><td class="vocab-pinyin">wăan nói</td><td class="vocab-pron">碗noy</td><td class="vocab-zh">少糖<br><span class="vocab-en">Less sweet</span></td></tr>
+        <tr><td class="vocab-thai">ครึ่งหวาน</td><td class="vocab-pinyin">krêung wăan</td><td class="vocab-pron">克愣晚</td><td class="vocab-zh">半糖<br><span class="vocab-en">Half sweet</span></td></tr>
+        <tr><td class="vocab-thai">หวานมาก</td><td class="vocab-pinyin">wăan mâak</td><td class="vocab-pron">晚罵</td><td class="vocab-zh">很甜<br><span class="vocab-en">Very sweet</span></td></tr>
+        <tr class="vocab-subhead"><td colspan="4">🧊 冰塊（Ice Level）</td></tr>
+        <tr><td class="vocab-thai">น้ำแข็งเยอะ</td><td class="vocab-pinyin">náam kăeng yúh</td><td class="vocab-pron">難kenˊ yer</td><td class="vocab-zh">冰塊多<br><span class="vocab-en">More ice</span></td></tr>
+        <tr><td class="vocab-thai">น้ำแข็งน้อย</td><td class="vocab-pinyin">náam kăeng nói</td><td class="vocab-pron">難kenˊ noy</td><td class="vocab-zh">冰塊少<br><span class="vocab-en">Less ice</span></td></tr>
+        <tr><td class="vocab-thai">ไม่ใส่น้ำแข็ง</td><td class="vocab-pinyin">mâi sài náam kăeng</td><td class="vocab-pron">麥ㄙㄞˇ難kenˊ</td><td class="vocab-zh">不加冰<br><span class="vocab-en">No ice</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Panel: 食物名稱 -->
+  <div class="vocab-panel" data-panel="food">
+    <table class="vocab-table">
+      <thead>
+        <tr><th>泰文 Thai</th><th>拼音 Pinyin</th><th>唸法 Pron.</th><th>中文 / English</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="vocab-thai">น้ำ</td><td class="vocab-pinyin">náam</td><td class="vocab-pron">難（嘴閉）</td><td class="vocab-zh">水<br><span class="vocab-en">Water</span></td></tr>
+        <tr><td class="vocab-thai">ข้าว</td><td class="vocab-pinyin">khâao</td><td class="vocab-pron">靠</td><td class="vocab-zh">飯／米<br><span class="vocab-en">Rice</span></td></tr>
+        <tr><td class="vocab-thai">ข้าวเหนียว</td><td class="vocab-pinyin">khâao níao</td><td class="vocab-pron">靠ㄋㄧㄠˊ</td><td class="vocab-zh">糯米飯<br><span class="vocab-en">Sticky rice</span></td></tr>
+        <tr><td class="vocab-thai">ก๋วยเตี๋ยว</td><td class="vocab-pinyin">gùay-dtīao</td><td class="vocab-pron">歸ㄉㄧㄠˊ</td><td class="vocab-zh">粿條／河粉<br><span class="vocab-en">Noodles</span></td></tr>
+        <tr><td class="vocab-thai">ขนมปัง</td><td class="vocab-pinyin">khà-nǒm-pang</td><td class="vocab-pron">卡農邦</td><td class="vocab-zh">麵包<br><span class="vocab-en">Bread</span></td></tr>
+        <tr><td class="vocab-thai">นม</td><td class="vocab-pinyin">nom</td><td class="vocab-pron">ㄋㄨㄥ（嘴閉）</td><td class="vocab-zh">牛奶<br><span class="vocab-en">Milk</span></td></tr>
+        <tr><td class="vocab-thai">ไข่</td><td class="vocab-pinyin">khài</td><td class="vocab-pron">凱</td><td class="vocab-zh">蛋<br><span class="vocab-en">Egg</span></td></tr>
+        <tr><td class="vocab-thai">เนื้อ</td><td class="vocab-pinyin">núea</td><td class="vocab-pron">ㄋㄜˊ啊</td><td class="vocab-zh">牛肉<br><span class="vocab-en">Beef</span></td></tr>
+        <tr><td class="vocab-thai">หมู</td><td class="vocab-pinyin">múu</td><td class="vocab-pron">ㄇㄨˊ</td><td class="vocab-zh">豬肉<br><span class="vocab-en">Pork</span></td></tr>
+        <tr><td class="vocab-thai">ไก่</td><td class="vocab-pinyin">gài</td><td class="vocab-pron">改</td><td class="vocab-zh">雞肉<br><span class="vocab-en">Chicken</span></td></tr>
+        <tr><td class="vocab-thai">ปลา</td><td class="vocab-pinyin">bplaa</td><td class="vocab-pron">ㄅㄨ拉</td><td class="vocab-zh">魚<br><span class="vocab-en">Fish</span></td></tr>
+        <tr><td class="vocab-thai">ผัก</td><td class="vocab-pinyin">phàk</td><td class="vocab-pron">ㄆㄚˇ</td><td class="vocab-zh">蔬菜<br><span class="vocab-en">Vegetables</span></td></tr>
+        <tr><td class="vocab-thai">ผลไม้</td><td class="vocab-pinyin">phǒn-lá-máai</td><td class="vocab-pron">捧喇埋</td><td class="vocab-zh">水果<br><span class="vocab-en">Fruits</span></td></tr>
+        <tr><td class="vocab-thai">น้ำผลไม้</td><td class="vocab-pinyin">náam-phǒn-lá-máai</td><td class="vocab-pron">難捧喇埋</td><td class="vocab-zh">果汁<br><span class="vocab-en">Fruit juice</span></td></tr>
+        <tr><td class="vocab-thai">น้ำแข็ง</td><td class="vocab-pinyin">náam-khěng</td><td class="vocab-pron">難ㄎㄟˊ嗯</td><td class="vocab-zh">冰塊<br><span class="vocab-en">Ice</span></td></tr>
+        <tr><td class="vocab-thai">ชา</td><td class="vocab-pinyin">chaa</td><td class="vocab-pron">插</td><td class="vocab-zh">茶<br><span class="vocab-en">Tea</span></td></tr>
+        <tr><td class="vocab-thai">กาแฟ</td><td class="vocab-pinyin">gaa-fae</td><td class="vocab-pron">嘎啡</td><td class="vocab-zh">咖啡<br><span class="vocab-en">Coffee</span></td></tr>
+        <tr><td class="vocab-thai">กุ้ง</td><td class="vocab-pinyin">gûng</td><td class="vocab-pron">貢</td><td class="vocab-zh">蝦<br><span class="vocab-en">Shrimp</span></td></tr>
+        <tr><td class="vocab-thai">ปลาหมึก</td><td class="vocab-pinyin">bplaa-mùek</td><td class="vocab-pron">布拉ㄇㄜˇ</td><td class="vocab-zh">魷魚<br><span class="vocab-en">Squid</span></td></tr>
+        <tr><td class="vocab-thai">เต้าหู้</td><td class="vocab-pinyin">dtâo-hûu</td><td class="vocab-pron">道戶</td><td class="vocab-zh">豆腐<br><span class="vocab-en">Tofu</span></td></tr>
+        <tr><td class="vocab-thai">ไส้กรอก</td><td class="vocab-pinyin">sâi-gròk</td><td class="vocab-pron">賽果</td><td class="vocab-zh">香腸<br><span class="vocab-en">Sausage</span></td></tr>
+        <tr><td class="vocab-thai">กะทิ</td><td class="vocab-pinyin">gà-thí</td><td class="vocab-pron">ㄍㄚˇ提</td><td class="vocab-zh">椰奶<br><span class="vocab-en">Coconut milk</span></td></tr>
+        <tr><td class="vocab-thai">กล้วย</td><td class="vocab-pinyin">glûuay</td><td class="vocab-pron">貴</td><td class="vocab-zh">香蕉<br><span class="vocab-en">Banana</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Panel: 常見美食 -->
+  <div class="vocab-panel" data-panel="dish">
+    <table class="vocab-table">
+      <thead>
+        <tr><th>泰文 Thai</th><th>拼音 Pinyin</th><th>唸法 Pron.</th><th>中文 / English</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="vocab-thai">ผัดไทย</td><td class="vocab-pinyin">pàt tai</td><td class="vocab-pron">ㄆㄚˇ胎</td><td class="vocab-zh">泰式炒河粉／炒麵<br><span class="vocab-en">Pad Thai</span></td></tr>
+        <tr><td class="vocab-thai">ข้าวผัด</td><td class="vocab-pinyin">kâao pàt</td><td class="vocab-pron">靠ㄆㄚˇ</td><td class="vocab-zh">泰式炒飯<br><span class="vocab-en">Fried rice</span></td></tr>
+        <tr><td class="vocab-thai">ข้าวเหนียวมะม่วง</td><td class="vocab-pinyin">kâao nĭieow má-mûuang</td><td class="vocab-pron">靠ㄋㄧㄠˊ馬ㄇㄨㄤˋ</td><td class="vocab-zh">芒果糯米飯<br><span class="vocab-en">Mango sticky rice</span></td></tr>
+        <tr><td class="vocab-thai">ข้าวซอย</td><td class="vocab-pinyin">kâao soi</td><td class="vocab-pron">靠搜一</td><td class="vocab-zh">椰漿咖哩雞麵<br><span class="vocab-en">Northern Thai curry noodles</span></td></tr>
+        <tr><td class="vocab-thai">ข้าวผัดกะเพรา</td><td class="vocab-pinyin">kâao pàt gà prao</td><td class="vocab-pron">靠ㄆㄚˇㄍㄚˇ拋</td><td class="vocab-zh">打拋豬飯<br><span class="vocab-en">Basil pork rice</span></td></tr>
+        <tr><td class="vocab-thai">ข้าวมันไก่</td><td class="vocab-pinyin">kâao man gài</td><td class="vocab-pron">靠滿改</td><td class="vocab-zh">海南雞飯<br><span class="vocab-en">Hainanese chicken rice</span></td></tr>
+        <tr><td class="vocab-thai">ข้าวไข่เจียว</td><td class="vocab-pinyin">kâao kài jiieow</td><td class="vocab-pron">靠凱焦</td><td class="vocab-zh">泰式蛋包飯<br><span class="vocab-en">Thai-style omelette rice</span></td></tr>
+        <tr><td class="vocab-thai">ส้มตำ</td><td class="vocab-pinyin">sôm dtam</td><td class="vocab-pron">送單</td><td class="vocab-zh">青木瓜沙拉<br><span class="vocab-en">Papaya salad</span></td></tr>
+        <tr><td class="vocab-thai">ต้มยำกุ้ง</td><td class="vocab-pinyin">dtôm yam gûng</td><td class="vocab-pron">動楊貢</td><td class="vocab-zh">冬蔭功湯<br><span class="vocab-en">Tom Yum Goong</span></td></tr>
+        <tr><td class="vocab-thai">แกงเขียวหวาน</td><td class="vocab-pinyin">gaeng kĭieow wăan</td><td class="vocab-pron">ㄍㄧㄢ ㄎㄧㄠˊ玩</td><td class="vocab-zh">綠咖哩<br><span class="vocab-en">Green curry</span></td></tr>
+        <tr><td class="vocab-thai">โรตี</td><td class="vocab-pinyin">roh-dtee</td><td class="vocab-pron">ㄌㄨㄛ低</td><td class="vocab-zh">煎餅<br><span class="vocab-en">Roti</span></td></tr>
+        <tr><td class="vocab-thai">หมูปิ้ง</td><td class="vocab-pinyin">mŏo bpîng</td><td class="vocab-pron">ㄇㄨˊ並</td><td class="vocab-zh">烤豬肉串<br><span class="vocab-en">Grilled pork skewers</span></td></tr>
+        <tr><td class="vocab-thai">ไก่ทอด</td><td class="vocab-pinyin">gài tôt</td><td class="vocab-pron">改透</td><td class="vocab-zh">炸雞<br><span class="vocab-en">Fried chicken</span></td></tr>
+        <tr><td class="vocab-thai">ลูกชิ้นทอด</td><td class="vocab-pinyin">lôok chín tôt</td><td class="vocab-pron">路琴透</td><td class="vocab-zh">炸丸子<br><span class="vocab-en">Fried meatballs</span></td></tr>
+        <tr><td class="vocab-thai">ขนมครก</td><td class="vocab-pinyin">kà-nŏm krók</td><td class="vocab-pron">卡儂ㄎㄨㄛˊ</td><td class="vocab-zh">椰奶小煎餅<br><span class="vocab-en">Coconut rice pancakes</span></td></tr>
+        <tr><td class="vocab-thai">ขนมเบื้อง</td><td class="vocab-pinyin">kà-nŏm bêuuang</td><td class="vocab-pron">卡儂ㄅㄜˋㄤ</td><td class="vocab-zh">泰式椰絲脆餅<br><span class="vocab-en">Thai crispy pancake</span></td></tr>
+        <tr><td class="vocab-thai">ชาเย็น</td><td class="vocab-pinyin">chaa yen</td><td class="vocab-pron">叉煙</td><td class="vocab-zh">泰式奶茶<br><span class="vocab-en">Thai tea</span></td></tr>
+        <tr><td class="vocab-thai">น้ำมะพร้าว</td><td class="vocab-pinyin">nám-má-práao</td><td class="vocab-pron">難（嘴閉）媽袍</td><td class="vocab-zh">椰子水<br><span class="vocab-en">Coconut water</span></td></tr>
+        <tr><td class="vocab-thai">ผัดผักบุ้ง</td><td class="vocab-pinyin">pàt pàk-bûng</td><td class="vocab-pron">怕ㄆㄚˇ蹦</td><td class="vocab-zh">炒空心菜<br><span class="vocab-en">Stir-fried morning glory</span></td></tr>
+        <tr><td class="vocab-thai">ขนมกล้วย</td><td class="vocab-pinyin">kà-nŏm glûuay</td><td class="vocab-pron">卡農貴</td><td class="vocab-zh">香蕉椰奶糕<br><span class="vocab-en">Banana coconut dessert</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Panel: 吃飯實用句 -->
+  <div class="vocab-panel" data-panel="phrase">
+    <table class="vocab-table">
+      <thead>
+        <tr><th>泰文 Thai</th><th>拼音 Pinyin</th><th>唸法 Pron.</th><th>中文 / English</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="vocab-thai">มี…ไหม</td><td class="vocab-pinyin">mee…măi</td><td class="vocab-pron">米…埋？</td><td class="vocab-zh">請問有⋯嗎？<br><span class="vocab-en">Do you have…?</span></td></tr>
+        <tr><td class="vocab-thai">ขอน้ำหน่อยได้ไหม</td><td class="vocab-pinyin">kŏr náam nòi dâai măi</td><td class="vocab-pron">ㄎㄡˊ難noy帶埋？</td><td class="vocab-zh">可以給我水嗎？<br><span class="vocab-en">Can I have some water?</span></td></tr>
+        <tr><td class="vocab-thai">ช่วยทิ้งขยะให้หน่อยได้ไหม</td><td class="vocab-pinyin">chûuay tíng kà-yà hâi nòi dâai măi</td><td class="vocab-pron">翠庭卡ㄧㄚ˙害noy帶埋？</td><td class="vocab-zh">可以幫我丟垃圾嗎？<br><span class="vocab-en">Could you throw this away?</span></td></tr>
+        <tr><td class="vocab-thai">นี่รสอะไร</td><td class="vocab-pinyin">nêe rót à-rai</td><td class="vocab-pron">溺樓啊ㄌㄞ？</td><td class="vocab-zh">這是什麼味道？<br><span class="vocab-en">What flavor is this?</span></td></tr>
+        <tr><td class="vocab-thai">ข้างในใส่อะไรบ้าง</td><td class="vocab-pinyin">kâang nai sài à-rai bâang</td><td class="vocab-pron">抗ㄋㄞㄙㄞˇ啊ㄌㄞ棒？</td><td class="vocab-zh">這裡面有加什麼？<br><span class="vocab-en">What's in it?</span></td></tr>
+        <tr><td class="vocab-thai">ช่วยใส่…ได้ไหม</td><td class="vocab-pinyin">chûuay sài…dâai măi</td><td class="vocab-pron">翠ㄙㄞˇ…帶埋？</td><td class="vocab-zh">可以幫我加…嗎？<br><span class="vocab-en">Can you add…?</span></td></tr>
+        <tr><td class="vocab-thai">ไม่ใส่…</td><td class="vocab-pinyin">mâi sài…</td><td class="vocab-pron">賣ㄙㄞˇ…</td><td class="vocab-zh">不要加＿＿<br><span class="vocab-en">No …, please</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 連結到完整 Notion -->
+  <div style="margin-top:1.25rem;text-align:center">
+    <a href="https://www.notion.so/by-Charlotte-218fd45e103a8043b6a6f30d0d03463f" target="_blank" style="display:inline-block;padding:10px 20px;background:var(--green);color:white;border-radius:99px;text-decoration:none;font-size:13px;font-weight:600">📋 完整版常用泰文整理（Notion）→</a>
+    <div style="font-size:11px;color:var(--hint);margin-top:6px">持續更新中</div>
+  </div>
+</div>
+
+<!-- 小額贊助 -->
+<div class="section" id="support">
+  <div class="section-header">
+    <span class="section-icon">☕</span>
+    <div class="section-title">小額贊助 Chacha</div>
+    <span class="section-count">自由心意</span>
+  </div>
+
+  <div style="background:linear-gradient(135deg,#fef9ed 0%,#fff 60%,#f0fdf4 100%);border:1px solid var(--border);border-radius:14px;padding:1.75rem 1.5rem;text-align:center">
+
+    <div style="font-size:48px;margin-bottom:8px">🙏🌱</div>
+    <div style="font-size:17px;font-weight:600;color:var(--text);margin-bottom:14px">如果這份資源有幫到你，歡迎請 Chacha 喝一杯泰奶 🧋</div>
+
+    <div style="max-width:560px;margin:0 auto 20px;font-size:13px;color:var(--muted);line-height:1.9">
+      這份文件從蒐集、整理、排版到寫心得，都是我利用課餘與工作之餘的時間一點一點累積出來的～<br>
+      所有內容皆為親自整理，<strong style="color:var(--green)">無任何業配</strong>，也不收取任何費用。<br><br>
+      如果覺得內容對你有幫助，想支持我繼續產出更多泰文學習、泰國旅居相關的資源，<br>
+      歡迎透過下方方式請我一杯飲料 ☕<br>
+      <span style="font-size:12px;color:var(--hint)">（當然完全沒有義務，能幫到你就是我最大的快樂 💚）</span>
+    </div>
+
+    <!-- 贊助選項 -->
+    <div style="max-width:680px;margin:0 auto">
+
+      <!-- 台灣粉絲 -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <span style="font-size:16px">🇹🇼</span>
+        <span style="font-size:13px;font-weight:600;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.5px">TAIWAN</span>
+        <div style="flex:1;height:1px;background:var(--border)"></div>
+      </div>
+
+      <!-- 銀行轉帳 -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;text-align:left">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="font-size:20px">🏦</span>
+          <span style="font-size:14px;font-weight:600">銀行轉帳</span>
+          <span style="font-size:10px;background:var(--green-light);color:var(--green);border-radius:99px;padding:2px 8px;font-weight:600">三選一</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:#f9f9f7;border-radius:8px;flex-wrap:wrap">
+            <span style="font-size:11px;font-weight:600;color:var(--gold);background:var(--gold-light);border-radius:6px;padding:2px 8px;font-family:'DM Mono',monospace;flex-shrink:0">郵局 700</span>
+            <span style="font-size:13px;font-family:'DM Mono',monospace;color:var(--text);flex:1;min-width:180px;word-break:break-all;user-select:all;letter-spacing:0.5px">24411940274630</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:#f9f9f7;border-radius:8px;flex-wrap:wrap">
+            <span style="font-size:11px;font-weight:600;color:#1d4ed8;background:#dbeafe;border-radius:6px;padding:2px 8px;font-family:'DM Mono',monospace;flex-shrink:0">國泰 013</span>
+            <span style="font-size:13px;font-family:'DM Mono',monospace;color:var(--text);flex:1;min-width:180px;word-break:break-all;user-select:all;letter-spacing:0.5px">699514722424</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:#f9f9f7;border-radius:8px;flex-wrap:wrap">
+            <span style="font-size:11px;font-weight:600;color:#b91c1c;background:#fee2e2;border-radius:6px;padding:2px 8px;font-family:'DM Mono',monospace;flex-shrink:0">中信 822</span>
+            <span style="font-size:13px;font-family:'DM Mono',monospace;color:var(--text);flex:1;min-width:180px;word-break:break-all;user-select:all;letter-spacing:0.5px">259540229338</span>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--hint)">💡 提示：長按或選取數字可複製</div>
+      </div>
+
+      <!-- Line Pay -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:20px;text-align:left;opacity:0.7">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:20px">💚</span>
+          <span style="font-size:14px;font-weight:600">Line Pay</span>
+          <span style="font-size:10px;background:#fef3c7;color:#92400e;border-radius:99px;padding:2px 8px;font-weight:600;font-family:'DM Mono',monospace">COMING SOON</span>
+        </div>
+      </div>
+
+      <!-- 海外粉絲 -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <span style="font-size:16px">🌏</span>
+        <span style="font-size:13px;font-weight:600;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.5px">INTERNATIONAL</span>
+        <div style="flex:1;height:1px;background:var(--border)"></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+        <a href="https://buymeacoffee.com/charlottehsu" target="_blank" style="background:linear-gradient(135deg,#fef3c7 0%,#fff 100%);border:1px solid #fcd34d;border-radius:10px;padding:16px 14px;text-decoration:none;color:var(--text);transition:all 0.2s;display:block;text-align:left">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+            <span style="font-size:24px">☕</span>
+            <div>
+              <div style="font-size:13px;font-weight:600">Buy Me a Coffee</div>
+              <div style="font-size:10px;color:var(--hint);font-family:'DM Mono',monospace">charlottehsu</div>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--muted)">信用卡、PayPal、Apple Pay、Google Pay</div>
+        </a>
+      </div>
+
+    </div>
+
+    <div style="margin-top:20px;padding:12px 16px;background:var(--green-light);border:1px dashed rgba(45,106,79,0.3);border-radius:10px;max-width:560px;margin-left:auto;margin-right:auto">
+      <div style="font-size:12px;color:var(--green);font-weight:600;margin-bottom:4px">🌟 其他支持方式</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.8;text-align:left">
+        ▸ 到我的 <a href="https://www.instagram.com/hue_0224/" target="_blank" style="color:var(--green)">IG</a> / <a href="https://www.threads.com/@hue_0224" target="_blank" style="color:var(--green)">Threads</a> 按個愛心、留言交流<br>
+        ▸ 使用我的 <a href="https://www.italki.com/i/ref/c31d5c5c2adfa6?hl=zh-tw" target="_blank" style="color:var(--green)">italki 推薦碼</a> 也等於支持我 💚
+      </div>
+    </div>
+
+    <div style="margin-top:16px;font-size:12px;color:var(--hint)">
+      Khob Khun Ka 🙏 ขอบคุณค่ะ
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  Made with 🧡 by Charlotte (Chacha) · 所有內容親自整理，無業配<br>
+  引用請註明出處 · @hue_0224
+</div>
+
+<script>
+  // Vocab tabs switcher
+  document.querySelectorAll('.vocab-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      const container = tab.closest('#vocab');
+      container.querySelectorAll('.vocab-tab').forEach(t => t.classList.remove('active'));
+      container.querySelectorAll('.vocab-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      container.querySelector(`.vocab-panel[data-panel="${target}"]`).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
+
   --surface: #fff;
   --gold: #c8963c;
   --gold-light: #f5e6c8;
